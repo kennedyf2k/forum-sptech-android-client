@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+
+        android:id="@+id/menu_feed"
+        android:checked="true"
+        android:title="@string/menu_feed"
+        android:icon="@drawable/main_feed"
+
+    />
+
+    <item
+
+        android:id="@+id/menu_perguntas"
+        android:title="@string/menu_perguntas"
+        android:icon="@drawable/main_perguntas"
+
+    />
+
+    <item
+
+        android:id="@+id/menu_salvos"
+        android:visible="true"
+        android:title="@string/menu_salvos"
+        android:icon="@drawable/main_salvos"
+
+    />
+
+    <item
+
+        android:id="@+id/menu_perfil"
+        android:visible="true"
+        android:title="@string/menu_perfil"
+        android:icon="@drawable/main_perfil"
+
+        />
+
+</menu>

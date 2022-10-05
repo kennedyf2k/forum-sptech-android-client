@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1025" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/drawable/gradient.xml" value="0.1045" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/drawable/ic_image_978.xml" value="0.1035" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/drawable/ic_logo.xml" value="0.1045" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/drawable/ic_undraw_home_run_re_rqli.xml" value="0.104" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/drawable/image_978 (1).xml" value="0.104" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/drawable/image_978.xml" value="0.1025" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/drawable/item_selected.xml" value="0.1035" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/drawable/splash_logo.xml" value="0.1045" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/layout-v28/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/layout/fragment_feed.xml" value="0.17255434782608695" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/layout/fragment_perfil.xml" value="0.17255434782608695" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/layout/fragment_perguntas.xml" value="0.17255434782608695" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/layout/fragment_salvos.xml" value="0.17255434782608695" />
+        <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/menu/bottom_menu.xml" value="0.17829457364341086" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

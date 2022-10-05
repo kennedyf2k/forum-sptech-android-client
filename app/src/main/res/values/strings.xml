@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">app-studenton</string>
+    <string name="student">Student</string>
+    <string name="on">ON</string>
+
+    <string name="menu_feed">Feed</string>
+    <string name="menu_perguntas">Perguntas</string>
+    <string name="menu_salvos">Salvos</string>
+    <string name="menu_perfil">Perfil</string>
+
+
+</resources>
