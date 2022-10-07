@@ -8,5 +8,13 @@
     <string name="menu_salvos">Salvos</string>
     <string name="menu_perfil">Perfil</string>
 
+    <string name="login_Login">Login</string>
+    <string name="login_input_ra">RA:</string>
+    <string name="login_input_senha">Senha:</string>
+    <string name="login_button_acessar">Acessar</string>
+    <string name="login_esqueceu_senha">Esqueceu sua senha?</string>
+    <string name="login_clique_aqui">Clique aqui</string>
+
+
 
 </resources>

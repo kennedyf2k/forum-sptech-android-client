@@ -3,15 +3,16 @@ package br.com.studenton
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import br.com.studenton.Fragments.FeedFragment
-import br.com.studenton.Fragments.PerfilFragment
-import br.com.studenton.Fragments.PerguntasFragment
-import br.com.studenton.Fragments.SalvosFragment
+import br.com.studenton.fragments.FeedFragment
+import br.com.studenton.fragments.PerfilFragment
+import br.com.studenton.fragments.PerguntasFragment
+import br.com.studenton.fragments.SalvosFragment
 import br.com.studenton.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding;
+
     private lateinit var feedFragment: FeedFragment;
     private lateinit var perfilFragment: PerfilFragment;
     private lateinit var perguntasFragment: PerguntasFragment;

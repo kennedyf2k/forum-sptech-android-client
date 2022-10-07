@@ -1,4 +1,4 @@
-package br.com.studenton.Fragments
+package br.com.studenton.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

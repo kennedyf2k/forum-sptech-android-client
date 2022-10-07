@@ -1,4 +1,4 @@
-package br.com.studenton.Fragments
+package br.com.studenton.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import br.com.studenton.R
 
 
-class SalvosFragment : Fragment() {
+class FeedFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
     }
 
@@ -21,6 +23,8 @@ class SalvosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_salvos, container, false)
+        return inflater.inflate(R.layout.fragment_feed, container, false)
     }
+
+
 }

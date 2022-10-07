@@ -7,8 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="login_input_selecionado_and_button">#63B1BC</color>
     <color name="dark_blue">#1C2438</color>
+
     <color name="item_selecionado">#63B1BC</color>
+
     <color name="item_nao_selecionado">#D4D8D8</color>
+
+    <color name="login_esqueceu_senha">#6699cc</color>
+    <color name="login_erro">#DC4260</color>
 
 </resources>

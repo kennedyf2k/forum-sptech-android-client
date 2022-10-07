@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Appstudenton" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/item_selecionado</item>
+        <item name="colorPrimary">@color/login_input_selecionado_and_button</item>
         <item name="colorPrimaryVariant">@color/dark_blue</item>
         <item name="colorOnPrimary">@color/item_nao_selecionado</item>
         <!-- Secondary brand color. -->
