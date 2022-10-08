@@ -15,6 +15,21 @@
     <string name="login_esqueceu_senha">Esqueceu sua senha?</string>
     <string name="login_clique_aqui">Clique aqui</string>
 
+    <!--PERFIL-->
+    <string name="text_header">Perfil</string>
+    <string name="text_btnsair">Sair</string>
+    <string name="text_btneditar">Editar</string>
+    <string name="text_nome">Nome</string>
+    <string name="text_RA">R.A.</string>
+    <string name="text_curso">Curso</string>
+    <string name="text_semestre">Semestre</string>
+    <string name="text_email">E-mail</string>
+    <string name="nome">Paulo Duarte</string>
+    <string name="ra">01211097</string>
+    <string name="curso">Análise e desenvolvimento de sistemas</string>
+    <string name="semestre">4° Semestre</string>
+    <string name="email">pauloduarte@gmail.com</string>
+
 
 
 </resources>
