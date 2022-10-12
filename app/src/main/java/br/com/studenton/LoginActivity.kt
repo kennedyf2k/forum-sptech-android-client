@@ -49,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
         val body = LoginRequest(ra, senha);
 
         val request = Rest.getInstance().create(Login::class.java)
-        val intent = Intent(this, MainActivity::class.java)
+
 
         request.login(body).enqueue(object: Callback<LoginResponse>{
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
@@ -60,7 +60,8 @@ class LoginActivity : AppCompatActivity() {
 
                 }else{
 
-                    startActivity(intent)
+                    salvarDados(response.body()!!)
+                    irMainActivity()
 
                 }
             }
@@ -82,6 +83,38 @@ class LoginActivity : AppCompatActivity() {
         }
 
         return true
+    }
+
+    private fun salvarDados(dados: LoginResponse){
+
+        val preferences = getSharedPreferences(
+            "DADOS_CLIENTE",
+            MODE_PRIVATE
+        )
+
+        val editor = preferences.edit();
+
+        editor.putInt("idUsuario", dados.idUsuario);
+        editor.putString("ra", dados.ra);
+        editor.putString("nome", dados.nome);
+        editor.putString("email", dados.email);
+        editor.putString("curso", dados.curso);
+        editor.putInt("semestre", dados.semestre);
+        editor.putString("fotoPerfil", dados.fotoPerfil);
+        editor.putInt("fkAcesso", dados.fkAcesso);
+        editor.putBoolean("checkEmail", dados.checkEmail);
+        editor.putBoolean("autenticado", dados.autenticado);
+
+        editor.apply()
+
+        irMainActivity()
+    }
+
+    private fun irMainActivity(){
+
+        val intent = Intent(this, MainActivity::class.java)
+
+        startActivity(intent)
     }
 
 }

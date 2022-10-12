@@ -16,20 +16,19 @@
     <string name="login_clique_aqui">Clique aqui</string>
 
     <!--PERFIL-->
-    <string name="text_header">Perfil</string>
-    <string name="text_btnsair">Sair</string>
-    <string name="text_btneditar">Editar</string>
-    <string name="text_nome">Nome</string>
-    <string name="text_RA">R.A.</string>
-    <string name="text_curso">Curso</string>
-    <string name="text_semestre">Semestre</string>
-    <string name="text_email">E-mail</string>
-    <string name="nome">Paulo Duarte</string>
-    <string name="ra">01211097</string>
-    <string name="curso">Análise e desenvolvimento de sistemas</string>
-    <string name="semestre">4° Semestre</string>
-    <string name="email">pauloduarte@gmail.com</string>
-
-
+    <string name="perfil_header">Perfil</string>
+    <string name="perfil_btn_sair">Sair</string>
+    <string name="perfil_btn_editar">Editar</string>
+    <string name="perfil_tv_nome">Nome</string>
+    <string name="perfil_tv_RA">R.A.</string>
+    <string name="perfil_tv_curso">Curso</string>
+    <string name="perfil_tv_semestre">Semestre</string>
+    <string name="perfil_tv_email">E-mail</string>
+    <string name="perfil_hint_nome">Paulo Duarte</string>
+    <string name="perfil_hint_ra">01211097</string>
+    <string name="perfil_hint_curso">Análise e desenvolvimento de sistemas</string>
+    <string name="perfil_hint_semestre">4° Semestre</string>
+    <string name="perfil_hint_email">pauloduarte@gmail.com</string>
+    <string name="perfil_description_foto">foto de perfil</string>
 
 </resources>

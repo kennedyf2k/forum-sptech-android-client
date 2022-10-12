@@ -1,18 +1,33 @@
 package br.com.studenton.fragments
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import br.com.studenton.R
+import androidx.fragment.app.Fragment
+import br.com.studenton.databinding.FragmentPerfilBinding
+import com.bumptech.glide.Glide
+import java.net.URL
 
-class PerfilFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+class PerfilFragment(
+
+    val nome: String,
+    val ra: String,
+    val curso: String,
+    val semestre: Int,
+    val email: String,
+    val urlImagem: String
+
+) : Fragment() {
+
+    private lateinit var binding: FragmentPerfilBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
     }
@@ -21,9 +36,24 @@ class PerfilFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_perfil, container, false)
+        binding = FragmentPerfilBinding.inflate(inflater, container, false)
+
+        setarDados()
+
+        return binding.root
     }
 
+    private fun setarDados(){
+
+        val semestreTexto = "$semestre° Semestre"
+
+        binding.tvNome.setText(nome)
+        binding.tvRa.setText(ra)
+        binding.tvCurso.setText(curso)
+        binding.tvSemestre.setText(semestreTexto)
+        binding.tvEmail.setText(email)
+        Glide.with(this).load(urlImagem).into(binding.ivProfile);
+
+    }
 
 }
