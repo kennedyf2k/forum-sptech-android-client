@@ -61,7 +61,6 @@ class LoginActivity : AppCompatActivity() {
                 }else{
 
                     salvarDados(response.body()!!)
-                    irMainActivity()
 
                 }
             }
@@ -107,12 +106,12 @@ class LoginActivity : AppCompatActivity() {
 
         editor.apply()
 
-        irMainActivity()
+        irTermsActivity()
     }
 
-    private fun irMainActivity(){
+    private fun irTermsActivity(){
 
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, TermsActivity::class.java)
 
         startActivity(intent)
     }

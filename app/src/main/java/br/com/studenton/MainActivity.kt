@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         perguntasFragment = PerguntasFragment();
         salvosFragment = SalvosFragment();
 
-
         setFragment(feedFragment)
 
         binding.bottomNav.setOnItemSelectedListener {
