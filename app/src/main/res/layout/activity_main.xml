@@ -9,87 +9,12 @@
     android:layout_gravity="center"
     android:id="@+id/relative_layout">
 
-    <ImageView
-
-        android:id="@+id/img_backgroud"
-
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-
-        android:layout_marginTop="-50dp"
-        android:background="@drawable/main_background"
-
-        />
-
-    <TextView
-
-        android:id="@+id/tv_student"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="40dp"
-
-        android:text="@string/student"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold"
-
-    />
-
-    <TextView
-
-        android:id="@+id/tv_on"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignTop="@+id/tv_student"
-        android:layout_toEndOf="@+id/tv_student"
-        android:layout_marginStart="20dp"
-
-        android:text="@string/on"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-
-    />
-
-    <ImageView
-
-        android:id="@+id/img_sino"
-
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-
-        android:layout_alignBottom="@+id/tv_on"
-        android:layout_toStartOf="@+id/img_lupa"
-        android:background="@drawable/main_icon_sino"
-
-        />
-
-    <ImageView
-
-        android:id="@+id/img_lupa"
-
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/main_icon_lupa"
-
-        android:layout_marginEnd="40dp"
-        android:layout_alignTop="@+id/img_sino"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-
-    />
-
     <FrameLayout
 
         android:id="@+id/frame_fragments"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_nav"
-        android:layout_below="@+id/img_backgroud"
 
         />
 

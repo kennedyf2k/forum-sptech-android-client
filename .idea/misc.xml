@@ -3,16 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/drawable/feed_item_selected.xml" value="0.121" />
+        <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/drawable/line.xml" value="0.121" />
+        <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/drawable/main_item_selected.xml" value="0.121" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/activity_main.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/activity_splash.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/activity_terms.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/fragment_feed.xml" value="0.17255434782608695" />
+        <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/fragment_feed.xml" value="0.2710926694329184" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/fragment_perfil.xml" value="0.16" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/fragment_perguntas.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/fragment_salvos.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/styles.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/menu/bottom_menu.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/menu/menu_feed.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1025" />
         <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/drawable/gradient.xml" value="0.1045" />
         <entry key="..\:/Users/admlocal.daniel/app-studenton/app/src/main/res/drawable/ic_image_978.xml" value="0.1035" />

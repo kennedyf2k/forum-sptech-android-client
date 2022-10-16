@@ -3,11 +3,13 @@
     <string name="student">Student</string>
     <string name="on">ON</string>
 
+    <!--MENU MAIN-->
     <string name="menu_feed">Feed</string>
     <string name="menu_perguntas">Perguntas</string>
     <string name="menu_salvos">Salvos</string>
     <string name="menu_perfil">Perfil</string>
 
+    <!--LOGIN-->
     <string name="login_Login">Login</string>
     <string name="login_input_ra">RA:</string>
     <string name="login_input_senha">Senha:</string>
@@ -30,5 +32,9 @@
     <string name="perfil_hint_semestre">4° Semestre</string>
     <string name="perfil_hint_email">pauloduarte@gmail.com</string>
     <string name="perfil_description_foto">foto de perfil</string>
+
+    <!--FEED-->
+    <string name="feed_menu_mais_relevante">Mais Relevante</string>
+    <string name="feed_menu_minhas_colaboracoes">Minhas colaborações</string>
 
 </resources>

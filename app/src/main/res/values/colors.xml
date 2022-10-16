@@ -7,6 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="full_tranparent">#0000ffff</color>
+
 
     <color name="login_input_selecionado_and_button">#63B1BC</color>
     <color name="dark_blue">#1C2438</color>
