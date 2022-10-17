@@ -37,4 +37,7 @@
     <string name="feed_menu_mais_relevante">Mais Relevante</string>
     <string name="feed_menu_minhas_colaboracoes">Minhas colaborações</string>
 
+    <!--TELA ONBOARDING-->
+    <string name="fragment_onboarding_text_btn">Aceito os Termos e Condições</string>
+
 </resources>
