@@ -16,6 +16,7 @@
     <string name="login_button_acessar">Acessar</string>
     <string name="login_esqueceu_senha">Esqueceu sua senha?</string>
     <string name="login_clique_aqui">Clique aqui</string>
+    <string name="erro_login">RA ou senha errados</string>
 
     <!--PERFIL-->
     <string name="perfil_header">Perfil</string>

@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
 
                 if(response.code() == 401){
 
-                    binding.tvMsgErro.setText("ra ou senha estão incorretos")
+                    binding.tvMsgErro.setText("RA ou senha estão incorretos")
 
                 }else{
 

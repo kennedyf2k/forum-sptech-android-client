@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">app-studenton</string>
+    <string name="student">Student</string>
+    <string name="on">ON</string>
+
+    <!--MENU MAIN-->
+    <string name="menu_feed">Feed</string>
+    <string name="menu_perguntas">Questions</string>
+    <string name="menu_salvos">Saved</string>
+    <string name="menu_perfil">Profile</string>
+
+    <!--LOGIN-->
+    <string name="login_Login">Login</string>
+    <string name="login_input_ra">RA:</string>
+    <string name="login_input_senha">Password:</string>
+    <string name="login_button_acessar">Acess</string>
+    <string name="login_esqueceu_senha">Forgot password?</string>
+    <string name="login_clique_aqui">Click here</string>
+    <string name="erro_login">Wrong RA or password</string>
+
+
+    <!--PERFIL-->
+    <string name="perfil_header">Profile</string>
+    <string name="perfil_btn_sair">Go out</string>
+    <string name="perfil_btn_editar">Edit</string>
+    <string name="perfil_tv_nome">Name</string>
+    <string name="perfil_tv_RA">R.A.</string>
+    <string name="perfil_tv_curso">Course</string>
+    <string name="perfil_tv_semestre">Semester</string>
+    <string name="perfil_tv_email">Email</string>
+    <string name="perfil_hint_nome">Paulo Duarte</string>
+    <string name="perfil_hint_ra">01211097</string>
+    <string name="perfil_hint_curso">Analysis and systems development</string>
+    <string name="perfil_hint_semestre">4th Semester </string>
+    <string name="perfil_hint_email">pauloduarte@gmail.com</string>
+    <string name="perfil_description_foto">Profile picture</string>
+
+    <!--FEED-->
+    <string name="feed_menu_mais_relevante">Most Relevant</string>
+    <string name="feed_menu_minhas_colaboracoes">My collaborations</string>
+
+    <!--TELA ONBOARDING-->
+    <string name="fragment_onboarding_text_btn">I accept the terms and conditions</string>
+
+
+
+</resources>
