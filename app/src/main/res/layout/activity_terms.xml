@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,15 +8,19 @@
     tools:context=".TermsActivity">
 
     <androidx.viewpager2.widget.ViewPager2
+
         android:id="@+id/fragment_onboarding_slide_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+
+    />
 
     <LinearLayout
+
         android:id="@+id/fragment_onboading_slide_indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,9 +28,12 @@
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/btn_login"
-        android:background="@color/dark_blue"/>
+        android:background="@color/dark_blue"
+
+    />
 
     <Button
+
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,6 +52,8 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
