@@ -41,9 +41,15 @@
     <string name="feed_menu_mais_relevante">Most Relevant</string>
     <string name="feed_menu_minhas_colaboracoes">My collaborations</string>
 
-    <!--TELA ONBOARDING-->
-    <string name="fragment_onboarding_text_btn">I accept the terms and conditions</string>
-
+    <!--TELA TERMOS-->
+    <string name="titulo_termos">Terms and \nconditions</string>
+    <string name="texto1_termos">privacy first</string>
+    <string name="texto2_termos">By proceeding, I agree with the \nprocessing of my personal data \nuser to access the features of the \napplication Student On.</string>
+    <string name="texto_modificado1">See more in the Privacy Policy.</string>
+    <string name="texto3_termos">I also agree with the \nPrivacy and Terms of Use.</string>
+    <string name="texto4_termos">I authorize the Student On to use my data \npersonal (except publication data) \nto send notices via email or in the app.*</string>
+    <string name="texto5_termos">*You can revoke consent \nwhen you want. Just send an email to support@studenton.com</string>
+    <string name="aceitar_termos">Accepted</string>
 
 
 </resources>

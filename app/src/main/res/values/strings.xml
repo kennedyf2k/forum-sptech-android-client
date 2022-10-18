@@ -41,7 +41,7 @@
     <!--TELA TERMOS-->
     <string name="titulo_termos">Termos e \ncondições</string>
     <string name="texto1_termos">Privacidade em primeiro lugar</string>
-    <string name="texto2_termos">Ao prosseguir concordo com o \nprocessamento dos meus dados pessoais \nde usuário para ter acesso aos recursos do \/aplicativo Student On.</string>
+    <string name="texto2_termos">Ao prosseguir concordo com o \nprocessamento dos meus dados pessoais \nde usuário para ter acesso aos recursos do \naplicativo Student On.</string>
     <string name="texto_modificado1">Veja mais na Política de Privacidade.</string>
     <string name="texto3_termos">Concordo também com a Política de \nPrivacidade e com os Termos de Uso.</string>
     <string name="texto4_termos">Autorizo a Student On a usar meus dados \npessoais (exceto dados de publicações) \npara enviar avisos por e-mail ou no app.*</string>
