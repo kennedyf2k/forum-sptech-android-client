@@ -15,6 +15,7 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:label="Student On"
         android:theme="@style/Theme.Appstudenton"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
