@@ -1,5 +1,6 @@
 package br.com.studenton
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,8 @@ import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.reflect.KType
+import kotlin.reflect.KTypeParameter
 
 class LoginActivity : AppCompatActivity() {
 
@@ -91,7 +94,7 @@ class LoginActivity : AppCompatActivity() {
             MODE_PRIVATE
         )
 
-        val editor = preferences.edit();
+        var editor = preferences.edit();
 
         editor.putInt("idUsuario", dados.idUsuario);
         editor.putString("ra", dados.ra);
@@ -106,12 +109,28 @@ class LoginActivity : AppCompatActivity() {
 
         editor.apply()
 
-        irTermsActivity()
+        if(preferences.getBoolean("aceitouTermos", false)){
+
+            irMainActivity()
+
+        }else{
+
+            irTermsActivity()
+
+        }
+
     }
 
     private fun irTermsActivity(){
 
         val intent = Intent(this, TermsActivity::class.java)
+
+        startActivity(intent)
+    }
+
+    private fun irMainActivity(){
+
+        val intent = Intent(this, MainActivity::class.java)
 
         startActivity(intent)
     }

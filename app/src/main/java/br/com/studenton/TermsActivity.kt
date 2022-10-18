@@ -30,6 +30,17 @@ class TermsActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener {
 
+            val preferences = getSharedPreferences(
+                "DADOS_CLIENTE",
+                MODE_PRIVATE
+            )
+
+            val editor = preferences.edit()
+
+            editor.putBoolean("aceitouTermos", true)
+
+            editor.apply()
+
             IrMainActivity()
 
         }
@@ -41,22 +52,6 @@ class TermsActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
 
         startActivity(intent)
-    }
-
-    private fun salvarDados(dados: LoginResponse){
-
-        val preferences = getSharedPreferences(
-            "DADOS_CLIENTE",
-            MODE_PRIVATE
-        )
-
-        val editor = preferences.edit();
-
-        editor.putBoolean("autenticado", true)
-
-        editor.apply()
-
-        IrMainActivity()
     }
 }
 

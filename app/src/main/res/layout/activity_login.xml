@@ -34,17 +34,38 @@
 
     />
 
-    <ImageView
+    <TextView
 
-        android:id="@+id/img_bem_vindo"
+        android:id="@+id/tv_bem_vindo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
         android:layout_marginStart="32dp"
 
-        android:background="@drawable/login_bem_vindo"
+        android:text="@string/login_bem_vindo"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:fontFamily="sans-serif-black"
 
         app:layout_constraintBottom_toBottomOf="@id/img_backgroud"
+        app:layout_constraintLeft_toLeftOf="parent"
+
+    />
+
+    <TextView
+
+        android:id="@+id/tv_insira_credenciais"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:layout_marginStart="32dp"
+
+        android:text="@string/login_insira_credenciais"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_bem_vindo"
         app:layout_constraintLeft_toLeftOf="parent"
 
     />

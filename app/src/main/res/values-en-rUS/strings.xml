@@ -13,9 +13,11 @@
 
     <!--LOGIN-->
     <string name="login_Login">Login</string>
+    <string name="login_bem_vindo">Welcome</string>
+    <string name="login_insira_credenciais">Enter your credentials to sign in</string>
     <string name="login_input_ra">RA:</string>
     <string name="login_input_senha">Password:</string>
-    <string name="login_button_acessar">Acess</string>
+    <string name="login_button_acessar">Sign In</string>
     <string name="login_esqueceu_senha">Forgot password?</string>
     <string name="login_clique_aqui">Click here</string>
     <string name="erro_login">Wrong RA or password</string>
@@ -23,7 +25,7 @@
 
     <!--PERFIL-->
     <string name="perfil_header">Profile</string>
-    <string name="perfil_btn_sair">Go out</string>
+    <string name="perfil_btn_sair">Sign Out</string>
     <string name="perfil_btn_editar">Edit</string>
     <string name="perfil_tv_nome">Name</string>
     <string name="perfil_tv_RA">R.A.</string>
