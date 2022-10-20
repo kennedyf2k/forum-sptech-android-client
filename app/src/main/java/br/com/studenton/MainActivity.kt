@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import br.com.studenton.fragments.FeedFragment
 import br.com.studenton.fragments.PerfilFragment
@@ -41,12 +42,22 @@ class MainActivity : AppCompatActivity() {
 
         validarDados(nome)
 
+        val bundlePerfil = bundleOf(
+
+            "nome" to nome,
+            "ra" to ra,
+            "curso" to curso,
+            "semestre" to semestre,
+            "email" to email,
+            "urlFoto" to urlFoto
+
+        )
+
+
         feedFragment = FeedFragment();
-        perfilFragment = PerfilFragment(nome!!, ra!!, curso!!, semestre, email!!, urlFoto!!);
+        perfilFragment = PerfilFragment();
         perguntasFragment = PerguntasFragment();
         salvosFragment = SalvosFragment();
-
-        setFragment(feedFragment)
 
         binding.bottomNav.setOnItemSelectedListener {
 
@@ -72,21 +83,20 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.menu_perfil -> {
 
+                    perfilFragment.arguments = bundlePerfil
                     setFragment(perfilFragment);
 
                 }
-
             }
             true
         }
-
     }
 
     private fun setFragment(fragment: Fragment){
 
         val fragmentTransaction = supportFragmentManager.beginTransaction();
 
-        fragmentTransaction.replace(R.id.frame_fragments, fragment)
+        fragmentTransaction.replace(binding.fragmentsContainer.id, fragment)
 
         fragmentTransaction.commit();
     }

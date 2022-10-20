@@ -25,7 +25,7 @@
 
     <!--PERFIL-->
     <string name="perfil_header">Profile</string>
-    <string name="perfil_btn_sair">Sign Out</string>
+    <string name="perfil_btn_sair">Log Out</string>
     <string name="perfil_btn_editar">Edit</string>
     <string name="perfil_tv_nome">Name</string>
     <string name="perfil_tv_RA">R.A.</string>

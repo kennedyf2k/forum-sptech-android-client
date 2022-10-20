@@ -111,28 +111,20 @@ class LoginActivity : AppCompatActivity() {
 
         if(preferences.getBoolean("aceitouTermos", false)){
 
-            irMainActivity()
+            irActivity(MainActivity())
 
         }else{
 
-            irTermsActivity()
+            irActivity(TermsActivity())
 
         }
 
     }
 
-    private fun irTermsActivity(){
+    private fun irActivity(activity: Activity){
 
-        val intent = Intent(this, TermsActivity::class.java)
-
-        startActivity(intent)
-    }
-
-    private fun irMainActivity(){
-
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, activity::class.java)
 
         startActivity(intent)
     }
-
 }

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.studenton.R
 
-class PerguntasFragment : Fragment() {
+class ConfigurarPerfilFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +17,7 @@ class PerguntasFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_perguntas, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_configurar_perfil, container, false)
     }
 }

@@ -198,6 +198,8 @@
                         android:layout_marginTop="38dp">
 
                         <TextView
+                            
+                            android:id="@+id/tv_btn_sair"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/fundo_btn"
@@ -206,18 +208,18 @@
                             android:textAlignment="center"
                             android:textColor="@color/vermelho"
                             android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+
+                        />
+
                     </LinearLayout>
 
                 </LinearLayout>
+
             </LinearLayout>
-
-
 
         </LinearLayout>
 
     </ScrollView>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
