@@ -53,7 +53,6 @@ class LoginActivity : AppCompatActivity() {
 
         val request = Rest.getInstance().create(Login::class.java)
 
-
         request.login(body).enqueue(object: Callback<LoginResponse>{
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
 

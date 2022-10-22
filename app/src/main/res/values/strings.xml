@@ -49,7 +49,5 @@
     <string name="texto4_termos">Autorizo a Student On a usar meus dados \npessoais (exceto dados de publicações) \npara enviar avisos por e-mail ou no app.*</string>
     <string name="texto5_termos">*Você pode revogar o consentimento \nquando quiser. Basta enviar um e-mail para support@studenton.com</string>
     <string name="aceitar_termos">Aceitar</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

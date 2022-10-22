@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/tv_texto_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:text="teste"
+    android:padding="10dp"
+    android:textSize="10sp"
+    android:textStyle="bold"
+    android:backgroundTint="@color/feed_item_categoria"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    tools:ignore="SmallSp">
+
+
+</Button>

@@ -8,10 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="full_tranparent">#0000ffff</color>
+    <color name="dark_blue">#1C2438</color>
+    <color name="cinza_borda">#7A7A7A</color>
+    <color name="vermelho">#DB5050</color>
 
 
     <color name="login_input_selecionado_and_button">#63B1BC</color>
-    <color name="dark_blue">#1C2438</color>
 
     <color name="item_selecionado">#63B1BC</color>
 
@@ -21,7 +23,7 @@
     <color name="login_erro">#DC4260</color>
 
     <color name="azul_btn">#3A8A96</color>
-    <color name="cinza_borda">#7A7A7A</color>
-    <color name="vermelho">#DB5050</color>
+
+    <color name="feed_item_categoria">#5B9FA8</color>
 
 </resources>
