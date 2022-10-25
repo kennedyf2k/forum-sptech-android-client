@@ -50,4 +50,12 @@
     <string name="texto5_termos">*Você pode revogar o consentimento \nquando quiser. Basta enviar um e-mail para support@studenton.com</string>
     <string name="aceitar_termos">Aceitar</string>
 
+    <!--CONFIGURAR PERFIL-->
+    <string name="texto_header_configurar_perfil">Configurar Perfil</string>
+    <string name="texto_notificacoes">Notificações</string>
+    <string name="texto_atualizacoes">Enviar atualizações no meu e-mail</string>
+    <string name="texto_voltar">Voltar</string>
+    <string name="texto_senha">••••••••••••••</string>
+
+
 </resources>
