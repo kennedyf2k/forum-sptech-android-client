@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl_perfil"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,6 +17,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -28,7 +29,9 @@
                 android:textAlignment="center"
                 android:paddingTop="24dp"
                 android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+
+            />
 
             <LinearLayout
                 android:orientation="vertical"
@@ -37,13 +40,16 @@
                 android:gravity="center">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+
                     android:id="@+id/iv_profile"
                     android:layout_width="128dp"
                     android:layout_height="128dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="30dp"
                     android:src="@drawable/profile"
-                    android:contentDescription="@string/perfil_description_foto"/>
+                    android:contentDescription="@string/perfil_description_foto"
+
+                />
 
             </LinearLayout>
 
@@ -71,7 +77,9 @@
                             android:text="@string/perfil_tv_nome"
                             android:textColor="@color/azul_btn"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+
+                        />
 
                         <TextView
                             android:id="@+id/tv_nome"
@@ -79,7 +87,10 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/perfil_hint_nome"
                             android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+
+                        />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -94,15 +105,21 @@
                             android:text="@string/perfil_tv_RA"
                             android:textColor="@color/azul_btn"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+
+                        />
 
                         <TextView
+
                             android:id="@+id/tv_ra"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/perfil_hint_ra"
                             android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+
+                        />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -112,20 +129,27 @@
                         android:orientation="vertical">
 
                         <TextView
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/perfil_tv_curso"
                             android:textColor="@color/azul_btn"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+
+                        />
 
                         <TextView
+
                             android:id="@+id/tv_curso"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/perfil_hint_curso"
                             android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+
+                        />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -135,20 +159,27 @@
                         android:orientation="vertical">
 
                         <TextView
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/perfil_tv_semestre"
                             android:textColor="@color/azul_btn"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+
+                        />
 
                         <TextView
+
                             android:id="@+id/tv_semestre"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/perfil_hint_semestre"
                             android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+
+                        />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -158,21 +189,28 @@
                         android:orientation="vertical">
 
                         <TextView
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/perfil_tv_email"
                             android:textColor="@color/azul_btn"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+
+                        />
 
                         <TextView
+
                             android:id="@+id/tv_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/perfil_hint_email"
                             android:paddingBottom="12dp"
                             android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+
+                        />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -181,6 +219,8 @@
                         android:gravity="bottom">
 
                         <TextView
+
+                            android:id="@+id/tv_editar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/fundo_editarinfos"
@@ -189,7 +229,10 @@
                             android:textAlignment="center"
                             android:textColor="@color/azul_btn"
                             android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+
+                        />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -222,4 +265,4 @@
 
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

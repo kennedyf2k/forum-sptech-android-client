@@ -2,17 +2,8 @@ package br.com.studenton
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableStringBuilder
 import br.com.studenton.databinding.ActivityTermsBinding
-import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.*
-import androidx.core.view.get
-import androidx.viewpager2.widget.ViewPager2
-import br.com.studenton.models.response.LoginResponse
 
 
 class TermsActivity : AppCompatActivity() {

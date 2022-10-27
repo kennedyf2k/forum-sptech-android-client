@@ -9,11 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="@drawable/header"
-        android:text="@string/texto_header_configurar_perfil"
+        android:text="@string/configurar_perfil_header"
         android:textColor="@color/white"
         android:textAlignment="center"
         android:paddingTop="24dp"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"/>
 
     <LinearLayout
@@ -31,17 +31,17 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_profile"
-                android:layout_marginTop="50px"
-                android:layout_marginBottom="50px"
-                android:layout_width="312px"
-                android:layout_height="312px"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
                 android:src="@drawable/profile"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_editprofile"
-                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="-40dp"/>
         </LinearLayout>
 
@@ -59,21 +59,27 @@
                 android:padding="8dp">
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nome"
+                    android:text="@string/configurar_perfil_label_nome"
                     android:textColor="@color/cinza"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="4dp"
-                    />
+
+                />
 
                 <TextView
+
+                    android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/perfil_hint_nome"
+                    tools:text="@string/perfil_hint_nome"
                     android:textColor="@color/black"
-                    android:textSize="16dp"/>
+                    android:textSize="16sp"
+
+                />
 
             </LinearLayout>
 
@@ -87,42 +93,53 @@
             android:gravity="center">
 
             <LinearLayout
-                android:layout_width="match_parent"
+
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1"
                 android:padding="8dp">
 
-
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Senha"
+                    android:text="@string/configurar_perfil_label_senha"
                     android:textColor="@color/cinza"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="4dp"
-                    />
+
+                />
 
                 <TextView
+
+                    android:id="@+id/tv_hide_senha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/texto_senha"
+                    tools:text="@string/configurar_perfil_hide_senha"
                     android:textColor="@color/black"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
-                    />
+
+                />
+
             </LinearLayout>
 
             <TextView
+
+                android:id="@+id/tv_label_alterar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Alterar"
+                android:text="@string/configurar_perfil_label_alterar"
                 android:textColor="@color/azul_btn"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="10dp"
+
+            />
+
         </LinearLayout>
 
         <LinearLayout
@@ -140,51 +157,70 @@
                 android:padding="4dp">
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/texto_notificacoes"
+                    android:text="@string/configurar_perfil_label_notificacoes"
                     android:textColor="@color/azul_btn"
-                    android:textSize="16dp"
-                    android:textStyle="bold"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+
+                />
+
             </LinearLayout>
 
             <LinearLayout
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/texto_atualizacoes"
+                    android:text="@string/configurar_perfil_atualizacoes"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:paddingLeft="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     android:paddingBottom="8dp"
-                    android:paddingTop="8dp"/>
+                    android:paddingTop="8dp"
+
+                 />
 
                 <TextView
+
+                    android:id="@+id/btn_on_notify"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/btn_on"
+                    android:background="@drawable/configurar_perfil_btn_on_notify"
                     android:textSize="16sp"
                     android:layout_marginTop="-16dp"
-                    android:layout_marginLeft="48dp"/>
+                    android:layout_marginStart="48dp"
+
+                />
 
             </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="bottom">
 
             <Button
+
+                android:id="@+id/btn_voltar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/azul_btn"
-                android:text="@string/texto_voltar"
-                />
+                android:text="@string/configurar_perfil_btn_voltar"
+
+            />
+
         </LinearLayout>
 
     </LinearLayout>

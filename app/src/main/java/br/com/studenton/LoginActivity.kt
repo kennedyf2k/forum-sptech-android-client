@@ -6,16 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import br.com.studenton.databinding.ActivityLoginBinding
-import br.com.studenton.models.request.LoginRequest
-import br.com.studenton.models.response.LoginResponse
-import br.com.studenton.rest.Rest
+import br.com.studenton.adapter.models.request.LoginRequest
+import br.com.studenton.adapter.models.response.LoginResponse
+import br.com.studenton.repository.Rest
 import br.com.studenton.services.Login
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.reflect.KType
-import kotlin.reflect.KTypeParameter
 
 class LoginActivity : AppCompatActivity() {
 
@@ -34,16 +32,24 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnAcessar.setOnClickListener {
 
-            if(validarTextos(campoRa, campoSenha)){
+            val nResponse = validarCampos(campoRa, campoSenha)
+
+            if(nResponse == 0){
 
                 login(campoRa.text.toString(), campoSenha.text.toString())
 
+            }else if(nResponse == 1){
+
+                campoRa.error = getString(R.string.login_erro_obrigatorio)
+                campoSenha.error = getString(R.string.login_erro_obrigatorio)
+
             }else{
 
-                campoRa.error = "Esse campo é obrigatório"
-                campoSenha.error = "Esse campo é obrigatório"
+                campoRa.error = getString(R.string.login_erro_tamanho_caracteres_ra)
+                campoSenha.error =  getString(R.string.login_erro_tamanho_caracteres_senha)
 
             }
+
         }
     }
 
@@ -51,46 +57,53 @@ class LoginActivity : AppCompatActivity() {
 
         val body = LoginRequest(ra, senha);
 
-        val request = Rest.getInstance().create(Login::class.java)
-
-        request.login(body).enqueue(object: Callback<LoginResponse>{
+        Rest.getInstance<Login>().login(body).enqueue(object: Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
 
-                if(response.code() == 401){
+                if(response.code() == 200){
 
-                    binding.tvMsgErro.setText("RA ou senha estão incorretos")
+                    salvarDados(response.body()!!)
 
                 }else{
 
-                    salvarDados(response.body()!!)
+                    binding.tvMsgErro.setText(R.string.login_erro_login)
 
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+
                 Log.i("Erro", "ERRO: ${t.message}" )
+
+                binding.tvMsgErro.setText(R.string.login_erro_server)
+
             }
 
 
         })
+
     }
 
-    private fun validarTextos(campo1: TextInputEditText, campo2: TextInputEditText): Boolean{
+    private fun validarCampos(campoRa: TextInputEditText, campoSenha: TextInputEditText): Int{
 
-        if(campo1.text.toString().isEmpty() || campo2.text.toString().isEmpty()){
+        if(campoRa.text.toString().isEmpty() || campoSenha.text.toString().isEmpty()){
 
-            return false
+            return 1
+
+        }else if(campoRa.text.toString().length <= 3 || campoSenha.text.toString().length <= 5){
+
+            return 2
 
         }
 
-        return true
+        return 0
     }
 
     private fun salvarDados(dados: LoginResponse){
 
         val preferences = getSharedPreferences(
             "DADOS_CLIENTE",
-            MODE_PRIVATE
+            AppCompatActivity.MODE_PRIVATE
         )
 
         var editor = preferences.edit();

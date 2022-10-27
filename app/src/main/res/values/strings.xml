@@ -18,7 +18,11 @@
     <string name="login_button_acessar">Acessar</string>
     <string name="login_esqueceu_senha">Esqueceu sua senha?</string>
     <string name="login_clique_aqui">Clique aqui</string>
-    <string name="erro_login">RA ou senha estão errados</string>
+    <string name="login_erro_login">RA ou senha estão errados</string>
+    <string name="login_erro_server">Acontece um erro inesperado, tente novamente mais tarde</string>
+    <string name="login_erro_obrigatorio">Esse campo é obrigatório</string>
+    <string name="login_erro_tamanho_caracteres_ra">O Ra tem que ter, no mínimo, 3 caracteres</string>
+    <string name="login_erro_tamanho_caracteres_senha">A Senha tem que ter, no mínimo, 5 caracteres</string>
 
     <!--PERFIL-->
     <string name="perfil_header">Perfil</string>
@@ -39,6 +43,19 @@
     <!--FEED-->
     <string name="feed_menu_mais_relevante">Mais Relevante</string>
     <string name="feed_menu_minhas_colaboracoes">Minhas colaborações</string>
+    <string name="feed_item_simple_item_meio_respondeu">respondeu a pergunta de</string>
+    <string name="feed_item_simple_item_meio_publicou">publicou uma informação</string>
+    <string name="feed_item_simple_item_dias_atras_0">Hoje</string>
+    <string name="feed_item_simple_item_dias_atras_1">Ontem</string>
+    <string name="feed_item_simple_item_dias_atras_2">2 dias atrás</string>
+    <string name="feed_item_simple_item_dias_atras_3">3 dias atrás</string>
+    <string name="feed_item_simple_item_dias_atras_4">4 dias atrás</string>
+    <string name="feed_item_simple_item_dias_atras_5">5 dias atrás</string>
+    <string name="feed_item_simple_item_dias_atras_6">6 dias atrás</string>
+    <string name="feed_item_simple_item_dias_atras_7">7 dias atrás</string>
+    <string name="feed_item_simple_item_dias_atras_else">Há um tempo atrás</string>
+    <string name="feed_item_simple_item_tipo_publicacao_1">INFORMAÇÃO</string>
+    <string name="feed_item_simple_item_tipo_publicacao_2">DÚVIDA</string>
 
     <!--TELA TERMOS-->
     <string name="titulo_termos">Termos e \ncondições</string>
@@ -51,11 +68,13 @@
     <string name="aceitar_termos">Aceitar</string>
 
     <!--CONFIGURAR PERFIL-->
-    <string name="texto_header_configurar_perfil">Configurar Perfil</string>
-    <string name="texto_notificacoes">Notificações</string>
-    <string name="texto_atualizacoes">Enviar atualizações no meu e-mail</string>
-    <string name="texto_voltar">Voltar</string>
-    <string name="texto_senha">••••••••••••••</string>
-
+    <string name="configurar_perfil_header">Configurar Perfil</string>
+    <string name="configurar_perfil_label_notificacoes">Notificações</string>
+    <string name="configurar_perfil_atualizacoes">Enviar atualizações no meu e-mail</string>
+    <string name="configurar_perfil_btn_voltar">Voltar</string>
+    <string name="configurar_perfil_hide_senha">••••••••••••••</string>
+    <string name="configurar_perfil_label_nome">Nome</string>
+    <string name="configurar_perfil_label_senha">Senha</string>
+    <string name="configurar_perfil_label_alterar">Alterar</string>
 
 </resources>

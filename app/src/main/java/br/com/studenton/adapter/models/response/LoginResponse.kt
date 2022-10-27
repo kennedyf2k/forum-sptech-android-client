@@ -1,4 +1,4 @@
-package br.com.studenton.models.response
+package br.com.studenton.adapter.models.response
 
 data class LoginResponse(
 

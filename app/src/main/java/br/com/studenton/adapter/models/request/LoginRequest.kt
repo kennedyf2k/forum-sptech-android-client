@@ -1,4 +1,4 @@
-package br.com.studenton.models.request
+package br.com.studenton.adapter.models.request
 
 data class LoginRequest(
 

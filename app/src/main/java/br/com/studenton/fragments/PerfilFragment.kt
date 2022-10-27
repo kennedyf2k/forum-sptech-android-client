@@ -34,15 +34,20 @@ class PerfilFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding.tvBtnSair.setOnClickListener {
 
             val intent = Intent(activity, LoginActivity::class.java)
 
             startActivity(intent)
+
         }
 
         setarDados()
+
+
     }
+
 
     private fun setarDados(){
 
@@ -56,5 +61,4 @@ class PerfilFragment() : Fragment() {
         Glide.with(this).load(arguments?.getString("urlFoto")).into(binding.ivProfile);
 
     }
-
 }

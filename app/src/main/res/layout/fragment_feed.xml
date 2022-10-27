@@ -103,12 +103,15 @@
 
         <androidx.recyclerview.widget.RecyclerView
 
+            tools:listitem="@layout/fragment_feed_simple_item_categorias"
+            tools:itemCount="10"
             android:id="@+id/rv_categorias"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="4"
             android:scrollbars="horizontal"
-
 
         />
 
@@ -120,6 +123,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/ll_rv_categorias"
+        tools:listitem="@layout/fragment_feed_simple_item_feed"
+        app:spanCount="2"
 
     />
 

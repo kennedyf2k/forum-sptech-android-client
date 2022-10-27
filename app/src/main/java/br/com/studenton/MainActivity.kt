@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setFragment(fragment: Fragment){
+    fun setFragment(fragment: Fragment){
 
         val fragmentTransaction = supportFragmentManager.beginTransaction();
 
