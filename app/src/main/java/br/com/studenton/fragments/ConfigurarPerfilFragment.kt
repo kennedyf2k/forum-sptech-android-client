@@ -51,6 +51,22 @@ class ConfigurarPerfilFragment : Fragment() {
 
         }
 
+        binding.tvLabelAlterar.setOnClickListener {
+
+            val fragmentManager = activity?.supportFragmentManager
+
+            val transaction = fragmentManager!!.beginTransaction()
+
+            var fragmentAlterarSenha = PerfilAlterarSenhaFragment()
+
+            fragmentAlterarSenha.arguments = bundle
+
+            transaction.replace(R.id.fragments_container, fragmentAlterarSenha)
+
+            transaction.commit()
+
+
+        }
     }
 
     private fun setarDados(){
@@ -60,6 +76,7 @@ class ConfigurarPerfilFragment : Fragment() {
 
         bundle = bundleOf(
 
+            "id" to arguments?.getInt("id"),
             "nome" to arguments?.getString("nome"),
             "ra" to arguments?.getString("ra"),
             "curso" to arguments?.getString("curso"),

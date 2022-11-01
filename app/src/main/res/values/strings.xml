@@ -83,6 +83,10 @@
     <string name="alterar_senha_atual">Senha atual</string>
     <string name="alterar_senha_nova">Nova senha</string>
     <string name="alterar_senha_confirmar_nova">Confirmar nova senha</string>
-
+    <string name="alterar_senha_erro_senhas_nao_batem">Nova senha e confirmar senha não batem</string>
+    <string name="alterar_senha_erro_senha_menor_9">A senha deve conter, no mínimo, 9 caracteres</string>
+    <string name="alterar_senha_erro_usuario_nao_encontrado">A sua senha atual está incorreta</string>
+    <string name="alterar_senha_alerta_title">Senha alterada</string>
+    <string name="alterar_senha_alerta_text">A sua senha foi alterada com sucesso.</string>
 
 </resources>

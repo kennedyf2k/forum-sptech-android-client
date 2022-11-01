@@ -33,10 +33,11 @@ class MainActivity : AppCompatActivity() {
             AppCompatActivity.MODE_PRIVATE
         )
 
+        val id = preferences.getInt("idUsuario", -1)
         val nome = preferences.getString("nome", null)
         val ra = preferences.getString("ra", null)
         val curso = preferences.getString("curso", null)
-        val semestre = preferences.getInt("semestre", 0)
+        val semestre = preferences.getInt("semestre", -1)
         val email = preferences.getString("email", null)
         val urlFoto = preferences.getString("fotoPerfil", null)
 
@@ -44,6 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         val bundlePerfil = bundleOf(
 
+            "id" to id,
             "nome" to nome,
             "ra" to ra,
             "curso" to curso,

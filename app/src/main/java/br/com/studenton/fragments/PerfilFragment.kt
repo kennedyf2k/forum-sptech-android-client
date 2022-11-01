@@ -81,6 +81,7 @@ class PerfilFragment() : Fragment() {
 
         bundle = bundleOf(
 
+            "id" to arguments?.getInt("id"),
             "nome" to arguments?.getString("nome"),
             "ra" to arguments?.getString("ra"),
             "curso" to arguments?.getString("curso"),
