@@ -77,4 +77,12 @@
     <string name="configurar_perfil_label_senha">Senha</string>
     <string name="configurar_perfil_label_alterar">Alterar</string>
 
+    <!--PERFIL - ALTERAR SENHA-->
+    <string name="alterar_senha_header">Criar nova senha</string>
+    <string name="alterar_senha_btn_alterar">Alterar</string>
+    <string name="alterar_senha_atual">Senha atual</string>
+    <string name="alterar_senha_nova">Nova senha</string>
+    <string name="alterar_senha_confirmar_nova">Confirmar nova senha</string>
+
+
 </resources>
