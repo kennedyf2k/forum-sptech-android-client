@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import br.com.studenton.databinding.ActivityLoginBinding
-import br.com.studenton.adapter.models.request.LoginRequest
-import br.com.studenton.adapter.models.response.LoginResponse
+import br.com.studenton.domain.request.LoginRequest
+import br.com.studenton.domain.Login
 import br.com.studenton.repository.Rest
-import br.com.studenton.services.Login
+import br.com.studenton.services.LoginService
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
@@ -57,8 +57,8 @@ class LoginActivity : AppCompatActivity() {
 
         val body = LoginRequest(ra, senha);
 
-        Rest.getInstance<Login>().login(body).enqueue(object: Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+        Rest.getInstance<LoginService>().login(body).enqueue(object: Callback<Login> {
+            override fun onResponse(call: Call<Login>, response: Response<Login>) {
 
                 if(response.code() == 200){
 
@@ -71,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+            override fun onFailure(call: Call<Login>, t: Throwable) {
 
                 Log.i("Erro", "ERRO: ${t.message}" )
 
@@ -99,7 +99,7 @@ class LoginActivity : AppCompatActivity() {
         return 0
     }
 
-    private fun salvarDados(dados: LoginResponse){
+    private fun salvarDados(dados: Login){
 
         val preferences = getSharedPreferences(
             "DADOS_CLIENTE",

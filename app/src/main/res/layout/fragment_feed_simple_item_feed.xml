@@ -1,241 +1,272 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
-    android:id="@+id/cl_box_item_feed"
+    android:layout_height="wrap_content"
+    android:maxHeight="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_box_item_feed"
     android:layout_marginBottom="10dp"
     android:layout_margin="5dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:cardCornerRadius="20dp"
+
+    >
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-
-            android:id="@+id/iv_profile_item"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/profile"
-            android:contentDescription="@string/perfil_description_foto"
-
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="16dp"
-
-        />
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <TextView
+            <de.hdodenhof.circleimageview.CircleImageView
 
-                android:id="@+id/tv_name_position_1"
-                android:maxHeight="100dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/iv_profile_item"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/profile"
+                android:contentDescription="@string/perfil_description_foto"
 
-                tools:text="Daniel Katsuaki"
-                android:textStyle="bold"
-
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginStart="8dp"
 
             />
 
-            <TextView
-
-                android:id="@+id/tv_horas_atras"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Há 4 horas"
-                android:layout_marginStart="8dp"
+                android:orientation="vertical">
 
-            />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                    <TextView
 
-        <TextView
+                        android:id="@+id/tv_name_position_1"
+                        android:maxHeight="100dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
-            android:id="@+id/tv_position_fixed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                        tools:text="Daniel"
+                        android:textStyle="bold"
 
-            android:text="@string/feed_item_simple_item_meio_respondeu"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="8dp"
 
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="3dp"
+                    />
 
-        />
+                    <TextView
 
-        <TextView
+                        android:id="@+id/tv_position_fixed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
-            android:id="@+id/tv_name_position_2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+                        android:text="@string/feed_item_simple_item_meio_respondeu"
 
-            tools:text="Kennedy"
-            android:textStyle="bold"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="3dp"
 
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="3dp"
+                        />
 
-        />
+                    <TextView
 
-    </LinearLayout>
+                        android:id="@+id/tv_name_position_2"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+                        tools:text="Kennedy GFJKDSGKLSD"
+                        android:textStyle="bold"
 
-        <TextView
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="3dp"
 
-            android:id="@+id/tv_tipo_post"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                        />
 
-            android:gravity="center"
-            android:background="@drawable/feed_item_shape_duvida"
+                </LinearLayout>
 
-            android:textColor="@color/white"
-            tools:text="DÚVIDA"
-            android:textSize="11sp"
+                <TextView
 
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-
-        />
-
-        <TextView
-
-            android:id="@+id/tv_categoria_post"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-
-            android:gravity="center"
-            android:background="@drawable/feed_item_shape_categoria_secretaria"
-
-            android:textColor="@color/feed_item_feed_name_categoria"
-            tools:text="SECRETÁRIA"
-            android:textSize="11sp"
-
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-
-        />
-
-    </LinearLayout>
-
-    <TextView
-
-        android:id="@+id/tv_titulo_box"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        tools:text="Pedi meu Bilhete único estudantil mas não sei aonde vai chegar"
-
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-
-        android:textColor="@color/feed_item_feed_name_titulo"
-        android:textStyle="bold"
-
-    />
-
-    <ScrollView
-
-        android:layout_width="match_parent"
-        android:layout_height="72dp">
-
-        <TextView
-
-            android:id="@+id/tv_texto_box"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp"
-
-            tools:text="Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Proin aliquet
-            dapibus fringilla. Maecenas lacus felis,
-            rhoncus in risus at, bibendum imperdiet ligula."
-
-        />
-
-    </ScrollView>
-
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-
-            android:id="@+id/iv_curtir"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="center"
-            android:background="@drawable/feed_item_img_curtir_marcado"
-            android:layout_marginStart="16dp"
-
-        />
-
-        <TextView
-
-            android:id="@+id/tv_numero_curtidas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="2"
-            android:textSize="24sp"
-            android:layout_marginStart="5dp"
-
-        />
-
-        <ImageView
-
-            android:id="@+id/iv_comentar"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:background="@drawable/feed_item_img_comentario"
-            android:layout_marginStart="16dp"
-            android:layout_gravity="center"
-
-        />
-
-        <TextView
-
-            android:id="@+id/tv_numero_comentarios"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="2"
-            android:textSize="24sp"
-            android:layout_marginStart="5dp"
-
-        />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="end">
-
-            <ImageView
-
-                android:id="@+id/iv_salvar"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:background="@drawable/feed_item_img_salvar"
-                android:layout_marginEnd="32dp"
-                android:layout_gravity="center"
+                    android:id="@+id/tv_horas_atras"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Há 4 horas"
+                    android:layout_marginStart="8dp"
 
                 />
 
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                android:id="@+id/tv_tipo_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:gravity="center"
+                android:background="@drawable/feed_item_shape_duvida_laranja"
+
+                android:textColor="@color/white"
+                tools:text="DÚVIDA"
+                android:textSize="11sp"
+
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+
+            />
+
+            <TextView
+
+                android:id="@+id/tv_categoria_post"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+
+                android:gravity="center"
+                android:background="@drawable/feed_item_shape_categoria_laranja"
+
+                android:textColor="@color/feed_item_feed_name_categoria_laranja"
+                tools:text="SECRETÁRIA"
+                android:textSize="11sp"
+
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+
+            />
+
+        </LinearLayout>
+
+        <TextView
+
+            android:id="@+id/tv_titulo_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            tools:text="Pedi meu Bilhete único estudantil mas não sei aonde vai chegar"
+
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+
+            android:textColor="@color/feed_item_feed_name_titulo"
+            android:textStyle="bold"
+
+        />
+
+        <ScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:scrollbars="vertical">
+
+            <TextView
+
+                android:id="@+id/tv_texto_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+
+                tools:text="Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Proin aliquet
+                dapibus fringilla. Maecenas lacus felis,
+                rhoncus in risus at, bibendum imperdiet ligula.Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Proin aliquet
+                dapibus fringilla. Maecenas lacus felis,
+                rhoncus in risus at, bibendum imperdiet ligula.l"
+
+                />
+
+        </ScrollView>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:layout_gravity="center">
+
+            <ImageView
+
+                android:id="@+id/iv_curtir"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:background="@drawable/feed_item_img_curtir_marcado"
+                android:layout_marginStart="16dp"
+
+            />
+
+            <TextView
+
+                android:id="@+id/tv_numero_curtidas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="2"
+                android:textSize="16sp"
+                android:layout_marginStart="5dp"
+                android:layout_gravity="center"
+
+            />
+
+            <ImageView
+
+                android:id="@+id/iv_comentar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/feed_item_img_comentario"
+                android:layout_marginStart="16dp"
+                android:layout_gravity="center"
+
+            />
+
+            <TextView
+
+                android:id="@+id/tv_numero_comentarios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="2"
+                android:textSize="16sp"
+                android:layout_marginStart="5dp"
+                android:layout_gravity="top"
+
+            />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="end">
+
+                <ImageView
+
+                    android:id="@+id/iv_salvar"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/feed_item_img_salvar"
+                    android:layout_marginEnd="32dp"
+                    android:layout_gravity="center"
+
+                    />
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

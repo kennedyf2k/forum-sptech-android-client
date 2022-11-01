@@ -8,10 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
-import br.com.studenton.adapter.models.response.PublicacaoResponse
+import br.com.studenton.domain.Publicacao
 import com.bumptech.glide.Glide
 
-class AdapterPublicacaoResponse(private val context: Context, private val publicacoes: MutableList<PublicacaoResponse>): RecyclerView.Adapter<AdapterPublicacaoResponse.PublicacaoViewHolder>() {
+class AdapterPublicacaoResponse(private val context: Context, val publicacoes: MutableList<Publicacao>): RecyclerView.Adapter<AdapterPublicacaoResponse.PublicacaoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PublicacaoViewHolder {
 
@@ -26,7 +26,6 @@ class AdapterPublicacaoResponse(private val context: Context, private val public
 
         Glide.with(context).load(publicacoes[position].fotoUsuario).into(holder.img_profile);
         holder.name_position_1.setText(publicacoes[position].nomeUsuario)
-        holder.name_position_2.setText(publicacoes[position].nomeUsuario)
 
         when(publicacoes[position].diasAtras){
 
@@ -44,8 +43,26 @@ class AdapterPublicacaoResponse(private val context: Context, private val public
 
         when(publicacoes[position].tipoPublicacao){
 
-            1 -> holder.tipo_post.setText(R.string.feed_item_simple_item_tipo_publicacao_1)
-            else -> holder.tipo_post.setText(R.string.feed_item_simple_item_tipo_publicacao_2)
+            1 -> {
+
+                holder.texto_fixo.setText(R.string.feed_item_simple_item_meio_publicou)
+                holder.tipo_post.setText(R.string.feed_item_simple_item_tipo_publicacao_1)
+                holder.tipo_post.setBackgroundResource(R.drawable.feed_item_shape_informacao_rosa)
+                holder.categoria_post.setTextColor(R.color.feed_item_feed_name_categoria_rosa.toInt())
+                holder.categoria_post.setBackgroundResource(R.drawable.feed_item_shape_categoria_rosa)
+                holder.name_position_2.text = ""
+
+            }
+            else -> {
+
+                holder.texto_fixo.setText(R.string.feed_item_simple_item_meio_respondeu)
+                holder.tipo_post.setText(R.string.feed_item_simple_item_tipo_publicacao_2)
+                holder.tipo_post.setBackgroundResource(R.drawable.feed_item_shape_duvida_laranja)
+                holder.categoria_post.setTextColor(R.color.feed_item_feed_name_categoria_laranja.toInt())
+                holder.categoria_post.setBackgroundResource(R.drawable.feed_item_shape_categoria_laranja)
+                holder.name_position_2.setText(publicacoes[position].respostasByIdPublicacao[0].nomeUsuario)
+
+            }
 
         }
 
@@ -71,6 +88,7 @@ class AdapterPublicacaoResponse(private val context: Context, private val public
         val texto_box = itemView.findViewById<TextView>(R.id.tv_texto_box)
         val numero_curtidas = itemView.findViewById<TextView>(R.id.tv_numero_curtidas)
         val numero_comentarios = itemView.findViewById<TextView>(R.id.tv_numero_comentarios)
+        val texto_fixo = itemView.findViewById<TextView>(R.id.tv_position_fixed)
 
     }
 

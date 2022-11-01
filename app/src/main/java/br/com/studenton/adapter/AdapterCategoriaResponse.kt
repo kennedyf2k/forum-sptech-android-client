@@ -1,34 +1,41 @@
 package br.com.studenton.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
-import br.com.studenton.adapter.models.response.CategoriaResponse
+import br.com.studenton.adapter.tracker.CategoriaDetails
+import br.com.studenton.domain.Categoria
 
-class AdapterCategoriaResponse( private val context: Context, private val categorias: MutableList<CategoriaResponse> ): RecyclerView.Adapter<AdapterCategoriaResponse.CategoriaViewHolder>() {
+class AdapterCategoriaResponse(
+
+    private val context: Context,
+    private val categorias: MutableList<Categoria>
+
+    ): RecyclerView.Adapter<AdapterCategoriaResponse.CategoriaViewHolder>() {
+
+    lateinit var selectionTracker: SelectionTracker<Long>
+    var contador = itemCount
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriaViewHolder {
 
-        val itemLista = LayoutInflater.from(context).inflate(R.layout.fragment_feed_simple_item_categorias, parent, false)
+        val itemLista = LayoutInflater.from(context)
+            .inflate(R.layout.fragment_feed_simple_item_categorias, parent, false)
 
-        val holder = CategoriaViewHolder(itemLista);
-
-        return holder;
+        return CategoriaViewHolder(itemLista)
     }
 
     override fun onBindViewHolder(holder: CategoriaViewHolder, position: Int) {
 
-        holder.button.setText(categorias[position].categoria)
-
-        holder.button.setOnClickListener {
-
-
-
-        }
+        holder.setCategoia( categorias[position], position )
 
     }
 
@@ -36,18 +43,41 @@ class AdapterCategoriaResponse( private val context: Context, private val catego
 
     inner class CategoriaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        val button = itemView.findViewById<TextView>(R.id.btn_categoria)
+        private var button: Button
+        var categoriaDetails = CategoriaDetails()
 
-    }
+        init {
 
-    fun desativarBotoes(tamanho: Int, holder: CategoriaViewHolder){
+            button = itemView.findViewById<Button>(R.id.btn_categoria)
 
-        for(i in 0..tamanho){
+        }
 
+        fun setCategoia( categoria: Categoria, position: Int){
 
+            button.text = categoria.categoria
+
+            categoriaDetails.categoria = categoria
+            categoriaDetails.adapterPosition = position
+
+//            if(categoria.idCategoria == contador){
+//
+//                button.setBackgroundColor( ContextCompat.getColor(itemView.context, R.color.feed_button_categoria_selected) )
+//                itemView.isActivated = true
+//
+//            }
+            if(selectionTracker.isSelected( categoriaDetails.selectionKey )){
+
+                button.setBackgroundColor( ContextCompat.getColor(itemView.context, R.color.feed_button_categoria_selected) )
+                itemView.isActivated = true
+
+            }else{
+
+                button.setBackgroundColor( ContextCompat.getColor(itemView.context, R.color.feed_button_categoria_not_selected) )
+                itemView.isActivated = false
+
+            }
 
         }
 
     }
-
 }

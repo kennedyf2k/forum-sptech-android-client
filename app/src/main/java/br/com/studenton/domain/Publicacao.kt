@@ -1,6 +1,6 @@
-package br.com.studenton.adapter.models.response
+package br.com.studenton.domain
 
-data class PublicacaoResponse(
+data class Publicacao(
 
     val idPublicacao: Int,
     val titulo: String,
@@ -15,7 +15,7 @@ data class PublicacaoResponse(
     val status: Int,
     val usuariosCurtidas: MutableList<Int>,
     val usuariosSalvos: MutableList<Int>,
-    val respostasByIdPublicacao: MutableList<RespostaResponse>,
+    val respostasByIdPublicacao: MutableList<Resposta>,
     val countCurtidas: Int,
     val diasAtras: Int,
     val cursoSemestre: String

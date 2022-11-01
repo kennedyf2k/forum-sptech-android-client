@@ -1,6 +1,6 @@
-package br.com.studenton.adapter.models.response
+package br.com.studenton.domain
 
-data class LoginResponse(
+data class Login(
 
     var idUsuario: Int,
     var ra: String,

@@ -5,9 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import br.com.studenton.R
+import br.com.studenton.databinding.FragmentConfigurarPerfilBinding
+import com.bumptech.glide.Glide
 
 class ConfigurarPerfilFragment : Fragment() {
+
+    private lateinit var binding: FragmentConfigurarPerfilBinding
+    private lateinit var bundle: Bundle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +23,50 @@ class ConfigurarPerfilFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_configurar_perfil, container, false)
+
+        binding = FragmentConfigurarPerfilBinding.inflate(inflater)
+
+        return binding.root
+
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setarDados()
+
+        binding.btnVoltar.setOnClickListener {
+
+            val fragmentManager = activity?.supportFragmentManager
+
+            val transaction = fragmentManager!!.beginTransaction()
+
+            var fragmentPerfil = PerfilFragment()
+
+            fragmentPerfil.arguments = bundle
+
+            transaction.replace(R.id.fragments_container, fragmentPerfil)
+
+            transaction.commit()
+
+        }
+
+    }
+
+    private fun setarDados(){
+
+        binding.tvName.setText(arguments?.getString("nome"))
+        Glide.with(this).load(arguments?.getString("urlFoto")).into(binding.ivProfile);
+
+        bundle = bundleOf(
+
+            "nome" to arguments?.getString("nome"),
+            "ra" to arguments?.getString("ra"),
+            "curso" to arguments?.getString("curso"),
+            "semestre" to arguments?.getInt("semestre"),
+            "email" to arguments?.getString("email"),
+            "urlFoto" to arguments?.getString("urlFoto"))
+
+    }
+
 }

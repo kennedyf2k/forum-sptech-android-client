@@ -117,7 +117,7 @@
                     android:id="@+id/tv_hide_senha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="@string/configurar_perfil_hide_senha"
+                    android:text="@string/configurar_perfil_hide_senha"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"

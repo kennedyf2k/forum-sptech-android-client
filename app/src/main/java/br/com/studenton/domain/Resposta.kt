@@ -1,6 +1,6 @@
-package br.com.studenton.adapter.models.response
+package br.com.studenton.domain
 
-data class RespostaResponse(
+data class Resposta(
 
     val idResposta: Int,
     val texto: String,

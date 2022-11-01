@@ -9,8 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import br.com.studenton.LoginActivity
+import br.com.studenton.R
 import br.com.studenton.databinding.FragmentPerfilBinding
 import com.bumptech.glide.Glide
 import java.net.URL
@@ -19,6 +22,7 @@ import java.net.URL
 class PerfilFragment() : Fragment() {
 
     private lateinit var binding: FragmentPerfilBinding
+    private lateinit var bundle: Bundle
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +49,21 @@ class PerfilFragment() : Fragment() {
 
         setarDados()
 
+        binding.tvEditar.setOnClickListener {
+
+            val fragmentManager = activity?.supportFragmentManager
+
+            val transaction = fragmentManager!!.beginTransaction()
+
+            val fragmentConfigPerfil = ConfigurarPerfilFragment()
+
+            fragmentConfigPerfil.arguments = bundle
+
+            transaction.replace(R.id.fragments_container, fragmentConfigPerfil)
+
+            transaction.commit()
+        }
+
 
     }
 
@@ -59,6 +78,15 @@ class PerfilFragment() : Fragment() {
         binding.tvSemestre.setText(semestreTexto)
         binding.tvEmail.setText(arguments?.getString("email"))
         Glide.with(this).load(arguments?.getString("urlFoto")).into(binding.ivProfile);
+
+        bundle = bundleOf(
+
+            "nome" to arguments?.getString("nome"),
+            "ra" to arguments?.getString("ra"),
+            "curso" to arguments?.getString("curso"),
+            "semestre" to arguments?.getInt("semestre"),
+            "email" to arguments?.getString("email"),
+            "urlFoto" to arguments?.getString("urlFoto"))
 
     }
 }
