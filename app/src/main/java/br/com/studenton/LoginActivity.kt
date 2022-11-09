@@ -51,6 +51,12 @@ class LoginActivity : AppCompatActivity() {
             }
 
         }
+
+        binding.tvCliqueAqui.setOnClickListener{
+
+            irActivity(EsqueciMinhaSenhaActivity())
+
+        }
     }
 
     private fun login(ra: String, senha: String){

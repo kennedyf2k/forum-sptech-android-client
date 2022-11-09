@@ -6,14 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
 import br.com.studenton.adapter.tracker.CategoriaDetails
 import br.com.studenton.domain.Categoria
+import br.com.studenton.domain.Publicacao
 
 class AdapterCategoriaResponse(
 
@@ -23,7 +22,6 @@ class AdapterCategoriaResponse(
     ): RecyclerView.Adapter<AdapterCategoriaResponse.CategoriaViewHolder>() {
 
     lateinit var selectionTracker: SelectionTracker<Long>
-    var contador = itemCount
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriaViewHolder {
 
@@ -41,16 +39,15 @@ class AdapterCategoriaResponse(
 
     override fun getItemCount(): Int = categorias.size
 
-    inner class CategoriaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        private var button: Button
+    inner class CategoriaViewHolder(
+
+        itemView: View
+
+    ) : RecyclerView.ViewHolder(itemView){
+
+        private var button = itemView.findViewById<Button>(R.id.btn_categoria)
         var categoriaDetails = CategoriaDetails()
-
-        init {
-
-            button = itemView.findViewById<Button>(R.id.btn_categoria)
-
-        }
 
         fun setCategoia( categoria: Categoria, position: Int){
 
@@ -59,25 +56,30 @@ class AdapterCategoriaResponse(
             categoriaDetails.categoria = categoria
             categoriaDetails.adapterPosition = position
 
-//            if(categoria.idCategoria == contador){
-//
-//                button.setBackgroundColor( ContextCompat.getColor(itemView.context, R.color.feed_button_categoria_selected) )
-//                itemView.isActivated = true
-//
-//            }
             if(selectionTracker.isSelected( categoriaDetails.selectionKey )){
 
                 button.setBackgroundColor( ContextCompat.getColor(itemView.context, R.color.feed_button_categoria_selected) )
                 itemView.isActivated = true
+                Log.i("Cliquei", "ID: ${categoriaDetails.selectionKey}")
+                Log.i("Cliquei", "ID: ${selectionTracker.selection}")
 
             }else{
 
                 button.setBackgroundColor( ContextCompat.getColor(itemView.context, R.color.feed_button_categoria_not_selected) )
                 itemView.isActivated = false
+                Log.i("desCliquei", "ID: ${selectionTracker.selection}")
+
+                if(selectionTracker.selection.size() == 0){
+
+                    selectionTracker.select(10)
+                }
 
             }
-
         }
+    }
 
+    interface OnItemClick {
+
+        fun onClick(idCategoria: Int)
     }
 }
