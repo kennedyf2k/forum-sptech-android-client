@@ -117,6 +117,24 @@
 
     </LinearLayout>
 
+    <LinearLayout
+
+        android:id="@+id/ll_img_sem_publicacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@+id/ll_rv_categorias"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/feed_img_sem_publicacao_by_categoria"
+            android:layout_gravity="end"
+            android:contentDescription="@string/feed_content_description_img_sem_publicacao" />
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
 
         android:id="@+id/rv_feed"
@@ -125,8 +143,38 @@
         android:layout_below="@+id/ll_rv_categorias"
         tools:listitem="@layout/fragment_feed_simple_item_feed"
         app:spanCount="2"
+        android:visibility="gone"
 
     />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+
+        android:id="@+id/shimmerFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_rv_categorias"
+        android:animateLayoutChanges="true">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_placeholder_feed"/>
+            <include layout="@layout/shimmer_placeholder_feed"/>
+            <include layout="@layout/shimmer_placeholder_feed"/>
+            <include layout="@layout/shimmer_placeholder_feed"/>
+            <include layout="@layout/shimmer_placeholder_feed"/>
+            <include layout="@layout/shimmer_placeholder_feed"/>
+            <include layout="@layout/shimmer_placeholder_feed"/>
+            <include layout="@layout/shimmer_placeholder_feed"/>
+            <include layout="@layout/shimmer_placeholder_feed"/>
+            <include layout="@layout/shimmer_placeholder_feed"/>
+
+        </LinearLayout>
+        
+        
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 
 </RelativeLayout>

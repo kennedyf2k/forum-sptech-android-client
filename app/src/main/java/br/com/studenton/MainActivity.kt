@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.menu_feed -> {
 
+                    feedFragment.arguments = bundlePerfil
                     setFragment(feedFragment);
 
                 }
@@ -92,6 +93,9 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        feedFragment.arguments = bundlePerfil
+        setFragment(feedFragment)
     }
 
     fun setFragment(fragment: Fragment){
@@ -106,7 +110,6 @@ class MainActivity : AppCompatActivity() {
     private fun validarDados(nome: String?){
 
         val intent = Intent(this, LoginActivity::class.java)
-
 
         if(nome.isNullOrEmpty()){
 

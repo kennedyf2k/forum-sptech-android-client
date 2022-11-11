@@ -14,8 +14,8 @@
     >
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_gravity="center">
 
@@ -29,13 +29,13 @@
                 android:id="@+id/iv_profile_item"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/profile"
+                android:src="#A69B9B"
                 android:contentDescription="@string/perfil_description_foto"
 
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="16dp"
 
-            />
+                />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -51,24 +51,24 @@
 
                         android:id="@+id/tv_name_position_1"
                         android:maxHeight="100dp"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
+                        android:background="#A69B9B"
 
-                        tools:text="Daniel"
                         android:textStyle="bold"
 
                         android:layout_marginTop="16dp"
                         android:layout_marginStart="8dp"
 
-                    />
+                        />
 
                     <TextView
 
                         android:id="@+id/tv_position_fixed"
-                        android:layout_width="wrap_content"
+                        android:layout_width="170dp"
                         android:layout_height="wrap_content"
 
-                        android:text="@string/feed_item_simple_item_meio_respondeu"
+                        android:background="#A69B9B"
 
                         android:layout_marginTop="16dp"
                         android:layout_marginStart="3dp"
@@ -81,7 +81,7 @@
                         android:layout_width="70dp"
                         android:layout_height="wrap_content"
 
-                        tools:text="Kennedy GFJKDSGKLSD"
+                        android:background="#A69B9B"
                         android:textStyle="bold"
 
                         android:layout_marginTop="16dp"
@@ -94,12 +94,13 @@
                 <TextView
 
                     android:id="@+id/tv_horas_atras"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    tools:text="Há 4 horas"
+                    android:layout_marginTop="8dp"
+                    android:background="#A69B9B"
                     android:layout_marginStart="8dp"
 
-                />
+                    />
 
             </LinearLayout>
 
@@ -120,13 +121,12 @@
                 android:background="@drawable/feed_item_shape_duvida_laranja"
 
                 android:textColor="@color/white"
-                tools:text="DÚVIDA"
                 android:textSize="11sp"
 
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
 
-            />
+                />
 
             <TextView
 
@@ -138,56 +138,49 @@
                 android:background="@drawable/feed_item_shape_categoria_laranja"
 
                 android:textColor="@color/feed_item_feed_name_categoria_laranja"
-                tools:text="SECRETÁRIA"
                 android:textSize="11sp"
 
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
 
-            />
+                />
 
         </LinearLayout>
 
         <TextView
 
             android:id="@+id/tv_titulo_box"
-            android:layout_width="match_parent"
+            android:layout_width="370dp"
             android:layout_height="wrap_content"
 
-            tools:text="Pedi meu Bilhete único estudantil mas não sei aonde vai chegar"
+            android:background="#A69B9B"
 
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginStart="16dp"
 
             android:textColor="@color/feed_item_feed_name_titulo"
             android:textStyle="bold"
 
-        />
+            />
 
         <ScrollView
 
             android:layout_width="match_parent"
-            android:layout_height="72dp"
+            android:layout_height="wrap_content"
             android:scrollbars="vertical">
 
             <TextView
 
                 android:id="@+id/tv_texto_box"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="370dp"
+                android:layout_height="100dp"
                 android:paddingBottom="10dp"
 
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
 
-                tools:text="Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Proin aliquet
-                dapibus fringilla. Maecenas lacus felis,
-                rhoncus in risus at, bibendum imperdiet ligula.Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Proin aliquet
-                dapibus fringilla. Maecenas lacus felis,
-                rhoncus in risus at, bibendum imperdiet ligula.l"
+                android:background="#A69B9B"
 
                 />
 
@@ -207,21 +200,22 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
+                android:background="@drawable/feed_item_img_curtir_marcado"
                 android:layout_marginStart="16dp"
 
-            />
+                />
 
             <TextView
 
                 android:id="@+id/tv_numero_curtidas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="2"
+                android:background="#A69B9B"
                 android:textSize="16sp"
                 android:layout_marginStart="5dp"
                 android:layout_gravity="center"
 
-            />
+                />
 
             <ImageView
 
@@ -232,19 +226,19 @@
                 android:layout_marginStart="16dp"
                 android:layout_gravity="center"
 
-            />
+                />
 
             <TextView
 
                 android:id="@+id/tv_numero_comentarios"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="2"
+                android:background="#A69B9B"
                 android:textSize="16sp"
                 android:layout_marginStart="5dp"
                 android:layout_gravity="top"
 
-            />
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -256,6 +250,7 @@
                     android:id="@+id/iv_salvar"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:background="@drawable/feed_item_img_salvar"
                     android:layout_marginEnd="32dp"
                     android:layout_gravity="center"
 

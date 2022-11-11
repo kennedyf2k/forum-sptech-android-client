@@ -56,6 +56,7 @@
     <string name="feed_item_simple_item_dias_atras_else">Há um tempo atrás</string>
     <string name="feed_item_simple_item_tipo_publicacao_1">INFORMAÇÃO</string>
     <string name="feed_item_simple_item_tipo_publicacao_2">DÚVIDA</string>
+    <string name="feed_content_description_img_sem_publicacao">Sem publicações nessa categoria</string>
 
     <!--TELA TERMOS-->
     <string name="titulo_termos">Termos e \ncondições</string>

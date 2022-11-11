@@ -13,11 +13,10 @@
 
         android:id="@+id/fragments_container"
         android:layout_width="match_parent"
-        android:name="br.com.studenton.fragments.FeedFragment"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_nav"
 
-    />
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
 

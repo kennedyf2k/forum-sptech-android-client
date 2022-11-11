@@ -20,122 +20,110 @@ import br.com.studenton.domain.Categoria
 import br.com.studenton.domain.Publicacao
 import br.com.studenton.repository.Rest
 import br.com.studenton.services.CategoriaService
+import br.com.studenton.services.CurtirService
 import br.com.studenton.services.PublicacaoService
+import br.com.studenton.services.SalvarService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
-class FeedFragment : Fragment()
-{
+class FeedFragment : Fragment() {
 
     private lateinit var binding: FragmentFeedBinding
     private lateinit var selectionTracker: SelectionTracker<Long>
-    private lateinit var rv_feed: RecyclerView
-    private lateinit var rv_categorias: RecyclerView
+    private lateinit var rvFeed: RecyclerView
+    private lateinit var rvCategorias: RecyclerView
     private lateinit var categorias: MutableList<Categoria>
+    private lateinit var adapterPublicacoes: AdapterPublicacaoResponse
+    private var idUsuario = -1
 
-    companion object{
+    companion object {
 
         const val SELECTION_TACKER_KEY = "selection-tracker-categoria"
-
-    }
-    override fun onCreate(savedInstanceState: Bundle?) {
-
-        super.onCreate(savedInstanceState)
-
 
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         retainInstance = true
         binding = FragmentFeedBinding.inflate(inflater)
 
+        rvFeed = binding.rvFeed
+        rvCategorias = binding.rvCategorias
 
-        rv_feed = binding.rvFeed;
-        rv_categorias = binding.rvCategorias;
+        rvFeed.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        rvFeed.setHasFixedSize(true)
 
-        rv_feed.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false )
-        rv_feed.setHasFixedSize(true)
-        var adapterPublicacoes: AdapterPublicacaoResponse
+        rvCategorias.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        rvCategorias.setHasFixedSize(true)
 
-        rv_categorias.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        rv_categorias.setHasFixedSize(true)
+        Log.i("ID_USUARIO", idUsuario.toString())
+        idUsuario = arguments?.getInt("id")!!
+
         var adapterFiltros: AdapterCategoriaResponse
 
-        Rest.getInstance<PublicacaoService>().GetAllpublicacoes()
-            .enqueue(object: Callback<MutableList<Publicacao>>{
+        kotlin.run {
+            Rest.getInstance<CategoriaService>().categorias()
+                .enqueue(object : Callback<MutableList<Categoria>> {
 
-                override fun onResponse(
-                    call: Call<MutableList<Publicacao>>,
-                    response: Response<MutableList<Publicacao>>
-                ) {
+                    override fun onResponse(
+                        call: Call<MutableList<Categoria>>,
+                        response: Response<MutableList<Categoria>>
+                    ) {
 
-                    adapterPublicacoes = AdapterPublicacaoResponse(context!!, response.body()!!)
+                        val categoria = Categoria(response.body()!!.size + 1, "Todas")
 
-                    rv_feed.adapter = adapterPublicacoes
+                        val lista = mutableListOf<Categoria>()
 
-                }
+                        lista.add(categoria)
+                        lista.addAll(response.body()!!)
+                        categorias = lista
+                        adapterFiltros = AdapterCategoriaResponse(
+                            context!!, categorias,
+                        ) { id ->
 
-                override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
-                    println("Cannot get Publicacao")
-                }
-
-            }).run {
-                Rest.getInstance<CategoriaService>().categorias()
-                    .enqueue(object: Callback<MutableList<Categoria>>{
-
-                        override fun onResponse(
-                            call: Call<MutableList<Categoria>>,
-                            response: Response<MutableList<Categoria>>
-                        ) {
-
-                            var categoria = Categoria( response.body()!!.size +1, "Todas"  )
-
-                            var lista = mutableListOf<Categoria>()
-
-                            lista.add(categoria)
-                            lista.addAll(response.body()!!)
-                            categorias = lista
-                            adapterFiltros = AdapterCategoriaResponse(context!!, categorias)
-
-                            rv_categorias.adapter = adapterFiltros
-
-                            configSelectionTracker( savedInstanceState )
+                            setarFeed(id)
 
                         }
 
-                        override fun onFailure(call: Call<MutableList<Categoria>>, t: Throwable) {
-                            println("Cannot get Categoria")
-                        }
+                        rvCategorias.adapter = adapterFiltros
 
-                    })
-            }.run {
-                return binding.root
-            }
+                        configSelectionTracker(savedInstanceState)
+
+                    }
+
+                    override fun onFailure(call: Call<MutableList<Categoria>>, t: Throwable) {
+                        println("Cannot get Categoria")
+                    }
+
+                })
+        }.run {
+
+            return binding.root
+        }
     }
 
-    private fun configSelectionTracker( savedInstanceState: Bundle? ){
+    private fun configSelectionTracker(savedInstanceState: Bundle?) {
 
-        selectionTracker = SelectionTracker.Builder<Long>(
+        selectionTracker = SelectionTracker.Builder(
 
             SELECTION_TACKER_KEY,
-            rv_categorias,
-            CategoriaKeyProvider( categorias ),
-            CategoriaLockup( rv_categorias ),
+            rvCategorias,
+            CategoriaKeyProvider(categorias),
+            CategoriaLockup(rvCategorias),
             StorageStrategy.createLongStorage()
 
-        ).withSelectionPredicate( CategoriaPredicate() ).build()
+        ).withSelectionPredicate(CategoriaPredicate()).build()
 
-        ( rv_categorias.adapter as AdapterCategoriaResponse ).selectionTracker = selectionTracker
+        (rvCategorias.adapter as AdapterCategoriaResponse).selectionTracker = selectionTracker
 
-        if( savedInstanceState != null ){
+        if (savedInstanceState != null) {
 
-            selectionTracker.onRestoreInstanceState( savedInstanceState )
+            selectionTracker.onRestoreInstanceState(savedInstanceState)
 
         }
     }
@@ -143,6 +131,140 @@ class FeedFragment : Fragment()
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         selectionTracker.onSaveInstanceState(outState)
+    }
+
+    fun setarFeed(idCategoria: Int?) {
+
+        kotlin.run {
+
+            if (idCategoria == categorias.size || idCategoria == null) {
+
+                Rest.getInstance<PublicacaoService>().GetAllpublicacoes()
+                    .enqueue(object : Callback<MutableList<Publicacao>> {
+
+                        override fun onResponse(
+                            call: Call<MutableList<Publicacao>>,
+                            response: Response<MutableList<Publicacao>>
+                        ) {
+
+                            binding.shimmerFrameLayout.visibility = View.VISIBLE
+                            binding.shimmerFrameLayout.startShimmerAnimation()
+
+                            binding.rvFeed.visibility = View.GONE
+
+                            adapterPublicacoes =
+                                AdapterPublicacaoResponse(context!!, response.body()!!, idUsuario,{
+
+                                        id -> curtir(id)
+
+                                }){
+
+                                        id -> salvar(id)
+
+                                }
+
+                            binding.shimmerFrameLayout.stopShimmerAnimation()
+                            binding.shimmerFrameLayout.visibility = View.GONE
+                            binding.llImgSemPublicacao.visibility = View.GONE
+
+                            rvFeed.visibility = View.VISIBLE
+                            rvFeed.adapter = adapterPublicacoes
+
+                        }
+
+                        override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
+                            Log.i("Cannot Get All publicacoes", t.stackTraceToString())
+                        }
+
+                    })
+
+            } else {
+
+                Rest.getInstance<PublicacaoService>().GetpublicacoesByCategoria(idCategoria)
+                    .enqueue(object : Callback<MutableList<Publicacao>> {
+
+                        override fun onResponse(
+                            call: Call<MutableList<Publicacao>>,
+                            response: Response<MutableList<Publicacao>>
+                        ) {
+
+                            if(response.body().isNullOrEmpty()){
+
+                                binding.shimmerFrameLayout.stopShimmerAnimation()
+                                binding.shimmerFrameLayout.visibility = View.GONE
+
+                                rvFeed.visibility = View.GONE
+                                binding.llImgSemPublicacao.visibility = View.VISIBLE
+
+                            }else {
+
+                                adapterPublicacoes =
+                                    AdapterPublicacaoResponse(context!!, response.body()!!, idUsuario,
+                                        {
+
+                                                id ->
+                                            curtir(id)
+
+                                        }) {
+
+                                            id ->
+                                        salvar(id)
+
+                                    }
+
+                                binding.shimmerFrameLayout.stopShimmerAnimation()
+                                binding.shimmerFrameLayout.visibility = View.GONE
+
+                                rvFeed.visibility = View.VISIBLE
+
+                                rvFeed.adapter = adapterPublicacoes
+
+                            }
+
+                        }
+
+                        override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
+
+                            Log.i("Cannot Get publicacoesByCategoria", t.stackTraceToString())
+
+                        }
+
+                    })
+            }
+        }
+    }
+
+    fun curtir(idPublicacao: Int){
+
+        Rest.getInstance<CurtirService>().curtir(arguments?.getInt("id")!!, idPublicacao)
+
+            .enqueue(object: Callback<Boolean>{
+
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                Log.i("ERRO", t.stackTraceToString())
+            }
+        })
+    }
+
+    fun salvar(idPublicacao: Int){
+
+        Rest.getInstance<SalvarService>().favoritar(arguments?.getInt("id")!!, idPublicacao)
+
+            .enqueue(object: Callback<Boolean>{
+
+                override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+
+                }
+
+                override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                    Log.i("ERRO", t.stackTraceToString())
+                }
+            })
+
     }
 
 }

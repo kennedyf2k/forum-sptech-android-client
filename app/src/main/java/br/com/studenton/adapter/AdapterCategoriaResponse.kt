@@ -17,7 +17,8 @@ import br.com.studenton.domain.Publicacao
 class AdapterCategoriaResponse(
 
     private val context: Context,
-    private val categorias: MutableList<Categoria>
+    private val categorias: MutableList<Categoria>,
+    val onclick: (idPublicacao: Int) -> Unit
 
     ): RecyclerView.Adapter<AdapterCategoriaResponse.CategoriaViewHolder>() {
 
@@ -62,6 +63,7 @@ class AdapterCategoriaResponse(
                 itemView.isActivated = true
                 Log.i("Cliquei", "ID: ${categoriaDetails.selectionKey}")
                 Log.i("Cliquei", "ID: ${selectionTracker.selection}")
+                onclick.invoke(categoriaDetails.selectionKey.toInt())
 
             }else{
 
@@ -71,15 +73,13 @@ class AdapterCategoriaResponse(
 
                 if(selectionTracker.selection.size() == 0){
 
-                    selectionTracker.select(10)
+                    var IdTodas = itemCount
+
+                    selectionTracker.select(IdTodas.toLong())
+                    onclick.invoke(IdTodas)
                 }
 
             }
         }
-    }
-
-    interface OnItemClick {
-
-        fun onClick(idCategoria: Int)
     }
 }
