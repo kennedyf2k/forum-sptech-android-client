@@ -1,25 +1,18 @@
 package br.com.studenton.fragments
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import br.com.studenton.LoginActivity
 import br.com.studenton.R
 import br.com.studenton.databinding.FragmentPerfilBinding
 import com.bumptech.glide.Glide
-import java.net.URL
 
-
-class PerfilFragment() : Fragment() {
+class PerfilFragment : Fragment() {
 
     private lateinit var binding: FragmentPerfilBinding
     private lateinit var bundle: Bundle
@@ -28,7 +21,7 @@ class PerfilFragment() : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
 
-    ): View? {
+    ): View {
 
         binding = FragmentPerfilBinding.inflate(inflater)
 
@@ -72,12 +65,12 @@ class PerfilFragment() : Fragment() {
 
         val semestreTexto = "${arguments?.getInt("semestre")}° Semestre"
 
-        binding.tvNome.setText(arguments?.getString("nome"))
-        binding.tvRa.setText(arguments?.getString("ra"))
-        binding.tvCurso.setText(arguments?.getString("curso"))
-        binding.tvSemestre.setText(semestreTexto)
-        binding.tvEmail.setText(arguments?.getString("email"))
-        Glide.with(this).load(arguments?.getString("urlFoto")).into(binding.ivProfile);
+        binding.tvNome.text = arguments?.getString("nome")
+        binding.tvRa.text = arguments?.getString("ra")
+        binding.tvCurso.text = arguments?.getString("curso")
+        binding.tvSemestre.text = semestreTexto
+        binding.tvEmail.text = arguments?.getString("email")
+        Glide.with(this).load(arguments?.getString("urlFoto")).into(binding.ivProfile)
 
         bundle = bundleOf(
 

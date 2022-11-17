@@ -11,6 +11,6 @@ class CategoriaKeyProvider(val categoria: List<Categoria> ): ItemKeyProvider<Lon
 
         categoria.filter { c -> c.idCategoria.toLong() == key }.single()
 
-    )   
+    )
 
 }

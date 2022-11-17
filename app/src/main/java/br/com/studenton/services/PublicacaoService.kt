@@ -7,10 +7,13 @@ import retrofit2.http.Query
 
 interface PublicacaoService {
 
-    @GET("publicacoes")
-    fun GetAllpublicacoes(): Call<MutableList<Publicacao>>
+    @GET("publicacoes/ordenado")
+    fun getAllpublicacoes(): Call<MutableList<Publicacao>>
 
     @GET("publicacoes/filtro-categoria")
-    fun GetpublicacoesByCategoria(@Query("idCategoria") idCategoria: Int): Call<MutableList<Publicacao>>
+    fun getpublicacoesByCategoria(@Query("idCategoria") idCategoria: Int): Call<MutableList<Publicacao>>
+
+    @GET("publicacoes/minhas-duvidas")
+    fun getMinhasPublicacoes(@Query("id") idUsuario: Int): Call<MutableList<Publicacao>>
 
 }

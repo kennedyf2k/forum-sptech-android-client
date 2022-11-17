@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
 import br.com.studenton.adapter.tracker.CategoriaDetails
 import br.com.studenton.domain.Categoria
-import br.com.studenton.domain.Publicacao
 
 class AdapterCategoriaResponse(
 
@@ -73,10 +72,10 @@ class AdapterCategoriaResponse(
 
                 if(selectionTracker.selection.size() == 0){
 
-                    var IdTodas = itemCount
+                    val idTodas = -1
 
-                    selectionTracker.select(IdTodas.toLong())
-                    onclick.invoke(IdTodas)
+                    selectionTracker.select(idTodas.toLong())
+                    onclick.invoke(idTodas)
                 }
 
             }

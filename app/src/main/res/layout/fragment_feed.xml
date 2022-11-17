@@ -15,8 +15,9 @@
 
         android:layout_marginTop="-50dp"
         android:background="@drawable/main_background"
+        android:contentDescription="@string/feed_content_description_img_backgroud"
 
-    />
+        />
 
     <TextView
 
@@ -50,7 +51,7 @@
         android:textColor="@color/white"
         android:textSize="30sp"
 
-    />
+        tools:ignore="RelativeOverlap" />
 
     <ImageView
 
@@ -62,6 +63,7 @@
         android:layout_alignBottom="@+id/tv_on"
         android:layout_toStartOf="@+id/img_lupa"
         android:background="@drawable/main_icon_sino"
+        android:contentDescription="@string/feed_content_description_img_sino"
 
     />
 
@@ -77,11 +79,13 @@
         android:layout_alignTop="@+id/img_sino"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
+        android:contentDescription="@string/feed_content_description_img_lupa"
 
     />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
 
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/img_lupa"
@@ -175,6 +179,29 @@
         
         
     </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+
+        android:id="@+id/extended_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom"
+        android:layout_alignEnd="@id/img_backgroud"
+        android:layout_alignParentBottom="true"
+
+        android:gravity="center"
+
+        app:backgroundTint="@color/feed_float_button_perguntar"
+
+        android:text="@string/feed_float_button_perguntar"
+        android:textColor="@color/white"
+
+        app:icon="@drawable/feed_icon_float_btn_perguntar"
+        android:contentDescription="@string/feed_content_description_img_perguntar"
+        app:iconTint="@color/white"
+
+    />
 
 
 </RelativeLayout>
