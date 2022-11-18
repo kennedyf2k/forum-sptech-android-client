@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/card_view_bg"
-    tools:showIn="@layout/activity_main"
     app:cardCornerRadius="10dp"
     android:id="@+id/cvSalvo">
 

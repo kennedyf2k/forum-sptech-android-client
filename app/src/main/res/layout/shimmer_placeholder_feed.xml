@@ -200,7 +200,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
-                android:background="@drawable/feed_item_img_curtir_marcado"
+                android:background="@drawable/feed_item_img_curtir_desmarcado"
                 android:layout_marginStart="16dp"
 
                 />
