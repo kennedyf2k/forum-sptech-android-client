@@ -5,7 +5,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object Rest {
 
-    var baseURL = "http://3.218.7.172:8080/";
+//    var baseURL = "http://3.218.7.172:8080/"
+    var baseURL = "https://sptechforum-backend.azurewebsites.net/"
 
     inline fun<reified T> getInstance(): T {
 

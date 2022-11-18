@@ -35,8 +35,11 @@ class FeedFragment : Fragment() {
     private lateinit var rvFeed: RecyclerView
     private lateinit var rvCategorias: RecyclerView
     private lateinit var categorias: MutableList<Categoria>
-    private lateinit var adapterPublicacoes: AdapterPublicacaoResponse
+
     private var idUsuario = -1
+    private lateinit var adapterPublicacoes: AdapterPublicacaoResponse
+
+
     var contador = 0
     var contador2 = 0
 
@@ -46,15 +49,8 @@ class FeedFragment : Fragment() {
 
     }
 
-    override fun onCreateView(
-
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-
-    ): View {
-
-//        retainInstance =
-        binding = FragmentFeedBinding.inflate(inflater)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         rvFeed = binding.rvFeed
 
@@ -69,52 +65,64 @@ class FeedFragment : Fragment() {
 
         idUsuario = arguments?.getInt("id")!!
 
+        adapterPublicacoes = AdapterPublicacaoResponse(activity?.baseContext!!, idUsuario,{
+                id -> curtir(id)
+        }){
+                id -> salvar(id)
+        }
+
+        rvFeed.adapter = adapterPublicacoes
+
+
         binding.bottomNav.setOnItemSelectedListener { setarFeedByBottomNavigation(it.itemId) }
 
         var adapterFiltros: AdapterCategoriaResponse
 
-        kotlin.run {
-            Rest.getInstance<CategoriaService>().categorias()
-                .enqueue(object : Callback<MutableList<Categoria>> {
+        Rest.getInstance<CategoriaService>().categorias()
+            .enqueue(object : Callback<MutableList<Categoria>> {
 
-                    override fun onResponse(
-                        call: Call<MutableList<Categoria>>,
-                        response: Response<MutableList<Categoria>>
-                    ) {
+                override fun onResponse(
+                    call: Call<MutableList<Categoria>>,
+                    response: Response<MutableList<Categoria>>
+                ) {
 
-                        val categoria = Categoria(-1, "Todas")
+                    val categoria = Categoria(-1, "Todas")
 
-                        val lista = mutableListOf<Categoria>()
+                    val lista = mutableListOf<Categoria>()
 
-                        lista.add(categoria)
-                        lista.addAll(response.body()!!)
-                        categorias = lista
-                        adapterFiltros = AdapterCategoriaResponse(
-                            context!!, categorias,
-                        ) { id ->
+                    lista.add(categoria)
+                    lista.addAll(response.body()!!)
+                    categorias = lista
+                    adapterFiltros = AdapterCategoriaResponse(
+                        context!!, categorias,
+                    ) { id ->
 
-                        Log.i("AdapterCategoriaRepetindo", ""+ (++contador))
-                            setarFeedByCategoria(id)
-
-                        }
-
-
-                        rvCategorias.adapter = adapterFiltros
-
-                        configSelectionTracker(savedInstanceState)
+                        setarFeedByCategoria(id)
 
                     }
 
-                    override fun onFailure(call: Call<MutableList<Categoria>>, t: Throwable) {
-                        println("Cannot get Categoria")
-                    }
+                    rvCategorias.adapter = adapterFiltros
 
-                })
-        }.run {
+                    configSelectionTracker(savedInstanceState)
 
-            return binding.root
-        }
+                }
 
+                override fun onFailure(call: Call<MutableList<Categoria>>, t: Throwable) {
+                    println("Cannot get Categoria")
+                }
+
+            })
+
+    }
+
+    override fun onCreateView(
+
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+
+    ): View {
+        binding = FragmentFeedBinding.inflate(inflater)
+        return binding.root
     }
 
 
@@ -146,10 +154,8 @@ class FeedFragment : Fragment() {
 
     private fun setarFeedByCategoria(idCategoria: Int?) {
 
-        kotlin.run {
 
             if (idCategoria == -1 || idCategoria == null) {
-
                 setarFeedByBottomNavigation(R.id.feed_menu_relevante)
 
             } else {
@@ -172,19 +178,7 @@ class FeedFragment : Fragment() {
 
                             }else {
 
-                                adapterPublicacoes =
-                                    AdapterPublicacaoResponse(context!!, response.body()!!, idUsuario,
-                                        {
-
-                                                id ->
-                                            curtir(id)
-
-                                        }) {
-
-                                            id ->
-                                        salvar(id)
-
-                                    }
+                                adapterPublicacoes.setData(response.body()!!)
 
                                 binding.shimmerFrameLayout.stopShimmerAnimation()
                                 binding.shimmerFrameLayout.visibility = View.GONE
@@ -192,7 +186,6 @@ class FeedFragment : Fragment() {
 
                                 rvFeed.visibility = View.VISIBLE
 
-                                rvFeed.adapter = adapterPublicacoes
 
                             }
 
@@ -206,7 +199,6 @@ class FeedFragment : Fragment() {
 
                     })
             }
-        }
     }
 
     private fun setarFeedByBottomNavigation(itemId: Int): Boolean{
@@ -228,23 +220,13 @@ class FeedFragment : Fragment() {
 
                             binding.rvFeed.visibility = View.GONE
 
-                            adapterPublicacoes =
-                                AdapterPublicacaoResponse(context!!, response.body()!!, idUsuario,{
-
-                                        id -> curtir(id)
-
-                                }){
-
-                                        id -> salvar(id)
-
-                                }
-
                             binding.shimmerFrameLayout.stopShimmerAnimation()
                             binding.shimmerFrameLayout.visibility = View.GONE
                             binding.llImgSemPublicacao.visibility = View.GONE
 
                             rvFeed.visibility = View.VISIBLE
-                            rvFeed.adapter = adapterPublicacoes
+
+                            adapterPublicacoes.setData(response.body()!!)
 
                         }
 
@@ -270,24 +252,14 @@ class FeedFragment : Fragment() {
 
                             binding.rvFeed.visibility = View.GONE
 
-                            adapterPublicacoes =
-                                AdapterPublicacaoResponse(context!!, response.body()!!, idUsuario,{
 
-                                        id -> curtir(id)
-
-                                }){
-
-                                        id -> salvar(id)
-
-                                }
+                            adapterPublicacoes.setData(response.body()!!)
 
                             binding.shimmerFrameLayout.stopShimmerAnimation()
                             binding.shimmerFrameLayout.visibility = View.GONE
                             binding.llImgSemPublicacao.visibility = View.GONE
 
                             rvFeed.visibility = View.VISIBLE
-                            Log.i("AdapterPublicacaoRepetindo", ""+ (++contador2))
-                            rvFeed.adapter = adapterPublicacoes
 
                         }
 

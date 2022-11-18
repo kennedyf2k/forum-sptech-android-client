@@ -16,12 +16,19 @@ import com.bumptech.glide.Glide
 class AdapterPublicacaoResponse(
 
     private val context: Context,
-    private val publicacoes: MutableList<Publicacao>,
     private val idUsuario: Int,
     private val onclickCurtir: (idPublicacao: Int) -> Unit,
     private val onclickFavorito: (idPublicacao: Int) -> Unit
 
     ) : RecyclerView.Adapter<AdapterPublicacaoResponse.PublicacaoViewHolder>() {
+
+    private var publicacoes: MutableList<Publicacao> = mutableListOf()
+
+    fun setData(list: List<Publicacao>) {
+        publicacoes.clear()
+        publicacoes.addAll(list)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PublicacaoViewHolder {
 
@@ -34,6 +41,8 @@ class AdapterPublicacaoResponse(
     override fun onBindViewHolder(holder: PublicacaoViewHolder, position: Int) {
 
         var contadorCurtidas = publicacoes[position].countCurtidas
+
+        holder.numeroCurtidas.text = contadorCurtidas.toString()
 
         Glide.with(context).load(publicacoes[position].fotoUsuario).into(holder.imgProfile)
         holder.namePosition1.text = publicacoes[position].nomeUsuario
@@ -104,16 +113,19 @@ class AdapterPublicacaoResponse(
                     foiCurtido = false
                     holder.imgCurtir.setImageResource(R.drawable.feed_item_img_curtir_desmarcado)
                     contadorCurtidas--
+                    holder.numeroCurtidas.text = contadorCurtidas.toString()
 
                 }else{
 
                     foiCurtido = true
                     holder.imgCurtir.setImageResource(R.drawable.feed_item_img_curtir_marcado)
                     contadorCurtidas++
+                    holder.numeroCurtidas.text = contadorCurtidas.toString()
+
                 }
             }
 
-            holder.numeroCurtidas.text = contadorCurtidas.toString()
+
 
             if(foiSalvo){
 
@@ -140,9 +152,7 @@ class AdapterPublicacaoResponse(
                 holder.imgSalvar.setImageResource(R.drawable.feed_item_img_salvar_marcado)
 
             }
-
         }
-
     }
 
     override fun getItemCount(): Int = publicacoes.size

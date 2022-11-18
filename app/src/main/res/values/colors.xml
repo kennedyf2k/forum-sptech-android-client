@@ -12,7 +12,8 @@
     <color name="dark_blue">#1C2438</color>
     <color name="cinza_borda">#7A7A7A</color>
     <color name="vermelho">#DB5050</color>
-
+    <color name="darkerGray">#4F5159</color>
+    <color name="lightGray">#EB828386</color>
 
     <color name="login_input_selecionado_and_button">#63B1BC</color>
 

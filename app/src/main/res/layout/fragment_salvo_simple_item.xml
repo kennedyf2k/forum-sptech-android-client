@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card_view_bg"
+    tools:showIn="@layout/activity_main"
+    app:cardCornerRadius="10dp"
+    android:id="@+id/cvSalvo">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp">
+
+
+        <TextView
+            android:id="@+id/txt_titulo_salvo"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:textColor="@color/darkerGray"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Segunda via do bilhete único"/>
+
+
+        <TextView
+            android:id="@+id/txt_desc_salvo"
+            android:textColor="@color/lightGray"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textSize="16sp"
+            android:layout_below="@id/txt_titulo_salvo"
+            android:layout_alignStart="@id/txt_titulo_salvo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Perdi meu bilhete único e não estou conseguindo retirar"/>
+
+        <TextView
+            android:id="@+id/txt_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lightGray"
+            android:singleLine="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:textStyle="bold"
+            android:text="8 de nov"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

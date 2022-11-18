@@ -27,8 +27,8 @@ class LoginActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        var campoRa = binding.tiInputRa;
-        var campoSenha = binding.tiInputSenha;
+        var campoRa = binding.tiInputRa
+        var campoSenha = binding.tiInputSenha
 
         binding.btnAcessar.setOnClickListener {
 
