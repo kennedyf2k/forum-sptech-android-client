@@ -39,9 +39,10 @@ class TermsActivity : AppCompatActivity() {
 
     private fun IrMainActivity(){
 
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, Lgpd1Activity::class.java)
 
         startActivity(intent)
+        finish()
     }
 }
 

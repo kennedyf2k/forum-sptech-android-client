@@ -33,6 +33,18 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+            android:name=".Lgpd1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Lgpd2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Lgpd3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Lgpd4Activity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
