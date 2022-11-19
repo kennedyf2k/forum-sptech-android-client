@@ -129,7 +129,8 @@ class LoginActivity : AppCompatActivity() {
 
         if(preferences.getBoolean("aceitouTermos", false)){
 
-            irActivity(MainActivity())
+           // irActivity(MainActivity())
+            irActivity(TermsActivity())
 
         }else{
 

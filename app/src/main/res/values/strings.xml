@@ -95,4 +95,10 @@
     <string name="alterar_senha_alerta_title">Senha alterada</string>
     <string name="alterar_senha_alerta_text">A sua senha foi alterada com sucesso.</string>
 
+    <!--BEM VINDO - ALTERAR SENHA-->
+    <string name="texto1_bemvindo">Bem vindo ao Fórum SPTECH por Studen On!</string>
+    <string name="texto2_bemvindo">As perguntas realizadas são enviadas para serem respondidas por um veterano e só então são postadas no feed</string>
+    <string name="texto3_bemvindo">A comunidade inteira tem acesso a publicação e o conhecimento é multiplicado</string>
+    <string name="texto4_titulo_bemvindo">Seja responsável!</string>
+    <string name="texto4_bemvindo">Nada de respostas incompletas e que possam ser invasivas hein?!</string>
 </resources>
