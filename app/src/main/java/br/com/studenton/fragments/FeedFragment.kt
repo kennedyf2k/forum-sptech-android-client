@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +17,7 @@ import br.com.studenton.adapter.AdapterPublicacaoResponse
 import br.com.studenton.adapter.tracker.CategoriaKeyProvider
 import br.com.studenton.adapter.tracker.CategoriaLockup
 import br.com.studenton.adapter.tracker.CategoriaPredicate
+import br.com.studenton.databinding.FragmentDialogPerguntarBinding
 import br.com.studenton.databinding.FragmentFeedBinding
 import br.com.studenton.domain.Categoria
 import br.com.studenton.domain.Publicacao
@@ -73,6 +75,15 @@ class FeedFragment : Fragment() {
 
         rvFeed.adapter = adapterPublicacoes
 
+        binding.fbPerguntar.setOnClickListener{
+
+            var fragmentDialog = DialogPerguntar()
+
+            val fragmentManager = activity?.supportFragmentManager
+
+            fragmentDialog.show(fragmentManager!!, "");
+
+        }
 
         binding.bottomNav.setOnItemSelectedListener { setarFeedByBottomNavigation(it.itemId) }
 
@@ -93,6 +104,7 @@ class FeedFragment : Fragment() {
                     lista.add(categoria)
                     lista.addAll(response.body()!!)
                     categorias = lista
+
                     adapterFiltros = AdapterCategoriaResponse(
                         context!!, categorias,
                     ) { id ->

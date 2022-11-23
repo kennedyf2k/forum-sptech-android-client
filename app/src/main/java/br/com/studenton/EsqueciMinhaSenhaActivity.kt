@@ -44,13 +44,13 @@ class EsqueciMinhaSenhaActivity : AppCompatActivity() {
 
         for (usuarios in list){
             if (usuarios.ra.equals(ra) && usuarios.email.equals(email) ){
-                alterarSenha(usuarios.idUsuario, TrocarSenhaRequest())
+//                alterarSenha(usuarios.idUsuario, TrocarSenhaRequest())
             }
         }
     }
 
     private fun alterarSenha(idUsuario : Int, trocarSenha: TrocarSenhaRequest){
-        Rest.getInstance<UsuarioService>().trocarSenha( )
+//        Rest.getInstance<UsuarioService>().trocarSenha( )
     }
 
     private fun trazerUsuarios(){
