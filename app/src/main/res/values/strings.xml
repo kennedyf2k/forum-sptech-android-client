@@ -17,7 +17,7 @@
     <string name="login_input_senha">Senha:</string>
     <string name="login_button_acessar">Acessar</string>
     <string name="login_esqueceu_senha">Esqueceu sua senha?</string>
-    <string name="login_clique_aqui">Clique aqui</string>
+    <string name="login_clique_aqui"><u>Clique aqui</u></string>
     <string name="login_erro_login">RA ou senha estão errados</string>
     <string name="login_erro_server">Acontece um erro inesperado, tente novamente mais tarde</string>
     <string name="login_erro_obrigatorio">Esse campo é obrigatório</string>
@@ -101,4 +101,13 @@
     <string name="texto3_bemvindo">A comunidade inteira tem acesso a publicação e o conhecimento é multiplicado</string>
     <string name="texto4_titulo_bemvindo">Seja responsável!</string>
     <string name="texto4_bemvindo">Nada de respostas incompletas e que possam ser invasivas hein?!</string>
+
+    <!-- ESQUECEU A SENHA-->
+    <string name="esqueceu_senha_ra">RA</string>
+    <string name="esqueceu_senha_email">Email</string>
+    <string name="esqueceu_senha_senha_nova">Nova senha</string>
+    <string name="esqueceu_senha_senha_nova_conf">Confirmar nova senh</string>
+    <string name="esqueceu_senha_senha_erro_senhas_nao_batem">Nova senha e confirmar senha não batem</string>
+    <string name="esqueceu_senha_senha_erro_senha_menor_9">A senha deve conter, no mínimo, 9 caracteres</string>
 </resources>
+

@@ -1,9 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EsqueciMinhaSenhaActivity">
+    tools:context=".fragments.ConfigurarPerfilFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@drawable/header"
+        android:text="@string/alterar_senha_header"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:paddingTop="24dp"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        android:layout_marginTop="48dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/borda">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+
+                <EditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/et_esqueceu_senha_ra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/esqueceu_senha_ra"
+                    android:textColor="@color/cinza"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"
+                    android:inputType="number"
+                    android:background="@android:color/transparent"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/borda">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+
+                <EditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/et_esqueceu_senha_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/esqueceu_senha_email"
+                    android:textColor="@color/cinza"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"
+                    android:inputType="textEmailAddress"
+                    android:background="@android:color/transparent"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/borda">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+
+                <EditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/et_esqueceu_senha_nova_senha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/alterar_senha_nova"
+                    android:textColor="@color/cinza"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"
+                    android:inputType="textPassword"
+                    android:background="@android:color/transparent"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/borda"
+            android:gravity="center">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+
+                <EditText
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/et_esqueceu_senha_confirmar_nova_senha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/alterar_senha_confirmar_nova"
+                    android:textColor="@color/cinza"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"
+                    android:inputType="textPassword"
+                    android:background="@android:color/transparent"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+
+            android:id="@+id/tv_esqueceu_senha_msg_erro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Erroooo"
+            android:padding="16dp"
+            android:textColor="@color/login_erro"/>
+
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom">
+
+            <Button
+                android:id="@+id/btn_esqueceu_senha_alterar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/azul_btn"
+                android:text="@string/alterar_senha_btn_alterar"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
