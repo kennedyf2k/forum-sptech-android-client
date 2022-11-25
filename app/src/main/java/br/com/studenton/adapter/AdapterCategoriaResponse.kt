@@ -59,6 +59,7 @@ class AdapterCategoriaResponse(
             if(selectionTracker.isSelected( categoriaDetails.selectionKey )){
 
                 button.setBackgroundColor( ContextCompat.getColor(itemView.context, R.color.feed_button_categoria_selected) )
+                button.setTextColor( ContextCompat.getColor(itemView.context, R.color.white))
                 itemView.isActivated = true
                 Log.i("Cliquei", "ID: ${categoriaDetails.selectionKey}")
                 Log.i("Cliquei", "ID: ${selectionTracker.selection}")
@@ -67,6 +68,8 @@ class AdapterCategoriaResponse(
             }else{
 
                 button.setBackgroundColor( ContextCompat.getColor(itemView.context, R.color.feed_button_categoria_not_selected) )
+                button.setTextColor( ContextCompat.getColor(itemView.context, R.color.feed_button_categoria_not_selected_text))
+
                 itemView.isActivated = false
                 Log.i("desCliquei", "ID: ${selectionTracker.selection}")
 

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import br.com.studenton.databinding.ActivityLgpd1Binding
 
 
@@ -27,7 +28,8 @@ class Lgpd1Activity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         if(view.id == R.id.btn_avancar){
             val intent = Intent(this, Lgpd2Activity::class.java)
-            startActivity(intent)
+
+            //startActivity(intent)
             finish()
         }
     }

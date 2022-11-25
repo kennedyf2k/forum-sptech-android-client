@@ -31,10 +31,13 @@
     <color name="feed_item_feed_name_categoria_rosa">#F0518A</color>
     <color name="feed_item_feed_name_titulo">#63B1BC</color>
     <color name="feed_button_categoria_selected">#5B9FA8</color>
-    <color name="feed_button_categoria_not_selected">#A1A1A1</color>
+    <color name="feed_button_categoria_not_selected">#E2E8F0</color>
+    <color name="feed_button_categoria_not_selected_text">#A1A1A1</color>
     <color name="feed_float_button_perguntar">#1C2438</color>
 
     <color name="cinza">#AEAEB2</color>
+    <color name="fundo">#F8F8FB</color>
+    <color name="cinzaback">#FFE6E6E6</color>
 
 
 </resources>

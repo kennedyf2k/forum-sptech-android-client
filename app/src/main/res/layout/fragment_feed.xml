@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F8FB"
+    android:background="@color/fundo"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.FeedFragment">
 
@@ -136,6 +136,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:background="@color/fundo"
         android:id="@+id/ll_rv_categorias"
         android:layout_marginTop="12dp"
         android:layout_width="match_parent"
@@ -149,7 +150,7 @@
             tools:itemCount="10"
             android:id="@+id/rv_categorias"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="4"
