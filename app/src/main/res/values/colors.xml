@@ -38,6 +38,7 @@
     <color name="cinza">#AEAEB2</color>
     <color name="fundo">#F8F8FB</color>
     <color name="cinzaback">#FFE6E6E6</color>
+    <color name="background">#F8F8FB</color>
 
 
 </resources>

@@ -1,6 +1,7 @@
 package br.com.studenton.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ class AdapterPublicacaoResponse(
 
     private val context: Context,
     private val idUsuario: Int,
+    private val acesso: Int,
     private val onclickCurtir: (idPublicacao: Int) -> Unit,
     private val onclickFavorito: (idPublicacao: Int) -> Unit
 
@@ -31,7 +33,7 @@ class AdapterPublicacaoResponse(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PublicacaoViewHolder {
-
+        Log.i("passando acesso", "onCreateViewHolder: ${acesso}")
         //if(acesso == calouro){
         //    val itemList = LayoutInflater.from(context)
         //        .inflate(R.layout.fragment_feed_simple_item_feed, parent, false)

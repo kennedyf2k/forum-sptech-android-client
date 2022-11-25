@@ -131,8 +131,9 @@
     e editar o string-array com o name de categorias
     -->
     <Spinner
+
+
         android:layout_weight="1"
-        android:background="@drawable/borda_arredondada"
         android:layout_marginHorizontal="20dp"
         android:id="@+id/id_spinner"
         android:layout_width="match_parent"

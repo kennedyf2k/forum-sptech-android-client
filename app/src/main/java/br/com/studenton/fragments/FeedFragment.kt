@@ -39,6 +39,7 @@ class FeedFragment : Fragment() {
     private lateinit var categorias: MutableList<Categoria>
 
     private var idUsuario = -1
+    private var acesso = -1
     private lateinit var adapterPublicacoes: AdapterPublicacaoResponse
 
 
@@ -67,7 +68,9 @@ class FeedFragment : Fragment() {
 
         idUsuario = arguments?.getInt("id")!!
 
-        adapterPublicacoes = AdapterPublicacaoResponse(activity?.baseContext!!, idUsuario,{
+        acesso = arguments?.getInt("acesso")!!
+
+        adapterPublicacoes = AdapterPublicacaoResponse(activity?.baseContext!!, idUsuario, acesso,{
                 id -> curtir(id)
         }){
                 id -> salvar(id)

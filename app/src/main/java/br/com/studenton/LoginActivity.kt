@@ -124,13 +124,14 @@ class LoginActivity : AppCompatActivity() {
         editor.putInt("fkAcesso", dados.fkAcesso);
         editor.putBoolean("checkEmail", dados.checkEmail);
         editor.putBoolean("autenticado", dados.autenticado);
+        editor.putInt("acesso", dados.fkAcesso);
 
         editor.apply()
 
         if(preferences.getBoolean("aceitouTermos", false)){
 
-           // irActivity(MainActivity())
-            irActivity(TermsActivity())
+            irActivity(MainActivity())
+
 
         }else{
 

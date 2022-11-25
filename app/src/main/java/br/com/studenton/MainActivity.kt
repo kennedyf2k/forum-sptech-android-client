@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         val semestre = preferences.getInt("semestre", -1)
         val email = preferences.getString("email", null)
         val urlFoto = preferences.getString("fotoPerfil", null)
+        var acesso = preferences.getInt("acesso", 0)
 
         validarDados(nome)
 
@@ -49,8 +50,8 @@ class MainActivity : AppCompatActivity() {
             "curso" to curso,
             "semestre" to semestre,
             "email" to email,
-            "urlFoto" to urlFoto
-
+            "urlFoto" to urlFoto,
+            "acesso" to  acesso
         )
 
 
@@ -71,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.menu_perguntas -> {
-
+                    perguntasFragment.arguments = bundlePerfil
                     setFragment(perguntasFragment)
 
                 }
