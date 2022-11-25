@@ -28,6 +28,7 @@ class Lgpd1Activity : AppCompatActivity(), View.OnClickListener {
         if(view.id == R.id.btn_avancar){
             val intent = Intent(this, Lgpd2Activity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 

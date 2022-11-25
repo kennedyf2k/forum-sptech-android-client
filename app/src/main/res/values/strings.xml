@@ -44,6 +44,7 @@
     <string name="feed_menu_mais_relevante">Mais Relevante</string>
     <string name="feed_menu_minhas_colaboracoes">Minhas colaborações</string>
     <string name="feed_item_simple_item_meio_respondeu">respondeu a pergunta de</string>
+    <string name="feed_item_simple_item_meio_perguntou">fez uma pergunta</string>
     <string name="feed_item_simple_item_meio_publicou">publicou uma informação</string>
     <string name="feed_item_simple_item_dias_atras_0">Hoje</string>
     <string name="feed_item_simple_item_dias_atras_1">Ontem</string>
