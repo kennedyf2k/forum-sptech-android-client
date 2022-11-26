@@ -6,8 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.DialogFragment
+import androidx.core.os.bundleOf
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +17,6 @@ import br.com.studenton.adapter.AdapterPublicacaoResponse
 import br.com.studenton.adapter.tracker.CategoriaKeyProvider
 import br.com.studenton.adapter.tracker.CategoriaLockup
 import br.com.studenton.adapter.tracker.CategoriaPredicate
-import br.com.studenton.databinding.FragmentDialogPerguntarBinding
 import br.com.studenton.databinding.FragmentFeedBinding
 import br.com.studenton.domain.Categoria
 import br.com.studenton.domain.Publicacao
@@ -27,6 +25,7 @@ import br.com.studenton.services.CategoriaService
 import br.com.studenton.services.CurtirService
 import br.com.studenton.services.PublicacaoService
 import br.com.studenton.services.SalvarService
+import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,6 +37,7 @@ class FeedFragment : Fragment() {
     private lateinit var rvFeed: RecyclerView
     private lateinit var rvCategorias: RecyclerView
     private lateinit var categorias: MutableList<Categoria>
+    private lateinit var bundle: Bundle
 
     private var idUsuario = -1
     private var acesso = -1
@@ -79,13 +79,20 @@ class FeedFragment : Fragment() {
 
         rvFeed.adapter = adapterPublicacoes
 
-        binding.fbPerguntar.setOnClickListener{
+        setarDados()
 
-            var fragmentDialog = DialogPerguntar()
+        binding.fbPerguntar.setOnClickListener{
 
             val fragmentManager = activity?.supportFragmentManager
 
-            fragmentDialog.show(fragmentManager!!, "");
+            val transaction = fragmentManager!!.beginTransaction()
+
+            val criarPerguntaFragment = CriarPerguntaFragment()
+
+            criarPerguntaFragment.arguments = bundle
+
+            transaction.replace(R.id.fragments_container, criarPerguntaFragment)
+            transaction.commit()
 
         }
 
@@ -330,6 +337,19 @@ class FeedFragment : Fragment() {
                     Log.i("ERRO", t.stackTraceToString())
                 }
             })
+    }
+
+    private fun setarDados(){
+
+        bundle = bundleOf(
+
+            "id" to arguments?.getInt("id"),
+            "nome" to arguments?.getString("nome"),
+            "ra" to arguments?.getString("ra"),
+            "curso" to arguments?.getString("curso"),
+            "semestre" to arguments?.getInt("semestre"),
+            "email" to arguments?.getString("email"),
+            "urlFoto" to arguments?.getString("urlFoto"))
 
     }
 

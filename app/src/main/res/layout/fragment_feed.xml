@@ -98,13 +98,13 @@
         app:menu="@menu/menu_feed"
 
         />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/bottom_nav">
-
-
+        android:layout_below="@+id/bottom_nav"
+        android:baselineAligned="false">
 
         <TableLayout
             android:id="@+id/feed_selected_left"
@@ -218,7 +218,6 @@
 
         </LinearLayout>
 
-
     </com.facebook.shimmer.ShimmerFrameLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -234,7 +233,8 @@
         android:gravity="center"
 
         app:backgroundTint="@color/feed_float_button_perguntar"
-
+        app:cornerRadius="20dp"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended"
         android:text="@string/feed_float_button_perguntar"
         android:textColor="@color/white"
 

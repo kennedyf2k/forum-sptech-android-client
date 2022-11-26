@@ -29,8 +29,8 @@
     <string name="perfil_btn_sair">Sair</string>
     <string name="perfil_btn_editar">Editar</string>
     <string name="perfil_tv_nome">Nome</string>
-    <string name="perfil_tv_RA">R.A.</string>
-    <string name="perfil_tv_curso">Curso</string>
+        <string name="perfil_tv_RA">R.A.</string>
+        <string name="perfil_tv_curso">Curso</string>
     <string name="perfil_tv_semestre">Semestre</string>
     <string name="perfil_tv_email">E-mail</string>
     <string name="perfil_hint_nome">Paulo Duarte</string>
@@ -110,5 +110,10 @@
     <string name="esqueceu_senha_senha_nova_conf">Confirmar nova senh</string>
     <string name="esqueceu_senha_senha_erro_senhas_nao_batem">Nova senha e confirmar senha não batem</string>
     <string name="esqueceu_senha_senha_erro_senha_menor_9">A senha deve conter, no mínimo, 9 caracteres</string>
+
+    <!--  FRAGMENT DIALOG SAIR  -->
+    <string name="fragment_dialog_sair_btn_sair">SAIR</string>
+    <string name="fragment_dialog_sair_btn_cancelar">CANCELAR</string>
+    <string name="fragment_dialog_sair_title">Tem certeza que deseja Sair?</string>
 </resources>
 
