@@ -113,6 +113,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/et_titulo_pergunta"
             android:layout_weight="1"
             android:paddingHorizontal="10dp"
             android:paddingVertical="15dp"
@@ -132,6 +133,7 @@
         <Spinner
             android:layout_weight="1"
             android:layout_marginHorizontal="20dp"
+            android:background="@drawable/borda_arredondada"
             android:id="@+id/id_spinner"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -140,20 +142,37 @@
             android:paddingVertical="15dp"
             />
 
+
+
+        
     </LinearLayout>
 
-
-
     <EditText
+        android:id="@+id/et_conteudo_pergunta"
+        android:layout_weight="1"
         android:paddingHorizontal="10dp"
         android:paddingVertical="15dp"
         android:background="@drawable/borda_arredondada"
         android:layout_margin="20dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:hint="Conteúdo da pergunta"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
         android:gravity="start"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        />
+    <TextView
+
+        android:id="@+id/tv_msg_erro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        tools:text="Erro inesperado. Tente novamente mais tarde"
+        android:textColor="@color/login_erro"
+        android:layout_gravity="center"
+
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -161,7 +180,7 @@
         android:orientation="vertical">
 
         <Button
-
+            android:id="@+id/criar_pergunta"
             android:layout_width="match_parent"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="20dp"
