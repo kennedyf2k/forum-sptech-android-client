@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.menu_salvos -> {
-
+                    salvosFragment.arguments = bundlePerfil
                     setFragment(salvosFragment)
 
                 }
