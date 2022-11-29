@@ -12,5 +12,5 @@ interface SalvarService {
     fun favoritar(@Query("idUsuario") idUsuario: Int, @Query("idPublicacao") idPublicacao: Int): Call<Boolean>
 
     @GET("favoritos/filtro-favoritos")
-    fun getFavoritosByUsuario(@Query("idUsuario") idUsuario: Int): MutableList<Publicacao>
+    fun getFavoritosByUsuario(@Query("idUsuario") idUsuario: Int): Call<MutableList<Publicacao>>
 }

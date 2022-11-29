@@ -225,24 +225,26 @@
         android:id="@+id/fb_perguntar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_gravity="bottom"
         android:layout_alignEnd="@id/img_backgroud"
         android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
 
+        android:layout_marginStart="16dp"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/feed_content_description_img_perguntar"
         android:gravity="center"
 
-        app:backgroundTint="@color/feed_float_button_perguntar"
-        app:cornerRadius="20dp"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended"
         android:text="@string/feed_float_button_perguntar"
         android:textColor="@color/white"
+        app:backgroundTint="@color/feed_float_button_perguntar"
 
+        app:cornerRadius="20dp"
         app:icon="@drawable/feed_icon_float_btn_perguntar"
-        android:contentDescription="@string/feed_content_description_img_perguntar"
         app:iconTint="@color/white"
-
-        />
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended" />
 
 
 </RelativeLayout>

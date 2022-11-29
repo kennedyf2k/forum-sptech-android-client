@@ -2,10 +2,16 @@
 <resources>
 
     <string-array name="categorias">
-        <item>Categoria 1</item>
-        <item>Categoria 2</item>
-        <item>Categoria 3</item>
-        <item>Categoria 4</item>
+        <item>Selecione uma cetegoria</item>
+        <item>SPTrans</item>
+        <item>MeuID</item>
+        <item>Secretaria</item>
+        <item>Aula</item>
+        <item>Estagio</item>
+        <item>Empresas</item>
+        <item>Relatos</item>
+        <item>Biblioteca</item>
+        <item>Formatura</item>
     </string-array>
 
 </resources>

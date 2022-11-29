@@ -120,5 +120,11 @@
     <string name="comentarios_bottomsheet_btn_comentar">Comentar</string>
     <string name="comentarios_bottomsheet_title_comentarios">Comentarios</string>
 
+    <!--    CRIAR PUBLICACAO-->
+    <string name="fragment_criar_publicacao_erro">Acontece um erro inesperado, tente novamente mais tarde</string>
+    <string name="fragment_criar_publicacao_categoria">Selecione uma categoria</string>
+    <string name="fragment_criar_publicacao_sucesso">Pergunta realizada com sucesso!</string>
+    <string name="fragment_criar_publicacao_length_titulo">Insira pelo menso 5 caracteres</string>
+    <string name="fragment_criar_publicacao_length_texto">Insira pelo menso 10 caracteres</string>
 </resources>
 

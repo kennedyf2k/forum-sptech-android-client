@@ -5,10 +5,16 @@
       <map>
         <entry key="..\:/Users/Aluno/Documents/forum-sptech-android-client/app/src/main/res/layout/fragment_dialog_perguntar.xml" value="0.18" />
         <entry key="..\:/Users/Aluno/Documents/forum-sptech-android-client/app/src/main/res/layout/fragment_feed.xml" value="0.15" />
+        <entry key="..\:/Users/Paulo Santos/Documents/Faculdade/Projeto/repositorios/forum-sptech-android-client/app/src/main/res/drawable/borda_arredondada.xml" value="0.1055" />
+        <entry key="..\:/Users/Paulo Santos/Documents/Faculdade/Projeto/repositorios/forum-sptech-android-client/app/src/main/res/drawable/borda_arredondada_red.xml" value="0.1" />
         <entry key="..\:/Users/Paulo Santos/Documents/Faculdade/Projeto/repositorios/forum-sptech-android-client/app/src/main/res/layout/activity_esqueci_minha_senha.xml" value="0.25" />
         <entry key="..\:/Users/Paulo Santos/Documents/Faculdade/Projeto/repositorios/forum-sptech-android-client/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/Paulo Santos/Documents/Faculdade/Projeto/repositorios/forum-sptech-android-client/app/src/main/res/layout/activity_main.xml" value="0.14221014492753623" />
+        <entry key="..\:/Users/Paulo Santos/Documents/Faculdade/Projeto/repositorios/forum-sptech-android-client/app/src/main/res/layout/fragment_criar_pergunta.xml" value="0.25" />
         <entry key="..\:/Users/Paulo Santos/Documents/Faculdade/Projeto/repositorios/forum-sptech-android-client/app/src/main/res/layout/fragment_feed.xml" value="0.25" />
+        <entry key="..\:/Users/Paulo Santos/Documents/Faculdade/Projeto/repositorios/forum-sptech-android-client/app/src/main/res/layout/fragment_feed_simple_item_categorias.xml" value="0.2608695652173913" />
+        <entry key="..\:/Users/Paulo Santos/Documents/Faculdade/Projeto/repositorios/forum-sptech-android-client/app/src/main/res/layout/fragment_feed_simple_item_feed.xml" value="0.2608695652173913" />
+        <entry key="..\:/Users/Paulo Santos/Documents/Faculdade/Projeto/repositorios/forum-sptech-android-client/app/src/main/res/layout/fragment_feed_simple_item_feed_pergunta.xml" value="0.2608695652173913" />
         <entry key="..\:/Users/Paulo Santos/Documents/Faculdade/Projeto/repositorios/forum-sptech-android-client/app/src/main/res/layout/fragment_perfil_alterar_senha.xml" value="0.27808988764044945" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/drawable/borda_arredondada.xml" value="0.115" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/drawable/borda_arredondada_sem_preenchimento.xml" value="0.115" />
@@ -17,8 +23,6 @@
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/drawable/feed_img_sem_publicacao_by_categoria.xml" value="0.185" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/drawable/feed_item_img_curtir_desmarcado.xml" value="0.155" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/drawable/feed_item_selected.xml" value="0.121" />
-        <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/drawable/fragment_dialog_sair_btn_cancelar.xml" value="0.115" />
-        <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/drawable/fragment_dialog_sair_btn_sair.xml" value="0.115" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/drawable/line.xml" value="0.121" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/drawable/main_item_selected.xml" value="0.121" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout-v28/comentarios_bottomsheet.xml" value="0.1983695652173913" />
@@ -39,9 +43,7 @@
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/fragment_feed_simple_list_item.xml" value="0.9" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/fragment_perfil.xml" value="0.16" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/fragment_perfil_alterar_senha.xml" value="0.40350877192982454" />
-        <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/fragment_pergunta_simple_item.xml" value="0.13229166666666667" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/fragment_perguntas.xml" value="0.17255434782608695" />
-        <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/fragment_salvo_simple_item.xml" value="0.18" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/fragment_salvos.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/intro_slide.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/admlocal.daniel/Documents/Faculdade Bandtec/TCC 3 e 4 Semestre/forum-sptech-android-client/app/src/main/res/layout/shimmer_placeholder_feed.xml" value="0.2375" />
