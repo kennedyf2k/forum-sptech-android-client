@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
 import br.com.studenton.domain.Publicacao
+import br.com.studenton.domain.Resposta
 import com.bumptech.glide.Glide
 
 
@@ -20,7 +21,8 @@ class AdapterPublicacaoResponse(
     private val idUsuario: Int,
     private val acesso: Int,
     private val onclickCurtir: (idPublicacao: Int) -> Unit,
-    private val onclickFavorito: (idPublicacao: Int) -> Unit
+    private val onclickFavorito: (idPublicacao: Int) -> Unit,
+    private val onclickComentarios: (comentarios: MutableList<Resposta>) -> Unit
 
     ) : RecyclerView.Adapter<AdapterPublicacaoResponse.PublicacaoViewHolder>() {
 
@@ -33,6 +35,7 @@ class AdapterPublicacaoResponse(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PublicacaoViewHolder {
+
         Log.i("passando acesso", "onCreateViewHolder: ${acesso}")
         //if(acesso == calouro){
         //    val itemList = LayoutInflater.from(context)
@@ -184,7 +187,6 @@ class AdapterPublicacaoResponse(
            }
 
 
-
            if(foiSalvo){
 
                holder.imgSalvar.setImageResource(R.drawable.feed_item_img_salvar_marcado)
@@ -211,6 +213,11 @@ class AdapterPublicacaoResponse(
 
                }
            }
+           holder.imgComentar.setOnClickListener{
+
+               onclickComentarios.invoke(publicacoes[position].respostasByIdPublicacao)
+
+           }
        }
 
     }
@@ -230,6 +237,7 @@ class AdapterPublicacaoResponse(
         val numeroCurtidas = itemView.findViewById<TextView>(R.id.tv_numero_curtidas)!!
         val numeroComentarios = itemView.findViewById<TextView>(R.id.tv_numero_comentarios)!!
         val textoFixo = itemView.findViewById<TextView>(R.id.tv_position_fixed)!!
+        val imgComentar = itemView.findViewById<ImageView>(R.id.iv_comentar)
 
         val imgCurtir = itemView.findViewById<ImageView>(R.id.iv_curtir)!!
         val imgSalvar = itemView.findViewById<ImageView>(R.id.iv_salvar)!!

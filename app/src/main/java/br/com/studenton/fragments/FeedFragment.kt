@@ -1,11 +1,13 @@
 package br.com.studenton.fragments
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.os.bundleOf
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StorageStrategy
@@ -14,18 +16,22 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
 import br.com.studenton.adapter.AdapterCategoriaResponse
 import br.com.studenton.adapter.AdapterPublicacaoResponse
+import br.com.studenton.adapter.AdapterRespostaResponse
 import br.com.studenton.adapter.tracker.CategoriaKeyProvider
 import br.com.studenton.adapter.tracker.CategoriaLockup
 import br.com.studenton.adapter.tracker.CategoriaPredicate
 import br.com.studenton.databinding.FragmentFeedBinding
 import br.com.studenton.domain.Categoria
 import br.com.studenton.domain.Publicacao
+import br.com.studenton.domain.Resposta
 import br.com.studenton.repository.Rest
 import br.com.studenton.services.CategoriaService
 import br.com.studenton.services.CurtirService
 import br.com.studenton.services.PublicacaoService
 import br.com.studenton.services.SalvarService
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,12 +42,14 @@ class FeedFragment : Fragment() {
     private lateinit var selectionTracker: SelectionTracker<Long>
     private lateinit var rvFeed: RecyclerView
     private lateinit var rvCategorias: RecyclerView
+    private lateinit var rvRespostas: RecyclerView
     private lateinit var categorias: MutableList<Categoria>
     private lateinit var bundle: Bundle
 
     private var idUsuario = -1
     private var acesso = -1
     private lateinit var adapterPublicacoes: AdapterPublicacaoResponse
+    private lateinit var adapterRespostaResponse: AdapterRespostaResponse
 
 
     var contador = 0
@@ -73,9 +81,11 @@ class FeedFragment : Fragment() {
 
         adapterPublicacoes = AdapterPublicacaoResponse(activity?.baseContext!!, idUsuario, acesso,{
                 id -> curtir(id)
-        }){
+        },{
                 id -> salvar(id)
-        }
+        },{
+                lista -> showBottomSheet(lista)
+        })
 
         rvFeed.adapter = adapterPublicacoes
 
@@ -105,7 +115,7 @@ class FeedFragment : Fragment() {
 
                 override fun onResponse(
                     call: Call<MutableList<Categoria>>,
-                    response: Response<MutableList<Categoria>>
+                    response: Response<MutableList<Categoria>>,
                 ) {
 
                     val categoria = Categoria(-1, "Todas")
@@ -141,9 +151,9 @@ class FeedFragment : Fragment() {
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
 
-    ): View {
+        ): View {
         binding = FragmentFeedBinding.inflate(inflater)
         return binding.root
     }
@@ -188,7 +198,7 @@ class FeedFragment : Fragment() {
 
                         override fun onResponse(
                             call: Call<MutableList<Publicacao>>,
-                            response: Response<MutableList<Publicacao>>
+                            response: Response<MutableList<Publicacao>>,
                         ) {
 
                             if(response.body().isNullOrEmpty()){
@@ -239,7 +249,7 @@ class FeedFragment : Fragment() {
 
                         override fun onResponse(
                             call: Call<MutableList<Publicacao>>,
-                            response: Response<MutableList<Publicacao>>
+                            response: Response<MutableList<Publicacao>>,
                         ) {
 
                             binding.feedSelectedRigth.visibility = View.VISIBLE
@@ -274,7 +284,7 @@ class FeedFragment : Fragment() {
 
                         override fun onResponse(
                             call: Call<MutableList<Publicacao>>,
-                            response: Response<MutableList<Publicacao>>
+                            response: Response<MutableList<Publicacao>>,
                         ) {
 
                             binding.feedSelectedRigth.visibility = View.INVISIBLE
@@ -353,4 +363,28 @@ class FeedFragment : Fragment() {
 
     }
 
+    private fun showBottomSheet(comentarios: MutableList<Resposta>){
+
+        val bottomSheet = BottomSheetDialog(requireActivity())
+
+        val bottomSheetView = LayoutInflater.from(requireContext())
+            .inflate(R.layout.comentarios_bottomsheet, null)
+
+        rvRespostas = bottomSheetView.findViewById(R.id.rv_comentarios)!!
+        rvRespostas.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        rvRespostas.setHasFixedSize(true)
+
+        adapterRespostaResponse =  AdapterRespostaResponse(activity?.baseContext!!)
+
+        adapterRespostaResponse.setData(comentarios)
+
+        bottomSheet.setContentView(bottomSheetView)
+
+        val layout = bottomSheet.findViewById<CoordinatorLayout>(R.id.bottom_sheet_layout)!!
+
+        layout.minimumHeight = Resources.getSystem().displayMetrics.heightPixels
+
+        bottomSheet.show()
+
+    }
 }

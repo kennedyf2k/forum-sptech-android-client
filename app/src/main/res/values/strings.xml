@@ -115,5 +115,10 @@
     <string name="fragment_dialog_sair_btn_sair">SAIR</string>
     <string name="fragment_dialog_sair_btn_cancelar">CANCELAR</string>
     <string name="fragment_dialog_sair_title">Tem certeza que deseja Sair?</string>
+
+    <!--  Comentario BottomSheet  -->
+    <string name="comentarios_bottomsheet_btn_comentar">Comentar</string>
+    <string name="comentarios_bottomsheet_title_comentarios">Comentarios</string>
+
 </resources>
 

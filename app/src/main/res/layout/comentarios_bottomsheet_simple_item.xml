@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+
+            android:id="@+id/iv_profile_item_resposta"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/profile"
+            android:contentDescription="@string/perfil_description_foto"
+
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+
+                    android:id="@+id/tv_nome_usuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Daniel Alvez"
+                    android:textColor="#4F5159"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="10dp"
+
+                />
+
+                <TextView
+
+                    android:id="@+id/tv_texto_comentou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Comentou"
+                    android:textColor="#4F5159"
+
+                />
+
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+
+                    android:id="@+id/tv_texto_resposta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    tools:text="Uma resposta legal aqui pra simular um comentario que passa de uma linha"
+
+                />
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
