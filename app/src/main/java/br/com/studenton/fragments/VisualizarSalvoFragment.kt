@@ -60,6 +60,7 @@ class VisualizarSalvoFragment : Fragment() {
                                 )
                             )
                             binding.tvCategoriaPost.setBackgroundResource(R.drawable.feed_item_shape_categoria_rosa)
+                            binding.tvNamePosition1.text = response.body()!!.nomeUsuario
                             binding.tvNamePosition2.text = ""
 
                         }
@@ -74,10 +75,16 @@ class VisualizarSalvoFragment : Fragment() {
                             binding.tvCategoriaPost.setBackgroundResource(R.drawable.feed_item_shape_categoria_laranja)
                             binding.tvNamePosition1.text =
                                 response.body()!!.respostasByIdPublicacao[0].nomeUsuario
+                            binding.tvNamePosition2.text = response.body()!!.nomeUsuario
 
                         }
                     }
                         Glide.with(activity!!.baseContext).load(response.body()!!.fotoUsuario).into(binding.ivProfileItem)
+                        binding.tvHorasAtras.text = "Há ${response.body()!!.diasAtras.toString()} dias"
+                        binding.tvCategoriaPost.text = response.body()!!.categoria
+                        binding.tvTituloBox.text = response.body()!!.titulo
+                        binding.tvTextoBox.text = response.body()!!.texto
+
             }
 
                 override fun onFailure(call: Call<Publicacao>, t: Throwable) {

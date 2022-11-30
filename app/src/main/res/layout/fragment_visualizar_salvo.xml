@@ -287,51 +287,9 @@
                     android:background="@drawable/feed_item_shape_curtir"
                     android:orientation="horizontal">
 
-                    <ImageView
-
-                        android:id="@+id/iv_curtir"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-
-
-                        />
-
-                    <TextView
-
-                        android:id="@+id/tv_numero_curtidas"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="2"
-                        android:textSize="16sp"
-                        android:layout_marginStart="5dp"
-                        android:layout_gravity="center"
-
-                        />
                 </LinearLayout>
 
-                <ImageView
 
-                    android:id="@+id/iv_comentar"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:background="@drawable/feed_item_img_comentario"
-                    android:layout_marginStart="16dp"
-                    android:layout_gravity="center"
-
-                    />
-
-                <TextView
-
-                    android:id="@+id/tv_numero_comentarios"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="2"
-                    android:textSize="16sp"
-                    android:layout_marginStart="5dp"
-                    android:layout_gravity="top"
-
-                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
