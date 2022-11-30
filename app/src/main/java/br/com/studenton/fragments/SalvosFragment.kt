@@ -9,9 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
+import br.com.studenton.adapter.AdapterSalvoResponse
 import br.com.studenton.databinding.FragmentSalvosBinding
 import br.com.studenton.domain.Publicacao
 import br.com.studenton.domain.Salvo
@@ -31,19 +33,6 @@ class SalvosFragment : Fragment() {
     private lateinit var listaSalvos : MutableList<Publicacao>
     private lateinit var recyclerViewSalvos : RecyclerView
     private lateinit var binding: FragmentSalvosBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val helper = androidx.recyclerview.widget.ItemTouchHelper(
-            ItemTouchHelper(
-                androidx.recyclerview.widget.ItemTouchHelper.UP or
-                        androidx.recyclerview.widget.ItemTouchHelper.DOWN,
-                        androidx.recyclerview.widget.ItemTouchHelper.LEFT))
-
-         //helper.attachToRecyclerView(recyclerViewSalvos)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,7 +60,17 @@ class SalvosFragment : Fragment() {
                     recyclerViewSalvos.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
                     recyclerViewSalvos.setHasFixedSize(true)
 
-                    recyclerViewSalvos.adapter = SalvoAdapter(listaSalvos)
+                    recyclerViewSalvos.adapter = AdapterSalvoResponse(listaSalvos) {id ->
+                        carregarPublicacao(id)
+                    }
+
+                    val helper = androidx.recyclerview.widget.ItemTouchHelper(
+                        ItemTouchHelper(
+                            androidx.recyclerview.widget.ItemTouchHelper.UP or
+                                    androidx.recyclerview.widget.ItemTouchHelper.DOWN,
+                                    androidx.recyclerview.widget.ItemTouchHelper.LEFT))
+
+                    helper.attachToRecyclerView(recyclerViewSalvos)
 
                 }
 
@@ -102,46 +101,20 @@ class SalvosFragment : Fragment() {
             TODO("Not yet implemented")
         }
     }
-}
 
-class SalvoAdapter(
-    private val salvos: List<Publicacao>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+    private fun carregarPublicacao(idPublicacao: Int){
 
+        val fragmentManager = activity?.supportFragmentManager
 
-    inner class SalvoHolder(
-        private val itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
+        val transaction = fragmentManager!!.beginTransaction()
 
-        fun vincular (publicacao: Publicacao){
+        val visualizarSalvo = VisualizarSalvoFragment()
 
-            val tvTitulo = itemView.findViewById<TextView>(R.id.txt_titulo_salvo)
-            val tvDescricao = itemView.findViewById<TextView>(R.id.txt_desc_salvo)
-            val tvData = itemView.findViewById<TextView>(R.id.txt_date)
-            val cvSalvo = itemView.findViewById<CardView>(R.id.cvSalvo)
+        visualizarSalvo.arguments = bundleOf("id" to idPublicacao)
 
-            var diasAtras: String = "Há ${publicacao.diasAtras.toString()} dias"
+        transaction.replace(R.id.fragments_container, visualizarSalvo)
 
-            tvTitulo.text = publicacao.titulo.substring(0, 23) + "..."
-            tvDescricao.text = publicacao.texto
-            tvData.text = diasAtras
-
-            //Abrir segunda tela de Salvos onde está efetivamente o conteúdo da publicação que foi salva
-            cvSalvo.setOnClickListener{
-
-            }
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val layoutDoCard = LayoutInflater.from(parent.context).inflate(R.layout.fragment_salvo_simple_item, parent, false)
-        return SalvoHolder(layoutDoCard)
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as SalvoHolder).vincular(salvos[position])
-    }
-
-    override fun getItemCount(): Int {
-        return salvos.size
+        transaction.commit()
     }
 }
+

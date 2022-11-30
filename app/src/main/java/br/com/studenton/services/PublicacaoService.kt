@@ -19,4 +19,6 @@ interface PublicacaoService {
     @GET("publicacoes/perguntas")
     fun getPerguntas(): Call<MutableList<Publicacao>>
 
+    @GET("publicacoes/publicacao")
+    fun getPublicacao(@Query("id") idPublicacao: Int): Call<Publicacao>
 }

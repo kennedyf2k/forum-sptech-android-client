@@ -29,8 +29,8 @@
     <string name="perfil_btn_sair">Sair</string>
     <string name="perfil_btn_editar">Editar</string>
     <string name="perfil_tv_nome">Nome</string>
-        <string name="perfil_tv_RA">R.A.</string>
-        <string name="perfil_tv_curso">Curso</string>
+    <string name="perfil_tv_RA">R.A.</string>
+    <string name="perfil_tv_curso">Curso</string>
     <string name="perfil_tv_semestre">Semestre</string>
     <string name="perfil_tv_email">E-mail</string>
     <string name="perfil_hint_nome">Paulo Duarte</string>
@@ -126,5 +126,7 @@
     <string name="fragment_criar_publicacao_sucesso">Pergunta realizada com sucesso!</string>
     <string name="fragment_criar_publicacao_length_titulo">Insira pelo menso 5 caracteres</string>
     <string name="fragment_criar_publicacao_length_texto">Insira pelo menso 10 caracteres</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
 
