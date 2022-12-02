@@ -61,6 +61,12 @@ class AdapterPerguntasResponse(
             4 ->
                 holder.status_color.setBackgroundResource(R.color.vermelho);
 
+            5 ->
+                holder.status_color.setBackgroundResource(R.color.vermelho);
+
+            6 ->
+                holder.status_color.setBackgroundResource(R.color.vermelho);
+
         }
 
         when (perguntas[position].status) {
@@ -73,6 +79,10 @@ class AdapterPerguntasResponse(
             3 ->holder.descricao.text = perguntas[position].texto
 
             4 -> holder.descricao.text = "Recusada, aguardando remoção da resposta para receber uma nova resposta"
+
+            5 -> holder.descricao.text = "Recusada, aguardando remoção da resposta para receber uma nova resposta"
+
+            6 -> holder.descricao.text = "Recusada, aguardando remoção da resposta para receber uma nova resposta"
 
         }
 
