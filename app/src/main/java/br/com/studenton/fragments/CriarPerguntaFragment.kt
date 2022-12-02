@@ -95,7 +95,9 @@ class CriarPerguntaFragment : Fragment() {
     }
 
     private fun criarPergunta(titulo: String, idCategoria: Int, conteudo: String){
-        val body = PublicacaoRequest(titulo, conteudo, idCategoria, 1, idUssuario, 1)
+        //tipoPublicação2
+        //status1 => Não respondido
+        val body = PublicacaoRequest(titulo, conteudo, idCategoria, 2, idUssuario, 1)
 
         Rest.getInstance<PerguntasService>().createPergunta(body).enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
