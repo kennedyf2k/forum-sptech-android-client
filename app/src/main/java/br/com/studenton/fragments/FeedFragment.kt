@@ -359,7 +359,9 @@ class FeedFragment : Fragment() {
             "curso" to arguments?.getString("curso"),
             "semestre" to arguments?.getInt("semestre"),
             "email" to arguments?.getString("email"),
-            "urlFoto" to arguments?.getString("urlFoto"))
+            "urlFoto" to arguments?.getString("urlFoto"),
+            "acesso" to arguments?.getInt("acesso")
+        )
 
     }
 

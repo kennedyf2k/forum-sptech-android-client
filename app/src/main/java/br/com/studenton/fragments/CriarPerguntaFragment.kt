@@ -23,6 +23,7 @@ class CriarPerguntaFragment : Fragment() {
     private lateinit var binding: FragmentCriarPerguntaBinding
     private lateinit var bundle: Bundle
     private var idUssuario = -1
+    private var acesso = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -95,9 +96,16 @@ class CriarPerguntaFragment : Fragment() {
     }
 
     private fun criarPergunta(titulo: String, idCategoria: Int, conteudo: String){
-        //tipoPublicação2
-        //status1 => Não respondido
-        val body = PublicacaoRequest(titulo, conteudo, idCategoria, 2, idUssuario, 1)
+        var body: PublicacaoRequest = PublicacaoRequest(titulo, conteudo, idCategoria, 0, idUssuario, 0)
+        if (acesso == 1){
+            body.tipoPublicacao = 2
+            body.status = 1
+
+        }else if (acesso == 2){
+            body.tipoPublicacao = 1
+            body.status = 2
+        }
+
 
         Rest.getInstance<PerguntasService>().createPergunta(body).enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
@@ -142,6 +150,7 @@ class CriarPerguntaFragment : Fragment() {
 
     private fun setarDados(){
         idUssuario = arguments?.getInt("id")!!
+        acesso = arguments?.getInt("acesso")!!
         bundle = bundleOf(
 
             "id" to arguments?.getInt("id"),
@@ -150,6 +159,9 @@ class CriarPerguntaFragment : Fragment() {
             "curso" to arguments?.getString("curso"),
             "semestre" to arguments?.getInt("semestre"),
             "email" to arguments?.getString("email"),
-            "urlFoto" to arguments?.getString("urlFoto"))
+            "urlFoto" to arguments?.getString("urlFoto"),
+            "acesso" to arguments?.getInt("acesso")
+        )
+
     }
 }
