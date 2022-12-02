@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
 import br.com.studenton.adapter.AdapterCategoriaResponse
+import br.com.studenton.adapter.AdapterPerguntasResponse
 import br.com.studenton.adapter.AdapterPublicacaoResponse
 import br.com.studenton.adapter.AdapterRespostaResponse
 import br.com.studenton.adapter.tracker.CategoriaKeyProvider
@@ -50,6 +51,7 @@ class FeedFragment : Fragment() {
     private var acesso = -1
     private lateinit var adapterPublicacoes: AdapterPublicacaoResponse
     private lateinit var adapterRespostaResponse: AdapterRespostaResponse
+
 
 
     var contador = 0

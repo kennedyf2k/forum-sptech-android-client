@@ -22,4 +22,11 @@
         <item>Recusados</item>
     </string-array>
 
+    <string-array name="filterVeterano" >
+        <item>Todos</item>
+        <item>Em análises</item>
+        <item>Aprovados</item>
+        <item>Recusados</item>
+    </string-array>
+
 </resources>

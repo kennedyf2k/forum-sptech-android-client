@@ -76,185 +76,61 @@
                         android:layout_marginTop="60dp">
 
                         <TextView
+                            android:id="@+id/nav_titulo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Perguntas"
+                            android:text="Minhas Colaborações"
                             android:textColor="@color/white"
                             android:textSize="24dp"/>
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginVertical="10dp"
-                        >
 
-
-                        <TextView
-                            android:id="@+id/gestao_perguntas"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="Perguntas"
-                            android:visibility="invisible"
-                            android:textColor="@color/white"
-                            android:textSize="14dp"
-                            />
-
-
-                        <TextView
-                            android:id="@+id/gestao_perguntas_publicacoes"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="Publicações"
-                            android:visibility="invisible"
-                            android:textColor="@color/darkerGray"
-                            android:textSize="14dp"
-                            />
-
-
-                    </LinearLayout>
 
                 </LinearLayout>
 
+
+
+
                 <LinearLayout
-                    android:layout_gravity="center"
+                    android:id="@+id/nav_colaboracoes"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingStart="14dp"
-                    android:paddingBottom="12dp"
                     android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginVertical="10dp"
                     >
 
-                    <LinearLayout
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center"
-                        android:gravity="center">
+                    <TextView
+                        android:id="@+id/gestao_perguntas"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:text="Respostas"
 
-                        <LinearLayout
-                            android:id="@+id/enviado"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:width="12dp"
-                                android:height="12dp"
-                                android:layout_marginEnd="2dp"
-                                android:backgroundTint="@color/login_esqueceu_senha"
-                                android:background="@drawable/circlestyle"/>
-
-                            <TextView
-                                android:layout_marginEnd="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Enviado"
-                                android:paddingStart="4dp"
-                                android:textColor="@color/white"
-                                />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/aprovado"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:width="12dp"
-                                android:height="12dp"
-                                android:layout_marginEnd="2dp"
-                                android:backgroundTint="@color/teal_200"
-                                android:background="@drawable/circlestyle"/>
-
-                            <TextView
-                                android:layout_marginEnd="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Aprovado"
-                                android:paddingStart="4dp"
-                                android:textColor="@color/white"
-
-                                />
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:id="@+id/analise"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center">
-
-                            <TextView
-                                android:layout_marginEnd="2dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:width="12dp"
-                                android:height="12dp"
-                                android:backgroundTint="@color/feed_item_feed_name_categoria_laranja"
-                                android:background="@drawable/circlestyle"/>
-
-                            <TextView
-                                android:layout_marginEnd="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Análise"
-                                android:paddingStart="4dp"
-                                android:textColor="@color/white"
-
-                                />
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:id="@+id/recusado"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center">
+                        android:textColor="@color/white"
+                        android:textSize="14dp"
+                        />
 
 
-                            <TextView
-                                android:layout_marginEnd="2dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:width="12dp"
-                                android:height="12dp"
-                                android:backgroundTint="@color/vermelho"
-                                android:background="@drawable/circlestyle"/>
+                    <TextView
+                        android:id="@+id/gestao_perguntas_publicacoes"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:text="Informações"
 
-                            <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Recusado"
-                                android:paddingStart="4dp"
-                                android:textColor="@color/white"
-                                />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
+                        android:textColor="@color/darkerGray"
+                        android:textSize="14dp"
+                        />
 
 
                 </LinearLayout>
-
                 <LinearLayout
+                    android:id="@+id/sublinhado_veterano"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -266,7 +142,7 @@
                         android:layout_weight="1"
                         android:layout_height="8dp"
                         android:background="@color/teal_200"
-                        android:visibility="invisible"
+                        android:visibility="visible"
                         />
 
                     <TextView
@@ -291,12 +167,139 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="14dp"
+        android:paddingVertical="12dp"
         android:orientation="horizontal"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="0dp"
+
         >
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+
+            <LinearLayout
+                android:id="@+id/enviado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="12dp"
+                    android:height="12dp"
+                    android:layout_marginEnd="2dp"
+                    android:backgroundTint="@color/login_esqueceu_senha"
+                    android:background="@drawable/circlestyle"/>
+
+                <TextView
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enviado"
+                    android:paddingStart="4dp"
+                    android:textColor="@color/dark_blue"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/analise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_marginEnd="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="12dp"
+                    android:height="12dp"
+                    android:backgroundTint="@color/feed_item_feed_name_categoria_laranja"
+                    android:background="@drawable/circlestyle"/>
+
+                <TextView
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Análise"
+                    android:paddingStart="4dp"
+                    android:textColor="@color/dark_blue"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/aprovado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="12dp"
+                    android:height="12dp"
+                    android:layout_marginEnd="2dp"
+                    android:backgroundTint="@color/teal_200"
+                    android:background="@drawable/circlestyle"/>
+
+                <TextView
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aprovado"
+                    android:paddingStart="4dp"
+                    android:textColor="@color/dark_blue"
+
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/recusado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+
+                <TextView
+                    android:layout_marginEnd="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="12dp"
+                    android:height="12dp"
+                    android:backgroundTint="@color/vermelho"
+                    android:background="@drawable/circlestyle"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recusado"
+                    android:paddingStart="4dp"
+                    android:textColor="@color/dark_blue"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -317,7 +320,18 @@
             android:layout_height="wrap_content"
             android:entries="@array/filter"
             android:paddingHorizontal="10dp"
-            android:paddingVertical="15dp"
+            android:paddingVertical="5dp"
+
+            />
+
+        <Spinner
+            android:id="@+id/id_spinner_veterano"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/filterVeterano"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+
             />
 
 

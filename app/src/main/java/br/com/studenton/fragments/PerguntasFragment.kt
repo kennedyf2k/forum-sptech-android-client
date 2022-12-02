@@ -1,6 +1,8 @@
 package br.com.studenton.fragments
 
 
+import android.content.res.Resources
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,6 +22,8 @@ import br.com.studenton.services.PerguntasService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Arrays
+import java.util.ResourceBundle
 
 
 class PerguntasFragment : Fragment() {
@@ -28,8 +32,9 @@ class PerguntasFragment : Fragment() {
     private lateinit var rvPerguntas: RecyclerView
 
     private lateinit var filterTodos: MutableList<Publicacao>
-
+    private var acesso = -1
     private lateinit var adpterPerguntasResponse: AdapterPerguntasResponse
+    private lateinit var adapterPerguntas: AdapterPerguntasResponse
 
 
 
@@ -53,28 +58,67 @@ class PerguntasFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        
 
         rvPerguntas = binding.recyclerViewPerguntas
         rvPerguntas.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         rvPerguntas.setHasFixedSize(true)
-
-        adpterPerguntasResponse = AdapterPerguntasResponse()
+        acesso = arguments?.getInt("acesso")!!
+        adpterPerguntasResponse = AdapterPerguntasResponse( acesso )
         rvPerguntas.adapter = adpterPerguntasResponse
 
+        println("ACESSO DA VEZ " + acesso)
 
-        val cRaces = resources.getStringArray(br.com.studenton.R.array.filter)
+        var cRaces = resources.getStringArray(br.com.studenton.R.array.filter)
+        when(acesso){
 
-        for (mString in cRaces) {
-            println("ARRAAAAY" + mString)
+            1 ->   cRaces = resources.getStringArray(br.com.studenton.R.array.filter)
+            2 ->   cRaces = resources.getStringArray(br.com.studenton.R.array.filterVeterano)
+
 
         }
 
-        val spinnerr = binding.idSpinnerPerguntas
+     //   for (mString in cRaces) {
+     //       println("ARRAAAAY" + mString)
+//}
+
+        var spinner = binding.idSpinnerPerguntas
+        if(acesso == 2){
+            spinner = binding.idSpinnerVeterano
+        }else{
+            spinner = binding.idSpinnerPerguntas
+        }
 
 
-        spinnerr.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 println(p0?.selectedItem.toString())
+
+                when(acesso){
+
+                    1 -> {
+                        binding.navTitulo.text = "Minhas Perguntas"
+
+                        binding.enviado.visibility = View.VISIBLE
+
+                        binding.navColaboracoes.visibility = View.GONE
+                        binding.sublinhadoVeterano.visibility = View.GONE
+
+                        binding.idSpinnerVeterano.visibility = View.GONE
+                        binding.idSpinnerPerguntas.visibility = View.VISIBLE
+
+                    }
+
+                    2 -> {
+
+                        binding.navTitulo.text = "Minhas Colaboraçõe"
+
+                        binding.idSpinnerVeterano.visibility = View.VISIBLE
+                        binding.idSpinnerPerguntas.visibility = View.GONE
+
+                    }
+                }
 
                 when(p0?.selectedItem.toString()){
 

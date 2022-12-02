@@ -1,15 +1,19 @@
 package br.com.studenton.adapter
 
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
 import br.com.studenton.domain.Publicacao
 
 class AdapterPerguntasResponse(
+    private val acesso: Int,
 ) : RecyclerView.Adapter<AdapterPerguntasResponse.PerguntaHolder>(){
 
     private var perguntas : MutableList<Publicacao> = mutableListOf()
@@ -27,13 +31,17 @@ class AdapterPerguntasResponse(
         val descricao = itemView.findViewById<TextView>(R.id.txt_desc_pergunta)
         val date_pg = itemView.findViewById<TextView>(R.id.txt_date_pergunta)
         val status_color = itemView.findViewById<TextView>(R.id.status)
-
-
+        val navResposta = itemView.findViewById<TextView>(R.id.gestao_perguntas)
+        val navPublicacao = itemView.findViewById<TextView>(R.id.gestao_perguntas_publicacoes)
+        val navTitulo = itemView.findViewById<TextView>(R.id.nav_titulo)
 
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PerguntaHolder {
+
+
+
         val layoutDoCard = LayoutInflater.from(parent.context).inflate(R.layout.fragment_pergunta_simple_item, parent, false)
         return PerguntaHolder(layoutDoCard)
     }
@@ -47,6 +55,8 @@ class AdapterPerguntasResponse(
 
         var cor = perguntas[position].status
         println("status" + cor)
+
+
 
         when (perguntas[position].status) {
 
@@ -149,5 +159,7 @@ class AdapterPerguntasResponse(
     override fun getItemCount(): Int {
         return perguntas.size
     }
+
+
 
 }
