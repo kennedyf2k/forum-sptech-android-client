@@ -65,7 +65,17 @@ class ConfigurarPerfilFragment : Fragment() {
 
             transaction.commit()
 
+        }
 
+        binding.btnAlterarFoto.setOnClickListener {
+
+            var fragmentDialog = DialogAlterarFotoFragment()
+
+            val fragmentManager = activity?.supportFragmentManager
+
+            fragmentDialog.arguments = bundle
+
+            fragmentDialog.show(fragmentManager!!, "")
         }
     }
 

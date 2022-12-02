@@ -1,5 +1,6 @@
 package br.com.studenton.adapter
 
+import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
 import br.com.studenton.domain.Publicacao
 import br.com.studenton.domain.Salvo
+import br.com.studenton.services.PublicacaoService
 
 class AdapterSalvoResponse(
     private val salvos: List<Publicacao>,
     var onclick: (idPublicacao: Int) -> Unit
     ) : RecyclerView.Adapter<AdapterSalvoResponse.SalvoHolder>(){
+
+    val selectedItems = SparseBooleanArray()
+    private var currentSelectedPos: Int = -1
 
         inner class SalvoHolder(
             private val itemView: View) :
@@ -35,6 +40,11 @@ class AdapterSalvoResponse(
                 cvSalvo.setOnClickListener {
                     onclick.invoke(publicacao.idPublicacao)
                 }
+
+                cvSalvo.setOnLongClickListener {
+                    onItemLongClick?.invoke(adapterPosition)
+                    return@setOnLongClickListener true
+                }
             }
         }
 
@@ -48,6 +58,8 @@ class AdapterSalvoResponse(
         holder.vincular(salvos[position])
 
     }
+
+    var onItemLongClick: ((Int) -> Unit)? = null
 
     override fun getItemCount(): Int {
         return salvos.size

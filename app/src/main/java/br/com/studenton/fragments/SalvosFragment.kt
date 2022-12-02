@@ -1,5 +1,6 @@
 package br.com.studenton.fragments
 
+import android.app.AlertDialog
 import android.net.DnsResolver
 import android.os.Bundle
 import android.util.Log
@@ -65,20 +66,22 @@ class SalvosFragment : Fragment() {
                     }
 
                     val helper = androidx.recyclerview.widget.ItemTouchHelper(
-                        ItemTouchHelper(
-                            androidx.recyclerview.widget.ItemTouchHelper.UP or
-                                    androidx.recyclerview.widget.ItemTouchHelper.DOWN,
-                                    androidx.recyclerview.widget.ItemTouchHelper.LEFT))
+                        ItemTouchHelper(0, androidx.recyclerview.widget.ItemTouchHelper.LEFT))
 
                     helper.attachToRecyclerView(recyclerViewSalvos)
 
-                }
+                    AdapterSalvoResponse(listaSalvos){id -> carregarPublicacao(id)}.onItemLongClick = {
+                        Log.i("Teste", "onItemLongClick")
+                    }
+
+                    }
 
                 override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
                     Log.i("Erro ao chamar publicações", t.stackTraceToString())
                 }
 
             })
+
     }
 
     inner class ItemTouchHelper(dragDirs: Int, swipeDirs: Int): androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback(
@@ -98,7 +101,17 @@ class SalvosFragment : Fragment() {
         }
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            TODO("Not yet implemented")
+
+            val usuario = arguments?.getInt("id")
+
+            listaSalvos.removeAt(viewHolder.adapterPosition)
+            recyclerViewSalvos.adapter?.notifyItemRemoved(viewHolder.adapterPosition)
+
+            val teste = viewHolder as AdapterSalvoResponse.SalvoHolder
+
+           // Log.i("Teste salvos", listaSalvos[teste.adapterPosition].toString())
+
+            apagarSalvo(usuario!!, viewHolder.adapterPosition)
         }
     }
 
@@ -115,6 +128,30 @@ class SalvosFragment : Fragment() {
         transaction.replace(R.id.fragments_container, visualizarSalvo)
 
         transaction.commit()
+    }
+
+    private fun apagarSalvo(idUsuario: Int, idPublicacao: Int){
+
+        Rest.getInstance<SalvarService>().deletarFavorito(idUsuario, idPublicacao).enqueue(
+            object: Callback<Boolean>{
+                override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                    val alerta = AlertDialog.Builder(context!!);
+
+                    alerta.setTitle(R.string.deletar_salvo_title)
+
+                    alerta.setMessage(R.string.deletar_salvo_text)
+
+                    alerta.create().show()
+
+                    Log.i("Resposta:", response.toString())
+                }
+
+                override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+            }
+        )
+
     }
 }
 

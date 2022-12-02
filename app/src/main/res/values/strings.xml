@@ -116,6 +116,14 @@
     <string name="fragment_dialog_sair_btn_cancelar">CANCELAR</string>
     <string name="fragment_dialog_sair_title">Tem certeza que deseja Sair?</string>
 
+    <!-- FRAGMENT DIALOG ALTERAR FOTO DE PERFIL -->
+    <string name="fragment_dialog_alterar_foto_title">Coloque um link de imagem para alterar sua foto de perfil</string>
+    <string name="fragment_dialog_btn_alterar_foto">ALTERAR</string>
+    <string name="fragment_dialog_btn_cancelar_alterar_foto">CANCELAR</string>
+    <string name="alterar_foto_alerta_title">Foto de perfil alterada!</string>
+    <string name="alterar_foto_alerta_text">A sua foto de perfil foi alterada com sucesso.</string>
+    <string name="fragment_dialog_alterar_hint">URL da imagem</string>
+
     <!--  Comentario BottomSheet  -->
     <string name="comentarios_bottomsheet_btn_comentar">Comentar</string>
     <string name="comentarios_bottomsheet_title_comentarios">Comentarios</string>
@@ -126,7 +134,11 @@
     <string name="fragment_criar_publicacao_sucesso">Pergunta realizada com sucesso!</string>
     <string name="fragment_criar_publicacao_length_titulo">Insira pelo menso 5 caracteres</string>
     <string name="fragment_criar_publicacao_length_texto">Insira pelo menso 10 caracteres</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Status Salvo -->
+    <string name="deletar_salvo_title">Publicação salva apagada</string>
+    <string name="deletar_salvo_text">Publicação salva foi apagada com sucesso da sua lista!</string>
+
+
 </resources>
 
