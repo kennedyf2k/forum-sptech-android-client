@@ -8,277 +8,10 @@
     android:orientation="vertical"
     >
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_box_item_feed"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:paddingHorizontal="24dp"
-            android:paddingVertical="14dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-
-                    android:id="@+id/iv_profile_item"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="16dp"
-
-                    android:contentDescription="@string/perfil_description_foto"
-                    android:src="@drawable/profile"
-
-                    />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-
-                            android:id="@+id/tv_name_position_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-
-                            android:layout_marginTop="16dp"
-                            android:maxHeight="100dp"
-
-                            android:textStyle="bold"
-                            tools:text="Daniel"
-
-                            />
-
-                        <TextView
-
-                            android:id="@+id/tv_position_fixed"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:layout_marginStart="3dp"
-
-                            android:layout_marginTop="16dp"
-                            android:text="@string/feed_item_simple_item_meio_respondeu"
-
-                            />
-
-                        <TextView
-
-                            android:id="@+id/tv_name_position_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="3dp"
-                            android:layout_marginTop="16dp"
-                            android:singleLine="true"
-
-                            android:textStyle="bold"
-                            tools:text="Kennedy GFJKDSGKLSD"
-
-                            />
-
-                    </LinearLayout>
-
-                    <TextView
-
-                        android:id="@+id/tv_horas_atras"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        tools:text="Há 4 horas"
-
-                        />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
-
-                <TextView
-
-                    android:id="@+id/tv_tipo_post"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/feed_item_shape_duvida_laranja"
-
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="11sp"
-
-
-                    tools:text="DÚVIDA"
-
-                    />
-
-                <TextView
-
-                    android:id="@+id/tv_categoria_post"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-
-                    android:background="@drawable/feed_item_shape_categoria_laranja"
-                    android:gravity="center"
-                    android:textColor="@color/feed_item_feed_name_categoria_laranja"
-
-                    android:textSize="11sp"
-                    tools:text="SECRETÁRIA"
-
-                    />
-
-            </LinearLayout>
-
-            <TextView
-
-                android:id="@+id/tv_titulo_box"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_marginTop="16dp"
-
-                android:textColor="@color/feed_item_feed_name_titulo"
-
-
-                android:textStyle="bold"
-                tools:text="Pedi meu Bilhete único estudantil mas não sei aonde vai chegar"
-
-                />
-
-
-            <TextView
-
-                android:id="@+id/tv_texto_box"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                tools:text="Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Proin aliquet
-                dapibus fringilla. Maecenas lacus felis,
-                rhoncus in risus at, bibendum imperdiet ligula.Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Proin aliquet
-                dapibus fringilla. Maecenas lacus felis,
-                rhoncus in risus at, bibendum imperdiet ligula.l"
-
-                />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginVertical="16dp"
-                android:background="#6FAEAEB2" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:outlineSpotShadowColor="@color/teal_200">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/feed_item_shape_curtir"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-
-                        android:id="@+id/iv_curtir"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-
-
-                        />
-
-                    <TextView
-
-                        android:id="@+id/tv_numero_curtidas"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
-                        android:textSize="16sp"
-                        tools:text="2"
-
-                        />
-                </LinearLayout>
-
-                <ImageView
-
-                    android:id="@+id/iv_comentar"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="16dp"
-                    android:background="@drawable/feed_item_img_comentario"
-
-                    />
-
-                <TextView
-
-                    android:id="@+id/tv_numero_comentarios"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginStart="5dp"
-                    android:textSize="16sp"
-                    tools:text="2"
-
-                    />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="end">
-
-                    <ImageView
-
-                        android:id="@+id/iv_salvar"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       android:paddingVertical="14dp"
+        android:paddingVertical="14dp"
         android:paddingHorizontal="24dp"
         android:orientation="vertical"
         android:layout_gravity="center">
@@ -299,7 +32,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="16dp"
 
-            />
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -324,7 +57,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginStart="8dp"
 
-                    />
+                        />
 
                     <TextView
 
@@ -363,7 +96,7 @@
                     tools:text="Há 4 horas"
                     android:layout_marginStart="8dp"
 
-                />
+                    />
 
             </LinearLayout>
 
@@ -391,7 +124,7 @@
 
                 android:layout_marginTop="8dp"
 
-            />
+                />
 
             <TextView
 
@@ -409,7 +142,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
 
-            />
+                />
 
         </LinearLayout>
 
@@ -427,17 +160,17 @@
             android:textColor="@color/feed_item_feed_name_titulo"
             android:textStyle="bold"
 
-        />
+            />
 
 
 
-            <TextView
+        <TextView
 
-                android:id="@+id/tv_texto_box"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                tools:text="Lorem ipsum dolor sit amet,
+            android:id="@+id/tv_texto_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            tools:text="Lorem ipsum dolor sit amet,
                 consectetur adipiscing elit. Proin aliquet
                 dapibus fringilla. Maecenas lacus felis,
                 rhoncus in risus at, bibendum imperdiet ligula.Lorem ipsum dolor sit amet,
@@ -445,7 +178,7 @@
                 dapibus fringilla. Maecenas lacus felis,
                 rhoncus in risus at, bibendum imperdiet ligula.l"
 
-                />
+            />
 
 
 
@@ -460,38 +193,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-           >
+            >
 
-           <LinearLayout
-               android:layout_gravity="center"
-               android:gravity="center"
-              android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:background="@drawable/feed_item_shape_curtir"
-               android:orientation="horizontal">
+            <LinearLayout
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/feed_item_shape_curtir"
+                android:orientation="horizontal">
 
-               <ImageView
+                <ImageView
 
-                   android:id="@+id/iv_curtir"
-                   android:layout_width="24dp"
-                   android:layout_height="24dp"
-                   android:layout_gravity="center"
+                    android:id="@+id/iv_curtir"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
 
 
-                   />
+                    />
 
-               <TextView
+                <TextView
 
-                   android:id="@+id/tv_numero_curtidas"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   tools:text="2"
-                   android:textSize="16sp"
-                   android:layout_marginStart="5dp"
-                   android:layout_gravity="center"
+                    android:id="@+id/tv_numero_curtidas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="2"
+                    android:textSize="16sp"
+                    android:layout_marginStart="5dp"
+                    android:layout_gravity="center"
 
-                   />
-           </LinearLayout>
+                    />
+            </LinearLayout>
 
             <ImageView
 
@@ -502,7 +235,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_gravity="center"
 
-            />
+                />
 
             <TextView
 
@@ -514,7 +247,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_gravity="top"
 
-            />
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
