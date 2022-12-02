@@ -36,19 +36,9 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/alterar_senha_atual"
-                    android:padding="8dp"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-
-                    />
 
                 <EditText
-
+                    android:layout_marginTop="10dp"
                     android:id="@+id/et_senha_atual"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -58,6 +48,7 @@
                     android:textStyle="bold"
                     android:layout_marginBottom="4dp"
                     android:inputType="textPassword"
+                    android:background="@android:color/transparent"
                     />
 
 
@@ -78,19 +69,9 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/alterar_senha_nova"
-                    android:padding="8dp"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-
-                    />
 
                 <EditText
-
+                    android:layout_marginTop="10dp"
                     android:id="@+id/et_nova_senha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,6 +81,7 @@
                     android:textStyle="bold"
                     android:layout_marginBottom="4dp"
                     android:inputType="textPassword"
+                    android:background="@android:color/transparent"
 
                     />
             </LinearLayout>
@@ -120,19 +102,10 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <TextView
 
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/alterar_senha_confirmar_nova"
-                    android:padding="8dp"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-
-                />
 
                 <EditText
-
+                    android:layout_marginTop="5dp"
                     android:id="@+id/et_confirmar_nova_senha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -142,6 +115,7 @@
                     android:textStyle="bold"
                     android:layout_marginBottom="4dp"
                     android:inputType="textPassword"
+                    android:background="@android:color/transparent"
 
                     />
 
@@ -151,7 +125,7 @@
         </LinearLayout>
 
         <TextView
-
+            android:gravity="center_horizontal"
             android:id="@+id/tv_msg_erro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
