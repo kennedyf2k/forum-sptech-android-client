@@ -109,7 +109,10 @@
     <string name="esqueceu_senha_senha_nova">Nova senha</string>
     <string name="esqueceu_senha_senha_nova_conf">Confirmar nova senh</string>
     <string name="esqueceu_senha_senha_erro_senhas_nao_batem">Nova senha e confirmar senha não batem</string>
-    <string name="esqueceu_senha_senha_erro_senha_menor_9">A senha deve conter, no mínimo, 9 caracteres</string>
+    <string name="esqueceu_senha_senha_erro_senha_menor_7">A senha deve conter, no mínimo, 7 caracteres</string>
+    <string name="esqueceu_senha_erro_servidor">Acontece um erro inesperado, tente novamente mais tarde</string>
+    <string name="esqueceu_senha_nao_encontrado">Ra e/ou Email não encontrado</string>
+    <string name="esqueceu_senmha_alterada_com_sucesso">Senha alterada com sucesso!</string>
 
     <!--  FRAGMENT DIALOG SAIR  -->
     <string name="fragment_dialog_sair_btn_sair">SAIR</string>

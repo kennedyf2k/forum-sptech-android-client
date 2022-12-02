@@ -124,6 +124,137 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingStart="14dp"
+                    android:paddingBottom="12dp"
+                    android:orientation="horizontal"
+                    >
+
+                    <LinearLayout
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:id="@+id/enviado"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:width="12dp"
+                                android:height="12dp"
+                                android:layout_marginEnd="2dp"
+                                android:backgroundTint="@color/login_esqueceu_senha"
+                                android:background="@drawable/circlestyle"/>
+
+                            <TextView
+                                android:layout_marginEnd="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Enviado"
+                                android:paddingStart="4dp"
+                                android:textColor="@color/white"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/aprovado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:width="12dp"
+                                android:height="12dp"
+                                android:layout_marginEnd="2dp"
+                                android:backgroundTint="@color/teal_200"
+                                android:background="@drawable/circlestyle"/>
+
+                            <TextView
+                                android:layout_marginEnd="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Aprovado"
+                                android:paddingStart="4dp"
+                                android:textColor="@color/white"
+
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/analise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_marginEnd="2dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:width="12dp"
+                                android:height="12dp"
+                                android:backgroundTint="@color/feed_item_feed_name_categoria_laranja"
+                                android:background="@drawable/circlestyle"/>
+
+                            <TextView
+                                android:layout_marginEnd="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Análise"
+                                android:paddingStart="4dp"
+                                android:textColor="@color/white"
+
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/recusado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center">
+
+
+                            <TextView
+                                android:layout_marginEnd="2dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:width="12dp"
+                                android:height="12dp"
+                                android:backgroundTint="@color/vermelho"
+                                android:background="@drawable/circlestyle"/>
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Recusado"
+                                android:paddingStart="4dp"
+                                android:textColor="@color/white"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -166,144 +297,33 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="0dp"
         >
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_marginHorizontal="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
 
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:paddingStart="14dp"
-
-            android:orientation="horizontal"
-            >
-
-            <LinearLayout
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:gravity="center">
-
-                <LinearLayout
-                    android:id="@+id/enviado"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:width="12dp"
-                        android:height="12dp"
-                        android:layout_marginEnd="2dp"
-                        android:backgroundTint="@color/login_esqueceu_senha"
-                        android:background="@drawable/circlestyle"/>
-
-                    <TextView
-                        android:layout_marginEnd="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Enviado"
-                        android:paddingStart="4dp"
-
-
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/aprovado"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:width="12dp"
-                        android:height="12dp"
-                        android:layout_marginEnd="2dp"
-                        android:backgroundTint="@color/teal_200"
-                        android:background="@drawable/circlestyle"/>
-
-                    <TextView
-                        android:layout_marginEnd="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Aprovado"
-                        android:paddingStart="4dp"
-
-
-                        />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/analise"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_marginEnd="2dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:width="12dp"
-                        android:height="12dp"
-                        android:backgroundTint="@color/feed_item_feed_name_categoria_laranja"
-                        android:background="@drawable/circlestyle"/>
-
-                    <TextView
-                        android:layout_marginEnd="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Análise"
-                        android:paddingStart="4dp"
-
-
-                        />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/recusado"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center">
-
-
-                    <TextView
-                        android:layout_marginEnd="2dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:width="12dp"
-                        android:height="12dp"
-                        android:backgroundTint="@color/vermelho"
-                        android:background="@drawable/circlestyle"/>
-
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Recusado"
-                        android:paddingStart="4dp"
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-        </LinearLayout>
+        android:background="@drawable/borda_arredondada_filter"
+        >
 
 
 
+        <Spinner
+            android:id="@+id/id_spinner_perguntas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/filter"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="15dp"
+            />
 
 
     </LinearLayout>
+
+
 
 
     <androidx.recyclerview.widget.RecyclerView

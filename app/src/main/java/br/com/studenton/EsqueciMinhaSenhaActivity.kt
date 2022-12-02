@@ -1,13 +1,19 @@
 package br.com.studenton
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
+import android.widget.Toast
 import br.com.studenton.databinding.ActivityEsqueciMinhaSenhaBinding
 import br.com.studenton.domain.Login
+import br.com.studenton.domain.request.EsqueceuSenhaRequest
 import br.com.studenton.domain.request.TrocarSenhaRequest
 import br.com.studenton.repository.Rest
+import br.com.studenton.services.PerguntasService
 import br.com.studenton.services.UsuarioService
+import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,68 +21,92 @@ import retrofit2.Response
 class EsqueciMinhaSenhaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEsqueciMinhaSenhaBinding
-    private lateinit var ra: String
-    private lateinit var email: String
-    private lateinit var senhaNova: String
-    private lateinit var senhaNovaConf: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_esqueci_minha_senha)
+
+        binding = ActivityEsqueciMinhaSenhaBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
+
+
 
         binding.btnEsqueceuSenhaAlterar.setOnClickListener {
-            if (verificarCampos(binding.etEsqueceuSenhaNovaSenha.text.toString(),
-                    binding.etEsqueceuSenhaConfirmarNovaSenha.text.toString())
-            ){
-                ra = binding.etEsqueceuSenhaRa.text.toString()
-                email = binding.etEsqueceuSenhaEmail.text.toString()
-                senhaNova = binding.etEsqueceuSenhaNovaSenha.text.toString()
-                senhaNovaConf = binding.etEsqueceuSenhaConfirmarNovaSenha.text.toString()
 
-                trazerUsuarios()
+            var campoRa = binding.etEsqueceuSenhaRa
+            var campoEmail = binding.etEsqueceuSenhaEmail
+            var campoSenha = binding.etEsqueceuSenhaNovaSenha
+            var campoSenhaVerificada = binding.etEsqueceuSenhaConfirmarNovaSenha
+
+            val confirmacao = validarCampos(campoRa, campoEmail, campoSenha, campoSenhaVerificada)
+            if (confirmacao == 1){
+                alterarSenha(campoRa.text.toString(), campoEmail.text.toString(), campoSenha.text.toString())
             }
         }
     }
 
 
 
-    private fun verificarUsuario(list: List<Login>){
 
-        for (usuarios in list){
-            if (usuarios.ra.equals(ra) && usuarios.email.equals(email) ){
-//                alterarSenha(usuarios.idUsuario, TrocarSenhaRequest())
+    private fun alterarSenha(ra: String, email: String, senhaNova: String){
+        val body = EsqueceuSenhaRequest(ra, email, senhaNova)
+
+        Rest.getInstance<UsuarioService>().esqueciSenha(body).enqueue(object: Callback<Unit> {
+            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                if (response.isSuccessful()){
+                    Toast.makeText(applicationContext, getString(R.string.esqueceu_senmha_alterada_com_sucesso),
+                        Toast.LENGTH_SHORT).show()
+                    alterarTela()
+                } else if (response.code() == 404){
+                    binding.tvEsqueceuSenhaMsgErro.text = getString(R.string.esqueceu_senha_nao_encontrado)
+                }else if (response.code() == 500){
+                    binding.tvEsqueceuSenhaMsgErro.text = getString(R.string.esqueceu_senha_erro_servidor)
+                }
             }
+
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
+                Log.i("Erro", "ERRO: ${t.message}" )
+                binding.tvEsqueceuSenhaMsgErro.setText(R.string.esqueceu_senha_erro_servidor)
+            }
+        })
+    }
+
+    private fun alterarTela(){
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+
+
+    private fun validarCampos(campoRa: EditText, campoEmail: EditText,
+                              campoSenha: EditText, campoSenhaVerificada: EditText): Int{
+
+        if(campoRa.text.toString().isEmpty()){
+            campoRa.error = getString(R.string.login_erro_obrigatorio)
+            return 0
+        }else if (campoEmail.text.toString().isEmpty()){
+            campoEmail.error = getString(R.string.login_erro_obrigatorio)
+            return 0
+        }else if (campoSenha.text.toString().isEmpty()){
+            campoSenha.error = getString(R.string.login_erro_obrigatorio)
+            return 0
+        }else if (campoSenhaVerificada.text.toString().isEmpty()){
+            campoSenhaVerificada.error = getString(R.string.login_erro_obrigatorio)
+            return 0
+        }else if(campoRa.text.toString().length <= 3){
+            campoRa.error = getString(R.string.login_erro_tamanho_caracteres_ra)
+            return 0
+        } else if (campoSenha.text.toString().length <= 7 ||
+                    campoSenhaVerificada.text.toString().length <= 7){
+            campoSenhaVerificada.error = getString(R.string.esqueceu_senha_senha_erro_senha_menor_7)
+            campoSenha.error = getString(R.string.esqueceu_senha_senha_erro_senha_menor_7)
+            return 0
+        } else if(campoSenha.text.toString() != campoSenhaVerificada.text.toString()){
+            binding.tvEsqueceuSenhaMsgErro.setText(R.string.esqueceu_senha_senha_erro_senhas_nao_batem)
+            return 0
         }
-    }
-
-    private fun alterarSenha(idUsuario : Int, trocarSenha: TrocarSenhaRequest){
-//        Rest.getInstance<UsuarioService>().trocarSenha( )
-    }
-
-    private fun trazerUsuarios(){
-        Rest.getInstance<UsuarioService>().getAllUsuarios()
-            .enqueue(object : Callback<MutableList<Login>> {
-                override fun onResponse(
-                    call: Call<MutableList<Login>>,
-                    response: Response<MutableList<Login>>
-                ) {
-                    verificarUsuario(response.body()!!)
-                }
-
-                override fun onFailure(call: Call<MutableList<Login>>, t: Throwable) {
-                    Log.i("Cannot Get All publicacoes", t.stackTraceToString())
-                }
-            })
-    }
-
-    private fun verificarCampos(senha1: String, senha2: String): Boolean{
-
-        if (senha1.equals(senha2)){
-            return true
-        }
-
-        return false
-
+        return 1
     }
 
 

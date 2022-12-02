@@ -124,18 +124,25 @@
         res/values/array
         e editar o string-array com o name de categorias
         -->
-        <Spinner
-            android:layout_weight="1"
-            android:layout_marginHorizontal="20dp"
-            android:background="@drawable/borda_arredondada"
-            android:id="@+id/id_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:entries="@array/categorias"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="15dp"
-            />
 
+        <LinearLayout
+            android:layout_marginHorizontal="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/borda_arredondada"
+            >
+
+            <Spinner
+                android:id="@+id/id_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/categorias"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="15dp"
+                />
+
+        </LinearLayout>
 
 
         

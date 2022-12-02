@@ -10,8 +10,15 @@ import br.com.studenton.R
 import br.com.studenton.domain.Publicacao
 
 class AdapterPerguntasResponse(
-    private val perguntas: List<Publicacao>) : RecyclerView.Adapter<AdapterPerguntasResponse.PerguntaHolder>(){
+) : RecyclerView.Adapter<AdapterPerguntasResponse.PerguntaHolder>(){
 
+    private var perguntas : MutableList<Publicacao> = mutableListOf()
+
+    fun setarDado(list: MutableList<Publicacao>){
+        perguntas.clear()
+        perguntas.addAll(list)
+        notifyDataSetChanged()
+    }
 
     inner class PerguntaHolder(
         private val itemView: View ) : RecyclerView.ViewHolder(itemView) {
@@ -22,7 +29,9 @@ class AdapterPerguntasResponse(
         val status_color = itemView.findViewById<TextView>(R.id.status)
 
 
+
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PerguntaHolder {
         val layoutDoCard = LayoutInflater.from(parent.context).inflate(R.layout.fragment_pergunta_simple_item, parent, false)

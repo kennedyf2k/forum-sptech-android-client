@@ -14,4 +14,12 @@
         <item>Formatura</item>
     </string-array>
 
+    <string-array name="filter" >
+        <item>Todos</item>
+        <item>Enviados</item>
+        <item>Em análises</item>
+        <item>Aprovados</item>
+        <item>Recusados</item>
+    </string-array>
+
 </resources>
