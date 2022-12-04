@@ -10,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Spinner
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
+import br.com.studenton.VisualizarPerguntaFragment
 import br.com.studenton.adapter.AdapterPerguntasResponse
 import br.com.studenton.databinding.FragmentPerguntasBinding
 
@@ -65,7 +67,7 @@ class PerguntasFragment : Fragment() {
         rvPerguntas.setHasFixedSize(true)
         acesso = arguments?.getInt("acesso")!!
         idUsuario = arguments?.getInt("idUsuario")!!
-        adpterPerguntasResponse = AdapterPerguntasResponse( acesso, idUsuario)
+        adpterPerguntasResponse = AdapterPerguntasResponse( acesso, idUsuario){id, status, acesso -> carregarPublicacao(id, status, acesso)}
         rvPerguntas.adapter = adpterPerguntasResponse
 
         println("ACESSO DA VEZ " + acesso + " USUARIO " + idUsuario)
@@ -327,6 +329,21 @@ class PerguntasFragment : Fragment() {
         }
 
 
+    }
+
+    private fun carregarPublicacao(idPublicacao: Int, status: Int, acesso: Int){
+
+        val fragmentManager = activity?.supportFragmentManager
+
+        val transaction = fragmentManager!!.beginTransaction()
+
+        val visualizarPergunta = VisualizarPerguntaFragment()
+
+        visualizarPergunta.arguments = bundleOf("id" to idPublicacao, "status" to status, "acesso" to acesso)
+
+        transaction.replace(R.id.fragments_container, visualizarPergunta)
+
+        transaction.commit()
     }
 
 }

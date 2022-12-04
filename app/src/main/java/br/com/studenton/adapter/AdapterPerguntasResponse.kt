@@ -15,6 +15,7 @@ import br.com.studenton.domain.Publicacao
 class AdapterPerguntasResponse(
     private val acesso: Int,
     private val idUsuario: Int,
+    var onclick: (idPublicacao: Int, status: Int, acesso: Int) -> Unit
 ) : RecyclerView.Adapter<AdapterPerguntasResponse.PerguntaHolder>(){
 
     private var perguntas : MutableList<Publicacao> = mutableListOf()
@@ -32,6 +33,7 @@ class AdapterPerguntasResponse(
         val descricao = itemView.findViewById<TextView>(R.id.txt_desc_pergunta)
         val date_pg = itemView.findViewById<TextView>(R.id.txt_date_pergunta)
         val status_color = itemView.findViewById<TextView>(R.id.status)
+        val card_pergunta = itemView.findViewById<CardView>(R.id.cvPergunta)
 
 
     }
@@ -151,6 +153,10 @@ class AdapterPerguntasResponse(
             }
         }else if(semanas >= 5 ){
             holder.date_pg.text = "${dia} ${mes}"
+        }
+
+        holder.card_pergunta.setOnClickListener {
+            onclick.invoke(perguntas[position].idPublicacao, perguntas[position].status, acesso)
         }
 
     }
