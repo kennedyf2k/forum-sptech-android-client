@@ -250,6 +250,8 @@ class VisualizarPerguntaFragment : Fragment() {
                                                 response.body()!!.respostasByIdPublicacao[0].nomeUsuario
                                             binding.tvRespostaPergunta.text =
                                                 response.body()!!.respostasByIdPublicacao[0].texto
+                                            Glide.with(activity!!.baseContext).load(response.body()!!.respostasByIdPublicacao[0].fotoUsuario).into(binding.ivProfileItemResposta)
+
                                         }
 
                                         else -> {
@@ -288,7 +290,7 @@ class VisualizarPerguntaFragment : Fragment() {
 
                         }
                     }
-
+                    Glide.with(activity!!.baseContext).load(response.body()!!.respostasByIdPublicacao[0].fotoUsuario).into(binding.ivProfileItemResposta)
                     Glide.with(activity!!.baseContext).load(response.body()!!.fotoUsuario).into(binding.ivProfileItem)
                     binding.tvHorasAtras.text = "Há ${response.body()!!.diasAtras.toString()} dias"
                     binding.tvCategoriaPost.text = response.body()!!.categoria
