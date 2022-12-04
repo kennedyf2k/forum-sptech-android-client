@@ -2,7 +2,6 @@ package br.com.studenton
 
 import android.app.Activity
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,27 +27,32 @@ class LoginActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        var campoRa = binding.tiInputRa
-        var campoSenha = binding.tiInputSenha
+        val campoRa = binding.tiInputRa
+        val campoSenha = binding.tiInputSenha
 
         binding.btnAcessar.setOnClickListener {
 
-            val nResponse = validarCampos(campoRa, campoSenha)
+            when (validarCampos(campoRa, campoSenha)) {
 
-            if(nResponse == 0){
+                0 -> {
 
-                login(campoRa.text.toString(), campoSenha.text.toString())
+                    login(campoRa.text.toString(), campoSenha.text.toString())
 
-            }else if(nResponse == 1){
+                }
 
-                campoRa.error = getString(R.string.login_erro_obrigatorio)
-                campoSenha.error = getString(R.string.login_erro_obrigatorio)
+                1 -> {
 
-            }else{
+                    campoRa.error = getString(R.string.login_erro_obrigatorio)
+                    campoSenha.error = getString(R.string.login_erro_obrigatorio)
 
-                campoRa.error = getString(R.string.login_erro_tamanho_caracteres_ra)
-                campoSenha.error =  getString(R.string.login_erro_tamanho_caracteres_senha)
+                }
 
+                else -> {
+
+                    campoRa.error = getString(R.string.login_erro_tamanho_caracteres_ra)
+                    campoSenha.error =  getString(R.string.login_erro_tamanho_caracteres_senha)
+
+                }
             }
 
         }
@@ -62,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login(ra: String, senha: String){
 
-        val body = LoginRequest(ra, senha);
+        val body = LoginRequest(ra, senha)
 
         Rest.getInstance<LoginService>().login(body).enqueue(object: Callback<Login> {
             override fun onResponse(call: Call<Login>, response: Response<Login>) {
@@ -110,22 +114,22 @@ class LoginActivity : AppCompatActivity() {
 
         val preferences = getSharedPreferences(
             "DADOS_CLIENTE",
-            AppCompatActivity.MODE_PRIVATE
+            MODE_PRIVATE
         )
 
-        var editor = preferences.edit();
+        val editor = preferences.edit()
 
-        editor.putInt("idUsuario", dados.idUsuario);
-        editor.putString("ra", dados.ra);
-        editor.putString("nome", dados.nome);
-        editor.putString("email", dados.email);
-        editor.putString("curso", dados.curso);
-        editor.putInt("semestre", dados.semestre);
-        editor.putString("fotoPerfil", dados.fotoPerfil);
-        editor.putInt("fkAcesso", dados.fkAcesso);
-        editor.putBoolean("checkEmail", dados.checkEmail);
-        editor.putBoolean("autenticado", dados.autenticado);
-        editor.putInt("acesso", dados.fkAcesso);
+        editor.putInt("idUsuario", dados.idUsuario)
+        editor.putString("ra", dados.ra)
+        editor.putString("nome", dados.nome)
+        editor.putString("email", dados.email)
+        editor.putString("curso", dados.curso)
+        editor.putInt("semestre", dados.semestre)
+        editor.putString("fotoPerfil", dados.fotoPerfil)
+        editor.putInt("fkAcesso", dados.fkAcesso)
+        editor.putBoolean("checkEmail", dados.checkEmail)
+        editor.putBoolean("autenticado", dados.autenticado)
+        editor.putInt("acesso", dados.fkAcesso)
 
         editor.apply()
 

@@ -1,6 +1,5 @@
 package br.com.studenton.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +21,7 @@ class CriarPerguntaFragment : Fragment() {
 
     private lateinit var binding: FragmentCriarPerguntaBinding
     private lateinit var bundle: Bundle
-    private var idUssuario = -1
+    private var idUsuario = -1
     private var acesso = -1
 
     override fun onCreateView(
@@ -54,8 +53,8 @@ class CriarPerguntaFragment : Fragment() {
         }
 
         binding.criarPergunta.setOnClickListener {
-            var titulo = binding.etTituloPergunta.text.toString()
-            var conteudo = binding.etConteudoPergunta.text.toString()
+            val titulo = binding.etTituloPergunta.text.toString()
+            val conteudo = binding.etConteudoPergunta.text.toString()
             val spinnerr = binding.idSpinner
             val spinner2= spinnerr.selectedItem.toString()
             val categoria: String = spinner2
@@ -68,7 +67,7 @@ class CriarPerguntaFragment : Fragment() {
 
 
     private fun verificarCampos(titulo: String, conteudo: String, categoria: String){
-        var idCategoria: Int = 0
+        var idCategoria = 0
         if (categoria != "Selecione uma cetegoria"){
             when(categoria){
                 "SPTrans" -> idCategoria = 1
@@ -96,7 +95,7 @@ class CriarPerguntaFragment : Fragment() {
     }
 
     private fun criarPergunta(titulo: String, idCategoria: Int, conteudo: String){
-        var body: PublicacaoRequest = PublicacaoRequest(titulo, conteudo, idCategoria, 0, idUssuario, 0)
+        val body = PublicacaoRequest(titulo, conteudo, idCategoria, 0, idUsuario, 0)
         if (acesso == 1){
             body.tipoPublicacao = 2
             body.status = 1
@@ -107,7 +106,7 @@ class CriarPerguntaFragment : Fragment() {
         }
 
 
-        Rest.getInstance<PerguntasService>().createPergunta(body).enqueue(object : Callback<Unit> {
+        Rest.getInstanceByAws<PerguntasService>().createPergunta(body).enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
 
                 if (response.isSuccessful) {
@@ -149,7 +148,7 @@ class CriarPerguntaFragment : Fragment() {
 
 
     private fun setarDados(){
-        idUssuario = arguments?.getInt("id")!!
+        idUsuario = arguments?.getInt("id")!!
         acesso = arguments?.getInt("acesso")!!
         bundle = bundleOf(
 

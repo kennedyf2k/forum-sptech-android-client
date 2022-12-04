@@ -42,17 +42,23 @@ class FeedFragment : Fragment() {
 
     private lateinit var binding: FragmentFeedBinding
     private lateinit var selectionTracker: SelectionTracker<Long>
+    private lateinit var bottomNav: String
+
     private lateinit var rvFeed: RecyclerView
     private lateinit var rvCategorias: RecyclerView
     private lateinit var rvRespostas: RecyclerView
+
     private lateinit var categorias: MutableList<Categoria>
-    private lateinit var bundle: Bundle
     private lateinit var publicacoes: MutableList<Publicacao>
+
+    private lateinit var bundle: Bundle
 
     private var idUsuario = -1
     private var acesso = -1
+
     private lateinit var adapterPublicacoes: AdapterPublicacaoResponse
     private lateinit var adapterRespostaResponse: AdapterRespostaResponse
+    private lateinit var adapterFiltros: AdapterCategoriaResponse
 
     companion object {
 
@@ -77,6 +83,8 @@ class FeedFragment : Fragment() {
         idUsuario = arguments?.getInt("id")!!
 
         acesso = arguments?.getInt("acesso")!!
+
+        bottomNav = "relevante"
 
         adapterPublicacoes = AdapterPublicacaoResponse(activity?.baseContext!!, idUsuario, acesso,{
                 id -> curtir(id)
@@ -106,8 +114,6 @@ class FeedFragment : Fragment() {
         }
 
         binding.bottomNav.setOnItemSelectedListener { setarFeedByBottomNavigation(it.itemId) }
-
-        var adapterFiltros: AdapterCategoriaResponse
 
         Rest.getInstance<CategoriaService>().categorias()
             .enqueue(object : Callback<MutableList<Categoria>> {
@@ -186,64 +192,83 @@ class FeedFragment : Fragment() {
 
     private fun setarFeedByCategoria(idCategoria: Int?) {
 
+        if (idCategoria == -1 || idCategoria == null) {
 
-            if (idCategoria == -1 || idCategoria == null) {
+            if(bottomNav == "relevante"){
+
                 setarFeedByBottomNavigation(R.id.feed_menu_relevante)
 
-            } else {
+            }else{
 
-                Rest.getInstance<PublicacaoService>().getpublicacoesByCategoria(idCategoria)
-                    .enqueue(object : Callback<MutableList<Publicacao>> {
+                setarFeedByBottomNavigation(R.id.feed_menu_colaboracoes)
 
-                        override fun onResponse(
-                            call: Call<MutableList<Publicacao>>,
-                            response: Response<MutableList<Publicacao>>,
-                        ) {
-
-                            if(response.body().isNullOrEmpty()){
-
-                                binding.shimmerFrameLayout.stopShimmerAnimation()
-                                binding.shimmerFrameLayout.visibility = View.GONE
-
-                                rvFeed.visibility = View.GONE
-                                binding.llImgSemPublicacao.visibility = View.VISIBLE
-
-                            }else {
-
-
-
-                                adapterPublicacoes.setData(response.body()!!)
-
-                                binding.shimmerFrameLayout.stopShimmerAnimation()
-                                binding.shimmerFrameLayout.visibility = View.GONE
-                                binding.llImgSemPublicacao.visibility = View.GONE
-                                binding.feedSelectedRigth.visibility = View.INVISIBLE
-                                binding.feedSelectedLeft.visibility = View.INVISIBLE
-
-                                rvFeed.visibility = View.VISIBLE
-
-
-                            }
-
-                        }
-
-                        override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
-
-                            Log.i("Cannot Get publicacoesByCategoria", t.stackTraceToString())
-
-                        }
-
-                    })
             }
+
+
+        } else {
+
+            val lista = mutableListOf<Publicacao>()
+
+            for (pubDaVez in publicacoes){
+
+                if(pubDaVez.fkCategoria == idCategoria){
+                    lista.add(pubDaVez)
+                }
+
+            }
+
+            if(lista.isEmpty()){
+
+                binding.shimmerFrameLayout.stopShimmerAnimation()
+                binding.shimmerFrameLayout.visibility = View.GONE
+
+                rvFeed.visibility = View.GONE
+                binding.llImgSemPublicacao.visibility = View.VISIBLE
+
+            }else {
+
+                adapterPublicacoes.setData(lista)
+
+                binding.shimmerFrameLayout.stopShimmerAnimation()
+                binding.shimmerFrameLayout.visibility = View.GONE
+                binding.llImgSemPublicacao.visibility = View.GONE
+
+                if(bottomNav == "relevante"){
+
+                    binding.feedSelectedRigth.visibility = View.INVISIBLE
+                    binding.feedSelectedLeft.visibility = View.VISIBLE
+
+                }else{
+
+                    binding.feedSelectedRigth.visibility = View.VISIBLE
+                    binding.feedSelectedLeft.visibility = View.INVISIBLE
+
+                }
+
+                rvFeed.visibility = View.VISIBLE
+
+            }
+        }
     }
 
     private fun setarFeedByBottomNavigation(itemId: Int): Boolean{
+
+        binding.shimmerFrameLayout.startShimmerAnimation()
+        binding.shimmerFrameLayout.visibility = View.VISIBLE
+        binding.llImgSemPublicacao.visibility = View.GONE
+        binding.rvFeed.visibility = View.GONE
 
         when(itemId){
 
             R.id.feed_menu_colaboracoes -> {
 
-                Rest.getInstance<PublicacaoService>().getMinhasPublicacoes(idUsuario)
+                bottomNav = "colab"
+
+                binding.feedSelectedRigth.visibility = View.VISIBLE
+                binding.feedSelectedLeft.visibility = View.INVISIBLE
+                adapterFiltros.setCategoriaTodas()
+
+                Rest.getInstance<PublicacaoService>().getMinhasColaboracoes(idUsuario)
                     .enqueue(object : Callback<MutableList<Publicacao>> {
 
                         override fun onResponse(
@@ -251,27 +276,14 @@ class FeedFragment : Fragment() {
                             response: Response<MutableList<Publicacao>>,
                         ) {
 
-                            binding.feedSelectedRigth.visibility = View.VISIBLE
-                            binding.feedSelectedLeft.visibility = View.INVISIBLE
+                            publicacoes = response.body()!!
 
-                            binding.shimmerFrameLayout.visibility = View.VISIBLE
-                            binding.shimmerFrameLayout.startShimmerAnimation()
-
-                            binding.rvFeed.visibility = View.GONE
+                            adapterPublicacoes.setData(publicacoes)
 
                             binding.shimmerFrameLayout.stopShimmerAnimation()
                             binding.shimmerFrameLayout.visibility = View.GONE
                             binding.llImgSemPublicacao.visibility = View.GONE
-
                             rvFeed.visibility = View.VISIBLE
-
-                            var lista = mutableListOf<Publicacao>()
-                            for (perguntaDaVez in response.body()!!){
-                                if (perguntaDaVez.status == 3){
-                                    lista.add(perguntaDaVez)
-                                }
-                            }
-                            adapterPublicacoes.setData(lista)
 
                         }
 
@@ -284,6 +296,12 @@ class FeedFragment : Fragment() {
 
             R.id.feed_menu_relevante -> {
 
+                bottomNav = "relevante"
+
+                binding.feedSelectedRigth.visibility = View.INVISIBLE
+                binding.feedSelectedLeft.visibility = View.VISIBLE
+                adapterFiltros.setCategoriaTodas()
+
                 Rest.getInstance<PublicacaoService>().getAllpublicacoes()
                     .enqueue(object : Callback<MutableList<Publicacao>> {
 
@@ -291,25 +309,17 @@ class FeedFragment : Fragment() {
                             call: Call<MutableList<Publicacao>>,
                             response: Response<MutableList<Publicacao>>,
                         ) {
-
-                            binding.feedSelectedRigth.visibility = View.INVISIBLE
-                            binding.feedSelectedLeft.visibility = View.VISIBLE
-
-                            binding.shimmerFrameLayout.visibility = View.VISIBLE
-                            binding.shimmerFrameLayout.startShimmerAnimation()
-
-                            binding.rvFeed.visibility = View.GONE
-
-                            publicacoes = response.body()!!
                             val lista = mutableListOf<Publicacao>()
-                            for (perguntaDaVez in publicacoes){
+
+                            for (perguntaDaVez in  response.body()!!){
                                 if (perguntaDaVez.status == 3){
                                     lista.add(perguntaDaVez)
                                 }
                             }
 
+                            publicacoes = lista
 
-                            adapterPublicacoes.setData(lista)
+                            adapterPublicacoes.setData(publicacoes)
 
                             binding.shimmerFrameLayout.stopShimmerAnimation()
                             binding.shimmerFrameLayout.visibility = View.GONE
@@ -322,10 +332,8 @@ class FeedFragment : Fragment() {
                         override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
                             Log.i("Cannot Get All publicacoes", t.stackTraceToString())
                         }
-
                     })
             }
-
         }
         return true
     }
@@ -336,14 +344,14 @@ class FeedFragment : Fragment() {
 
             .enqueue(object: Callback<Boolean>{
 
-            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
 
-            }
+                }
 
-            override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                Log.i("ERRO", t.stackTraceToString())
-            }
-        })
+                override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                    Log.i("ERRO", t.stackTraceToString())
+                }
+            })
     }
 
     private fun salvar(idPublicacao: Int){

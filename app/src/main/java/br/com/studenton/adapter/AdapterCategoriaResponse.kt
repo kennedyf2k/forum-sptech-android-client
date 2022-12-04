@@ -19,7 +19,7 @@ class AdapterCategoriaResponse(
     private val categorias: MutableList<Categoria>,
     val onclick: (idPublicacao: Int) -> Unit
 
-    ): RecyclerView.Adapter<AdapterCategoriaResponse.CategoriaViewHolder>() {
+): RecyclerView.Adapter<AdapterCategoriaResponse.CategoriaViewHolder>() {
 
     lateinit var selectionTracker: SelectionTracker<Long>
 
@@ -61,8 +61,7 @@ class AdapterCategoriaResponse(
                 button.setBackgroundColor( ContextCompat.getColor(itemView.context, R.color.feed_button_categoria_selected) )
                 button.setTextColor( ContextCompat.getColor(itemView.context, R.color.white))
                 itemView.isActivated = true
-                Log.i("Cliquei", "ID: ${categoriaDetails.selectionKey}")
-                Log.i("Cliquei", "ID: ${selectionTracker.selection}")
+
                 onclick.invoke(categoriaDetails.selectionKey.toInt())
 
             }else{
@@ -71,17 +70,22 @@ class AdapterCategoriaResponse(
                 button.setTextColor( ContextCompat.getColor(itemView.context, R.color.feed_button_categoria_not_selected_text))
 
                 itemView.isActivated = false
-                Log.i("desCliquei", "ID: ${selectionTracker.selection}")
 
                 if(selectionTracker.selection.size() == 0){
 
-                    val idTodas = -1
-
-                    selectionTracker.select(idTodas.toLong())
-                    onclick.invoke(idTodas)
+                    setCategoriaTodas()
+                    onclick.invoke(-1)
                 }
 
             }
         }
+    }
+
+    fun setCategoriaTodas(){
+
+        val idTodas = -1
+
+        selectionTracker.select(idTodas.toLong())
+
     }
 }

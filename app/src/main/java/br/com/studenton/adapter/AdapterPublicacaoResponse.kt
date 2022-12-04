@@ -1,5 +1,6 @@
 package br.com.studenton.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -28,6 +29,7 @@ class AdapterPublicacaoResponse(
 
     private var publicacoes: MutableList<Publicacao> = mutableListOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(list: List<Publicacao>) {
         publicacoes.clear()
         publicacoes.addAll(list)

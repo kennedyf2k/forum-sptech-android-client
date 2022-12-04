@@ -146,6 +146,8 @@
     <!-- PERGUNTAS -->
     <string name="perguntas_menu_respostas">Minhas Respostas</string>
     <string name="perguntas_menu_informacoes">Minhas Publicações</string>
+    <string name="perguntas_nav_titulo_minhas_perguntas">Minhas Perguntas</string>
+    <string name="perguntas_nav_titulo_minhas_colaboracoes">Minhas Colaborações</string>
     <string name="feed_item_simple_item_publicou_duvida">publicou uma dúvida</string>
     <string name="status_analise_pergunta">A resposta ficará visível após aprovação</string>
     <string name="status_pergunta_recusado">RECUSADO: Pergunta infringe as diretrizes da comunidade.</string>

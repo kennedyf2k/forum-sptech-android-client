@@ -1,8 +1,5 @@
 package br.com.studenton.fragments
 
-
-import android.content.res.Resources
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -21,38 +18,26 @@ import br.com.studenton.databinding.FragmentPerguntasBinding
 
 import br.com.studenton.domain.Publicacao
 import br.com.studenton.repository.Rest
-import br.com.studenton.services.PerguntasService
 import br.com.studenton.services.PublicacaoService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.Arrays
-import java.util.ResourceBundle
-
 
 class PerguntasFragment : Fragment() {
 
     private lateinit var binding: FragmentPerguntasBinding
     private lateinit var rvPerguntas: RecyclerView
-
     private lateinit var filterTodos: MutableList<Publicacao>
     private var acesso = -1
     private var idUsuario = -1
     private lateinit var adpterPerguntasResponse: AdapterPerguntasResponse
-    private lateinit var adapterPerguntas: AdapterPerguntasResponse
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
+    private lateinit var btnNav: String
+    private lateinit var spinner: Spinner
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentPerguntasBinding.inflate(inflater)
 
 
@@ -65,39 +50,30 @@ class PerguntasFragment : Fragment() {
         rvPerguntas = binding.recyclerViewPerguntas
         rvPerguntas.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         rvPerguntas.setHasFixedSize(true)
+
+        btnNav = "resposta"
+
         acesso = arguments?.getInt("acesso")!!
-        idUsuario = arguments?.getInt("idUsuario")!!
-        adpterPerguntasResponse = AdapterPerguntasResponse( acesso, idUsuario){id, status, acesso -> carregarPublicacao(id, status, acesso)}
+        idUsuario = arguments?.getInt("id")!!
+
+        adpterPerguntasResponse = AdapterPerguntasResponse( acesso, idUsuario)
+        {id, status, acesso -> carregarPublicacao(id, status, acesso)}
+
         rvPerguntas.adapter = adpterPerguntasResponse
 
-        println("ACESSO DA VEZ " + acesso + " USUARIO " + idUsuario)
+        println("ACESSO DA VEZ $acesso USUARIO $idUsuario")
 
-        var cRaces = resources.getStringArray(br.com.studenton.R.array.filter)
-        when(acesso){
+        binding.bottomNav2.setOnItemSelectedListener { filtrarPerguntasVet(it.itemId) }
 
-            1 ->   cRaces = resources.getStringArray(br.com.studenton.R.array.filter)
-            2 ->   cRaces = resources.getStringArray(br.com.studenton.R.array.filterVeterano)
+        spinner = if(acesso == 2){
 
+            binding.idSpinnerVeterano
 
-        }
-
-       binding.bottomNav2.setOnItemSelectedListener { filtrarPerguntasVet(it.itemId) }
-
-        var respostas = true
-
-     //   for (mString in cRaces) {
-     //       println("ARRAAAAY" + mString)
-//}
-
-        var spinner = binding.idSpinnerVeterano
-        if(acesso == 2){
-            spinner = binding.idSpinnerVeterano
         }else{
-            spinner = binding.idSpinnerPerguntas
+
+            binding.idSpinnerPerguntas
+
         }
-
-
-
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -106,7 +82,7 @@ class PerguntasFragment : Fragment() {
                 when(acesso){
 
                     1 -> {
-                        binding.navTitulo.text = "Minhas Perguntas"
+                        binding.navTitulo.text = getString(R.string.perguntas_nav_titulo_minhas_perguntas)
 
                         binding.enviado.visibility = View.VISIBLE
 
@@ -120,7 +96,7 @@ class PerguntasFragment : Fragment() {
 
                     2 -> {
 
-                        binding.navTitulo.text = "Minhas Colaborações"
+                        binding.navTitulo.text = getString(R.string.perguntas_nav_titulo_minhas_colaboracoes)
                         binding.idSpinnerVeterano.visibility = View.VISIBLE
                         binding.idSpinnerPerguntas.visibility = View.GONE
                         binding.sublinhadoCalouro.visibility = View.GONE
@@ -132,15 +108,19 @@ class PerguntasFragment : Fragment() {
 
                     "Todos" -> {
 
+                        if(btnNav == "resposta"){
 
+                            filtrarPerguntasVet(R.id.perguntas_menu_respostas)
 
-                      filtrarTodos()
+                        }else{
 
+                            filtrarPerguntasVet(R.id.perguntas_menu_informaçoes)
 
-
+                        }
                     }
+
                     "Enviados" -> {
-                        var lista = mutableListOf<Publicacao>()
+                        val lista = mutableListOf<Publicacao>()
                         for (perguntaDaVez in filterTodos){
                             if (perguntaDaVez.status == 1){
                                 lista.add(perguntaDaVez)
@@ -148,8 +128,9 @@ class PerguntasFragment : Fragment() {
                         }
                         adpterPerguntasResponse.setarDado(lista)
                     }
+
                     "Em análises" -> {
-                        var lista = mutableListOf<Publicacao>()
+                        val lista = mutableListOf<Publicacao>()
                         for (perguntaDaVez in filterTodos){
                             if (perguntaDaVez.status == 2){
                                 lista.add(perguntaDaVez)
@@ -157,8 +138,9 @@ class PerguntasFragment : Fragment() {
                         }
                         adpterPerguntasResponse.setarDado(lista)
                     }
+
                     "Aprovados" -> {
-                        var lista = mutableListOf<Publicacao>()
+                        val lista = mutableListOf<Publicacao>()
                         for (perguntaDaVez in filterTodos){
                             if (perguntaDaVez.status == 3){
                                 lista.add(perguntaDaVez)
@@ -166,8 +148,9 @@ class PerguntasFragment : Fragment() {
                         }
                         adpterPerguntasResponse.setarDado(lista)
                     }
+
                     "Recusados" -> {
-                        var lista = mutableListOf<Publicacao>()
+                        val lista = mutableListOf<Publicacao>()
                         for (perguntaDaVez in filterTodos){
                             if (perguntaDaVez.status >= 4){
                                 lista.add(perguntaDaVez)
@@ -175,10 +158,7 @@ class PerguntasFragment : Fragment() {
                         }
                         adpterPerguntasResponse.setarDado(lista)
                     }
-
-
                 }
-
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -194,7 +174,9 @@ class PerguntasFragment : Fragment() {
 
             R.id.perguntas_menu_respostas -> {
 
-                Rest.getInstance<PerguntasService>().getPergunta(idUsuario)
+                spinner.setSelection(0)
+
+                Rest.getInstance<PublicacaoService>().getMinhasColaboracoes(idUsuario)
                     .enqueue(object : Callback<MutableList<Publicacao>> {
 
                         override fun onResponse(
@@ -202,17 +184,19 @@ class PerguntasFragment : Fragment() {
                             response: Response<MutableList<Publicacao>>,
                         ) {
 
-                            filterTodos = response.body()!!
+                            val lista = mutableListOf<Publicacao>()
 
-                            var lista = mutableListOf<Publicacao>()
-                            for (perguntaDaVez in filterTodos){
+                            for (perguntaDaVez in response.body()!!){
                                 if (perguntaDaVez.tipoPublicacao == 2){
                                     lista.add(perguntaDaVez)
                                 }
                             }
+
+                            filterTodos = lista
+
                             adpterPerguntasResponse.setarDado(lista)
 
-
+                            btnNav = "resposta"
                         }
 
                         override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
@@ -224,7 +208,9 @@ class PerguntasFragment : Fragment() {
 
             R.id.perguntas_menu_informaçoes -> {
 
-                Rest.getInstance<PublicacaoService>().getAllpublicacoes()
+                spinner.setSelection(0)
+
+                Rest.getInstance<PublicacaoService>().getMinhasColaboracoes(idUsuario)
                     .enqueue(object : Callback<MutableList<Publicacao>> {
 
                         override fun onResponse(
@@ -232,103 +218,28 @@ class PerguntasFragment : Fragment() {
                             response: Response<MutableList<Publicacao>>,
                         ) {
 
-                            filterTodos = response.body()!!
-
-                            var lista = mutableListOf<Publicacao>()
-                            for (perguntaDaVez in filterTodos){
+                            val lista = mutableListOf<Publicacao>()
+                            for (perguntaDaVez in response.body()!!){
                                 if (perguntaDaVez.tipoPublicacao == 1){
                                     lista.add(perguntaDaVez)
                                 }
                             }
+
+                            filterTodos = lista
+
                             adpterPerguntasResponse.setarDado(lista)
 
-
+                            btnNav = "info"
 
                         }
 
                         override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
                             Log.i("Cannot Get All publicacoes", t.stackTraceToString())
                         }
-
                     })
             }
-
         }
         return true
-
-
-
-    }
-
-    private fun filtrarTodos(){
-
-        when(acesso){
-
-            1 -> {
-
-                Rest.getInstance<PerguntasService>().getPergunta(arguments?.getInt("id",0)!!)
-                    .enqueue(object: Callback<MutableList<Publicacao>> {
-
-                        override fun onResponse(
-                            call: Call<MutableList<Publicacao>>,
-                            response: Response<MutableList<Publicacao>>
-
-
-                        ) {
-                            Log.i("AAAAAA", response.toString())
-
-                            filterTodos = response.body()!!
-                            adpterPerguntasResponse.setarDado(filterTodos)
-
-                        }
-
-                        override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
-                            Log.i("Erroo", t.stackTraceToString())
-                        }
-
-                    })
-
-
-            }
-
-            2 -> {
-
-                Rest.getInstance<PerguntasService>().getPergunta(arguments?.getInt("id",0)!!)
-                    .enqueue(object: Callback<MutableList<Publicacao>> {
-
-                        override fun onResponse(
-                            call: Call<MutableList<Publicacao>>,
-                            response: Response<MutableList<Publicacao>>
-
-
-                        ) {
-                            Log.i("AAAAAA", response.toString())
-                            println("RESPOSTAAAAAAA")
-                            println(response.body())
-
-                            filterTodos = response.body()!!
-
-                            var lista2 = mutableListOf<Publicacao>()
-                            for (perguntaDaVez in filterTodos){
-                                if (perguntaDaVez.tipoPublicacao == 2){
-                                    lista2.add(perguntaDaVez)
-                                }
-                            }
-                            adpterPerguntasResponse.setarDado(filterTodos)
-
-
-                        }
-
-                        override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
-                            Log.i("Erroo", t.stackTraceToString())
-                        }
-
-                    })
-            }
-
-        }
-
-
     }
 
     private fun carregarPublicacao(idPublicacao: Int, status: Int, acesso: Int){
@@ -345,5 +256,4 @@ class PerguntasFragment : Fragment() {
 
         transaction.commit()
     }
-
 }
