@@ -16,9 +16,11 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
 import br.com.studenton.adapter.AdapterPerguntasResponse
 import br.com.studenton.databinding.FragmentPerguntasBinding
+
 import br.com.studenton.domain.Publicacao
 import br.com.studenton.repository.Rest
 import br.com.studenton.services.PerguntasService
+import br.com.studenton.services.PublicacaoService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,6 +35,7 @@ class PerguntasFragment : Fragment() {
 
     private lateinit var filterTodos: MutableList<Publicacao>
     private var acesso = -1
+    private var idUsuario = -1
     private lateinit var adpterPerguntasResponse: AdapterPerguntasResponse
     private lateinit var adapterPerguntas: AdapterPerguntasResponse
 
@@ -57,17 +60,15 @@ class PerguntasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        
-
         rvPerguntas = binding.recyclerViewPerguntas
         rvPerguntas.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         rvPerguntas.setHasFixedSize(true)
         acesso = arguments?.getInt("acesso")!!
-        adpterPerguntasResponse = AdapterPerguntasResponse( acesso )
+        idUsuario = arguments?.getInt("idUsuario")!!
+        adpterPerguntasResponse = AdapterPerguntasResponse( acesso, idUsuario)
         rvPerguntas.adapter = adpterPerguntasResponse
 
-        println("ACESSO DA VEZ " + acesso)
+        println("ACESSO DA VEZ " + acesso + " USUARIO " + idUsuario)
 
         var cRaces = resources.getStringArray(br.com.studenton.R.array.filter)
         when(acesso){
@@ -78,16 +79,21 @@ class PerguntasFragment : Fragment() {
 
         }
 
+       binding.bottomNav2.setOnItemSelectedListener { filtrarPerguntasVet(it.itemId) }
+
+        var respostas = true
+
      //   for (mString in cRaces) {
      //       println("ARRAAAAY" + mString)
 //}
 
-        var spinner = binding.idSpinnerPerguntas
+        var spinner = binding.idSpinnerVeterano
         if(acesso == 2){
             spinner = binding.idSpinnerVeterano
         }else{
             spinner = binding.idSpinnerPerguntas
         }
+
 
 
 
@@ -112,17 +118,25 @@ class PerguntasFragment : Fragment() {
 
                     2 -> {
 
-                        binding.navTitulo.text = "Minhas Colaboraçõe"
-
+                        binding.navTitulo.text = "Minhas Colaborações"
                         binding.idSpinnerVeterano.visibility = View.VISIBLE
                         binding.idSpinnerPerguntas.visibility = View.GONE
+                        binding.sublinhadoCalouro.visibility = View.GONE
 
                     }
                 }
 
                 when(p0?.selectedItem.toString()){
 
-                    "Todos" -> filtrarTodos()
+                    "Todos" -> {
+
+
+
+                      filtrarTodos()
+
+
+
+                    }
                     "Enviados" -> {
                         var lista = mutableListOf<Publicacao>()
                         for (perguntaDaVez in filterTodos){
@@ -170,35 +184,148 @@ class PerguntasFragment : Fragment() {
             }
         }
 
+    }
+
+    private fun filtrarPerguntasVet(itemId: Int):Boolean{
+
+        when(itemId){
+
+            R.id.perguntas_menu_respostas -> {
+
+                Rest.getInstance<PerguntasService>().getPergunta(idUsuario)
+                    .enqueue(object : Callback<MutableList<Publicacao>> {
+
+                        override fun onResponse(
+                            call: Call<MutableList<Publicacao>>,
+                            response: Response<MutableList<Publicacao>>,
+                        ) {
+
+                            filterTodos = response.body()!!
+
+                            var lista = mutableListOf<Publicacao>()
+                            for (perguntaDaVez in filterTodos){
+                                if (perguntaDaVez.tipoPublicacao == 2){
+                                    lista.add(perguntaDaVez)
+                                }
+                            }
+                            adpterPerguntasResponse.setarDado(lista)
 
 
+                        }
+
+                        override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
+                            Log.i("Cannot Get All publicacoes", t.stackTraceToString())
+                        }
+
+                    })
+            }
+
+            R.id.perguntas_menu_informaçoes -> {
+
+                Rest.getInstance<PublicacaoService>().getAllpublicacoes()
+                    .enqueue(object : Callback<MutableList<Publicacao>> {
+
+                        override fun onResponse(
+                            call: Call<MutableList<Publicacao>>,
+                            response: Response<MutableList<Publicacao>>,
+                        ) {
+
+                            filterTodos = response.body()!!
+
+                            var lista = mutableListOf<Publicacao>()
+                            for (perguntaDaVez in filterTodos){
+                                if (perguntaDaVez.tipoPublicacao == 1){
+                                    lista.add(perguntaDaVez)
+                                }
+                            }
+                            adpterPerguntasResponse.setarDado(lista)
+
+
+
+                        }
+
+                        override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
+                            Log.i("Cannot Get All publicacoes", t.stackTraceToString())
+                        }
+
+                    })
+            }
+
+        }
+        return true
 
 
 
     }
 
     private fun filtrarTodos(){
-        Rest.getInstance<PerguntasService>().getPergunta(arguments?.getInt("id",0)!!)
-            .enqueue(object: Callback<MutableList<Publicacao>> {
 
-                override fun onResponse(
-                    call: Call<MutableList<Publicacao>>,
-                    response: Response<MutableList<Publicacao>>
+        when(acesso){
+
+            1 -> {
+
+                Rest.getInstance<PerguntasService>().getPergunta(arguments?.getInt("id",0)!!)
+                    .enqueue(object: Callback<MutableList<Publicacao>> {
+
+                        override fun onResponse(
+                            call: Call<MutableList<Publicacao>>,
+                            response: Response<MutableList<Publicacao>>
 
 
-                ) {
-                    Log.i("AAAAAA", response.toString())
+                        ) {
+                            Log.i("AAAAAA", response.toString())
 
-                    filterTodos = response.body()!!
-                    adpterPerguntasResponse.setarDado(filterTodos)
+                            filterTodos = response.body()!!
+                            adpterPerguntasResponse.setarDado(filterTodos)
 
-                }
+                        }
 
-                override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
-                    Log.i("Erroo", t.stackTraceToString())
-                }
+                        override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
+                            Log.i("Erroo", t.stackTraceToString())
+                        }
 
-            })
+                    })
+
+
+            }
+
+            2 -> {
+
+                Rest.getInstance<PerguntasService>().getPergunta(arguments?.getInt("id",0)!!)
+                    .enqueue(object: Callback<MutableList<Publicacao>> {
+
+                        override fun onResponse(
+                            call: Call<MutableList<Publicacao>>,
+                            response: Response<MutableList<Publicacao>>
+
+
+                        ) {
+                            Log.i("AAAAAA", response.toString())
+                            println("RESPOSTAAAAAAA")
+                            println(response.body())
+
+                            filterTodos = response.body()!!
+
+                            var lista2 = mutableListOf<Publicacao>()
+                            for (perguntaDaVez in filterTodos){
+                                if (perguntaDaVez.tipoPublicacao == 2){
+                                    lista2.add(perguntaDaVez)
+                                }
+                            }
+                            adpterPerguntasResponse.setarDado(filterTodos)
+
+
+                        }
+
+                        override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
+                            Log.i("Erroo", t.stackTraceToString())
+                        }
+
+                    })
+            }
+
+        }
+
 
     }
 

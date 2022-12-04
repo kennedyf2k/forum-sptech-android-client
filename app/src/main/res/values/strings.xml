@@ -142,6 +142,10 @@
     <string name="deletar_salvo_title">Publicação salva apagada</string>
     <string name="deletar_salvo_text">Publicação salva foi apagada com sucesso da sua lista!</string>
 
+    <!-- PERGUNTAS -->
+    <string name="perguntas_menu_respostas">Minhas Respostas</string>
+    <string name="perguntas_menu_informacoes">Minhas Publicações</string>
+
 
 </resources>
 

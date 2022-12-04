@@ -9,6 +9,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="full_tranparent">#0000ffff</color>
+    <color name="full_tranparent2">#00000000</color>
     <color name="dark_blue">#1C2438</color>
     <color name="cinza_borda">#7A7A7A</color>
     <color name="vermelho">#DB5050</color>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+
+        android:id="@+id/perguntas_menu_respostas"
+        android:title="@string/perguntas_menu_respostas"
+
+    />
+
+    <item
+
+        android:id="@+id/perguntas_menu_informaçoes"
+        android:title="@string/perguntas_menu_informacoes"
+
+    />
+
+
+</menu>

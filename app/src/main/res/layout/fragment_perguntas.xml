@@ -101,30 +101,18 @@
                     android:layout_marginVertical="10dp"
                     >
 
+                    <com.google.android.material.bottomnavigation.BottomNavigationView
 
-                    <TextView
-                        android:id="@+id/gestao_perguntas"
+                        android:id="@+id/bottom_nav2"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:text="Respostas"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/img_lupa"
+                        android:background="@color/full_tranparent"
+                        android:paddingBottom="7dp"
 
-                        android:textColor="@color/white"
-                        android:textSize="14dp"
-                        />
+                        app:itemTextColor="@drawable/main_item_selected"
+                        app:menu="@menu/menu_perguntas_veterano"
 
-
-                    <TextView
-                        android:id="@+id/gestao_perguntas_publicacoes"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:text="Informações"
-
-                        android:textColor="@color/darkerGray"
-                        android:textSize="14dp"
                         />
 
 
@@ -140,7 +128,7 @@
                         android:id="@+id/gestao_perguntas_sublinhado"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
-                        android:layout_height="8dp"
+                        android:layout_height="4dp"
                         android:background="@color/teal_200"
                         android:visibility="visible"
                         />
@@ -149,12 +137,39 @@
                         android:id="@+id/gestao_perguntas_publicacoes_sublinhado"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
-                        android:layout_height="8dp"
+                        android:layout_height="4dp"
                         android:background="@color/teal_200"
                         android:visibility="invisible"
                         />
 
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/sublinhado_calouro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginEnd="18dp">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="8dp"
+
+                        android:visibility="visible"
+                        />
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="8dp"
+
+                        android:visibility="invisible"
+                        />
+
+                </LinearLayout>
+
 
 
 

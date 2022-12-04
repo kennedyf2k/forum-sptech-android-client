@@ -2,6 +2,7 @@ package br.com.studenton
 
 import android.app.Activity
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -127,6 +128,8 @@ class LoginActivity : AppCompatActivity() {
         editor.putInt("acesso", dados.fkAcesso);
 
         editor.apply()
+
+        println("ID LOGADO " + dados.idUsuario)
 
         if(preferences.getBoolean("aceitouTermos", false)){
 

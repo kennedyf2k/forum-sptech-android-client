@@ -22,6 +22,7 @@ import br.com.studenton.adapter.tracker.CategoriaKeyProvider
 import br.com.studenton.adapter.tracker.CategoriaLockup
 import br.com.studenton.adapter.tracker.CategoriaPredicate
 import br.com.studenton.databinding.FragmentFeedBinding
+
 import br.com.studenton.domain.Categoria
 import br.com.studenton.domain.Publicacao
 import br.com.studenton.domain.Resposta
@@ -46,6 +47,7 @@ class FeedFragment : Fragment() {
     private lateinit var rvRespostas: RecyclerView
     private lateinit var categorias: MutableList<Categoria>
     private lateinit var bundle: Bundle
+    private lateinit var publicacoes: MutableList<Publicacao>
 
     private var idUsuario = -1
     private var acesso = -1
@@ -297,8 +299,15 @@ class FeedFragment : Fragment() {
 
                             binding.rvFeed.visibility = View.GONE
 
+                            publicacoes = response.body()!!
+                            var lista = mutableListOf<Publicacao>()
+                            for (perguntaDaVez in publicacoes){
+                                if (perguntaDaVez.status == 3){
+                                    lista.add(perguntaDaVez)
+                                }
+                            }
 
-                            adapterPublicacoes.setData(response.body()!!)
+                            adapterPublicacoes.setData(lista)
 
                             binding.shimmerFrameLayout.stopShimmerAnimation()
                             binding.shimmerFrameLayout.visibility = View.GONE

@@ -10,6 +10,9 @@ interface PublicacaoService {
     @GET("publicacoes/ordenado")
     fun getAllpublicacoes(): Call<MutableList<Publicacao>>
 
+    @GET("publicacoes/fltro-status")
+    fun getAllPublicacoesAprovadas(@Query("status") status: Int): Call<MutableList<Publicacao>>
+
     @GET("publicacoes/filtro-categoria")
     fun getpublicacoesByCategoria(@Query("idCategoria") idCategoria: Int): Call<MutableList<Publicacao>>
 

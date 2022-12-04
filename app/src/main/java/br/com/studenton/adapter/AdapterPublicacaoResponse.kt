@@ -132,25 +132,46 @@ class AdapterPublicacaoResponse(
                    holder.categoriaPost.setTextColor(ContextCompat.getColor(context, R.color.feed_item_feed_name_categoria_rosa))
                    holder.categoriaPost.setBackgroundResource(R.drawable.feed_item_shape_categoria_rosa)
                    holder.namePosition2.text = ""
+                   holder.categoriaPost.text = publicacoes[position].categoria.uppercase()
+                   holder.tituloBox.text = publicacoes[position].titulo
+                   holder.textoBox.text = publicacoes[position].texto
+
+                   holder.numeroComentarios.text = publicacoes[position].respostasByIdPublicacao.size.toString()
+                   holder.imgComentar.setOnClickListener{
+
+                       onclickComentarios.invoke(publicacoes[position].respostasByIdPublicacao)
+
+                   }
+
 
                }
                else -> {
+
 
                    holder.textoFixo.setText(R.string.feed_item_simple_item_meio_respondeu)
                    holder.tipoPost.setText(R.string.feed_item_simple_item_tipo_publicacao_2)
                    holder.tipoPost.setBackgroundResource(R.drawable.feed_item_shape_duvida_laranja)
                    holder.categoriaPost.setTextColor(ContextCompat.getColor(context, R.color.feed_item_feed_name_categoria_laranja))
                    holder.categoriaPost.setBackgroundResource(R.drawable.feed_item_shape_categoria_laranja)
+                   holder.namePosition1.text = publicacoes[position].nomeUsuario
                    holder.namePosition2.text = publicacoes[position].respostasByIdPublicacao[0].nomeUsuario
+                   holder.categoriaPost.text = publicacoes[position].categoria.uppercase()
+                   holder.tituloBox.text = publicacoes[position].titulo
+                   holder.textoBox.text = "aqui é a resposta do veterano e não a descricao do calouro"
+                   holder.info.text = "teve sua pergunta respondida por"
+                   holder.namePosition2.visibility = View.VISIBLE
+
+                   holder.numeroComentarios.visibility = View.INVISIBLE
+                   holder.imgComentar.visibility = View.INVISIBLE
 
                }
 
            }
 
-           holder.categoriaPost.text = publicacoes[position].categoria.uppercase()
-           holder.tituloBox.text = publicacoes[position].titulo
-           holder.textoBox.text = publicacoes[position].texto
-           holder.numeroComentarios.text = publicacoes[position].respostasByIdPublicacao.size.toString()
+
+
+
+
 
            var foiCurtido = publicacoes[position].usuariosCurtidas.contains(idUsuario)
            var foiSalvo = publicacoes[position].usuariosSalvos.contains(idUsuario)
@@ -213,11 +234,7 @@ class AdapterPublicacaoResponse(
 
                }
            }
-           holder.imgComentar.setOnClickListener{
 
-               onclickComentarios.invoke(publicacoes[position].respostasByIdPublicacao)
-
-           }
        }
 
     }
@@ -238,6 +255,7 @@ class AdapterPublicacaoResponse(
         val numeroComentarios = itemView.findViewById<TextView>(R.id.tv_numero_comentarios)!!
         val textoFixo = itemView.findViewById<TextView>(R.id.tv_position_fixed)!!
         val imgComentar = itemView.findViewById<ImageView>(R.id.iv_comentar)
+        var info = itemView.findViewById<TextView>(R.id.tv_position_fixed)
 
         val imgCurtir = itemView.findViewById<ImageView>(R.id.iv_curtir)!!
         val imgSalvar = itemView.findViewById<ImageView>(R.id.iv_salvar)!!
