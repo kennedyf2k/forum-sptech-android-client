@@ -265,7 +265,13 @@ class FeedFragment : Fragment() {
 
                             rvFeed.visibility = View.VISIBLE
 
-                            adapterPublicacoes.setData(response.body()!!)
+                            var lista = mutableListOf<Publicacao>()
+                            for (perguntaDaVez in response.body()!!){
+                                if (perguntaDaVez.status == 3){
+                                    lista.add(perguntaDaVez)
+                                }
+                            }
+                            adapterPublicacoes.setData(lista)
 
                         }
 
@@ -301,6 +307,7 @@ class FeedFragment : Fragment() {
                                     lista.add(perguntaDaVez)
                                 }
                             }
+
 
                             adapterPublicacoes.setData(lista)
 

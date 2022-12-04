@@ -158,7 +158,7 @@ class AdapterPublicacaoResponse(
                    holder.categoriaPost.text = publicacoes[position].categoria.uppercase()
                    holder.tituloBox.text = publicacoes[position].titulo
                    holder.textoBox.text = "aqui é a resposta do veterano e não a descricao do calouro"
-                   holder.info.text = "teve sua pergunta respondida por"
+                   holder.info.text = "teve sua pergunta"
                    holder.namePosition2.visibility = View.VISIBLE
 
                    holder.numeroComentarios.visibility = View.INVISIBLE
