@@ -130,6 +130,7 @@
     <!--  Comentario BottomSheet  -->
     <string name="comentarios_bottomsheet_btn_comentar">Comentar</string>
     <string name="comentarios_bottomsheet_title_comentarios">Comentarios</string>
+    <string name="comentarios_bottomsheet_title_resposta">Resposta do</string>
 
     <!--    CRIAR PUBLICACAO-->
     <string name="fragment_criar_publicacao_erro">Acontece um erro inesperado, tente novamente mais tarde</string>

@@ -22,7 +22,7 @@ class AdapterPublicacaoResponse(
     private val acesso: Int,
     private val onclickCurtir: (idPublicacao: Int) -> Unit,
     private val onclickFavorito: (idPublicacao: Int) -> Unit,
-    private val onclickComentarios: (comentarios: MutableList<Resposta>) -> Unit
+    private val onclickComentarios: (comentarios: MutableList<Resposta>, fkPublicacao: Int, idPublicacao: Int) -> Unit
 
     ) : RecyclerView.Adapter<AdapterPublicacaoResponse.PublicacaoViewHolder>() {
 
@@ -137,14 +137,14 @@ class AdapterPublicacaoResponse(
                    holder.textoBox.text = publicacoes[position].texto
 
                    holder.numeroComentarios.text = publicacoes[position].respostasByIdPublicacao.size.toString()
-                   holder.imgComentar.setOnClickListener{
 
-                       onclickComentarios.invoke(publicacoes[position].respostasByIdPublicacao)
+                   holder.namePosition2.visibility = View.INVISIBLE
 
-                   }
-
+                   holder.numeroComentarios.visibility = View.VISIBLE
+                   holder.imgComentar.visibility = View.VISIBLE
 
                }
+
                else -> {
 
 
@@ -167,11 +167,6 @@ class AdapterPublicacaoResponse(
                }
 
            }
-
-
-
-
-
 
            var foiCurtido = publicacoes[position].usuariosCurtidas.contains(idUsuario)
            var foiSalvo = publicacoes[position].usuariosSalvos.contains(idUsuario)
@@ -233,6 +228,13 @@ class AdapterPublicacaoResponse(
                    holder.imgSalvar.setImageResource(R.drawable.feed_item_img_salvar_marcado)
 
                }
+           }
+
+           holder.imgComentar.setOnClickListener{
+
+               onclickComentarios.invoke(publicacoes[position].respostasByIdPublicacao,
+                   publicacoes[position].tipoPublicacao, publicacoes[position].idPublicacao)
+
            }
 
        }

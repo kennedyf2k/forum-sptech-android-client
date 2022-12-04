@@ -1,5 +1,6 @@
 package br.com.studenton.fragments
 
+import android.annotation.SuppressLint
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.os.bundleOf
 import androidx.recyclerview.selection.SelectionTracker
@@ -15,7 +19,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
 import br.com.studenton.adapter.AdapterCategoriaResponse
-import br.com.studenton.adapter.AdapterPerguntasResponse
 import br.com.studenton.adapter.AdapterPublicacaoResponse
 import br.com.studenton.adapter.AdapterRespostaResponse
 import br.com.studenton.adapter.tracker.CategoriaKeyProvider
@@ -26,12 +29,9 @@ import br.com.studenton.databinding.FragmentFeedBinding
 import br.com.studenton.domain.Categoria
 import br.com.studenton.domain.Publicacao
 import br.com.studenton.domain.Resposta
+import br.com.studenton.domain.request.RespostaRequest
 import br.com.studenton.repository.Rest
-import br.com.studenton.services.CategoriaService
-import br.com.studenton.services.CurtirService
-import br.com.studenton.services.PublicacaoService
-import br.com.studenton.services.SalvarService
-import com.bumptech.glide.Glide
+import br.com.studenton.services.*
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
@@ -53,11 +53,6 @@ class FeedFragment : Fragment() {
     private var acesso = -1
     private lateinit var adapterPublicacoes: AdapterPublicacaoResponse
     private lateinit var adapterRespostaResponse: AdapterRespostaResponse
-
-
-
-    var contador = 0
-    var contador2 = 0
 
     companion object {
 
@@ -88,7 +83,7 @@ class FeedFragment : Fragment() {
         },{
                 id -> salvar(id)
         },{
-                lista -> showBottomSheet(lista)
+                lista, tipo, id -> showBottomSheet(lista, tipo, id)
         })
 
         rvFeed.adapter = adapterPublicacoes
@@ -300,7 +295,7 @@ class FeedFragment : Fragment() {
                             binding.rvFeed.visibility = View.GONE
 
                             publicacoes = response.body()!!
-                            var lista = mutableListOf<Publicacao>()
+                            val lista = mutableListOf<Publicacao>()
                             for (perguntaDaVez in publicacoes){
                                 if (perguntaDaVez.status == 3){
                                     lista.add(perguntaDaVez)
@@ -328,7 +323,7 @@ class FeedFragment : Fragment() {
         return true
     }
 
-    fun curtir(idPublicacao: Int){
+    private fun curtir(idPublicacao: Int){
 
         Rest.getInstance<CurtirService>().curtir(arguments?.getInt("id")!!, idPublicacao)
 
@@ -376,26 +371,95 @@ class FeedFragment : Fragment() {
 
     }
 
-    private fun showBottomSheet(comentarios: MutableList<Resposta>){
+    @SuppressLint("InflateParams")
+    private fun showBottomSheet(comentarios: MutableList<Resposta>?, tipoPublicacao: Int, idPublicacao: Int){
 
-        val bottomSheet = BottomSheetDialog(requireActivity())
 
-        val bottomSheetView = LayoutInflater.from(requireContext())
-            .inflate(R.layout.comentarios_bottomsheet, null)
+        val bottomSheet = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme).apply {
+            window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+        }
+        val bottomSheetView = LayoutInflater.from(requireActivity()).inflate(R.layout.comentarios_bottomsheet, null)
 
-        rvRespostas = bottomSheetView.findViewById(R.id.rv_comentarios)!!
+        bottomSheetView.findViewById<ImageView>(R.id.iv_arrow_back).setOnClickListener {
+
+            bottomSheet.dismiss()
+
+        }
+
+        val nomeUsuarioResposta = bottomSheetView.findViewById<TextView>(R.id.tv_nome_usuario_resposta)
+        val etTextoComentario = bottomSheetView.findViewById<TextView>(R.id.et_texto_comentario)
+
+        bottomSheetView.findViewById<TextView>(R.id.btn_comentar).setOnClickListener {
+
+            val body = RespostaRequest( etTextoComentario.text.toString(), idUsuario)
+
+            Rest.getInstanceByAws<RespostaService>().postarResposta(idPublicacao, body)
+                .enqueue(object : Callback<Resposta> {
+
+                    @SuppressLint("NotifyDataSetChanged")
+                    override fun onResponse(call: Call<Resposta>, response: Response<Resposta>) {
+
+                        comentarios!!.add(response.body()!!)
+
+                        adapterRespostaResponse.setData(comentarios)
+                        adapterPublicacoes.notifyDataSetChanged()
+
+                        etTextoComentario.text = ""
+
+                    }
+
+                    override fun onFailure(call: Call<Resposta>, t: Throwable) {
+                        Log.i("ErroRespostaService: ", t.stackTraceToString())
+                    }
+
+                })
+
+        }
+
+
+
+        when(tipoPublicacao){
+
+            1 -> {
+
+                bottomSheetView.findViewById<TextView>(R.id.tv_title_comentarios).text = getString(R.string.comentarios_bottomsheet_title_comentarios)
+                etTextoComentario.visibility = View.VISIBLE
+                bottomSheetView.findViewById<TextView>(R.id.btn_comentar).visibility = View.VISIBLE
+                nomeUsuarioResposta.visibility = View.GONE
+
+            }
+            else -> {
+
+                bottomSheetView.findViewById<TextView>(R.id.tv_title_comentarios).text = getString(R.string.comentarios_bottomsheet_title_resposta)
+                etTextoComentario.visibility = View.GONE
+                bottomSheetView.findViewById<TextView>(R.id.btn_comentar).visibility = View.GONE
+
+
+                nomeUsuarioResposta.visibility = View.VISIBLE
+                nomeUsuarioResposta.text = comentarios!![0].nomeUsuario
+
+            }
+
+        }
+
+        rvRespostas = bottomSheetView.findViewById(R.id.rv_comentarios)
         rvRespostas.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         rvRespostas.setHasFixedSize(true)
 
         adapterRespostaResponse =  AdapterRespostaResponse(activity?.baseContext!!)
 
-        adapterRespostaResponse.setData(comentarios)
+        rvRespostas.adapter = adapterRespostaResponse
+
+        adapterRespostaResponse.setData(comentarios!!)
 
         bottomSheet.setContentView(bottomSheetView)
 
-        val layout = bottomSheet.findViewById<CoordinatorLayout>(R.id.bottom_sheet_layout)!!
+        val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView.parent as View)
 
-        layout.minimumHeight = Resources.getSystem().displayMetrics.heightPixels
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+
+        bottomSheet.findViewById<CoordinatorLayout>(R.id.bottom_sheet_layout)!!.minimumHeight =
+            Resources.getSystem().displayMetrics.heightPixels
 
         bottomSheet.show()
 
