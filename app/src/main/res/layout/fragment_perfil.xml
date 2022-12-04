@@ -57,12 +57,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="16dp"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/card_view_bg"
+
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -222,8 +223,8 @@
 
                             android:id="@+id/tv_editar"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/fundo_editarinfos"
+                            android:layout_height="60dp"
+                            android:background="@drawable/borda_arredondada"
                             android:gravity="center"
                             android:text="@string/perfil_btn_editar"
                             android:textAlignment="center"

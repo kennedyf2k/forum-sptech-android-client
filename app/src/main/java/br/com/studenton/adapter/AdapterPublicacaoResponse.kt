@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+
+
 import br.com.studenton.R
 import br.com.studenton.domain.Publicacao
 import br.com.studenton.domain.Resposta
@@ -39,13 +41,6 @@ class AdapterPublicacaoResponse(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PublicacaoViewHolder {
 
         Log.i("passando acesso", "onCreateViewHolder: ${acesso}")
-        //if(acesso == calouro){
-        //    val itemList = LayoutInflater.from(context)
-        //        .inflate(R.layout.fragment_feed_simple_item_feed, parent, false)
-        // }else{
-        //    val itemList = LayoutInflater.from(context)
-        //        .inflate(R.layout.fragment_feed_simple_item_feed_pergunta, parent, false)
-        // }
 
         val itemList = LayoutInflater.from(context)
             .inflate(R.layout.fragment_feed_simple_item_feed, parent, false)
@@ -60,7 +55,11 @@ class AdapterPublicacaoResponse(
        }else{
            var contadorCurtidas = publicacoes[position].countCurtidas
 
-           holder.numeroCurtidas.text = contadorCurtidas.toString()
+           if(contadorCurtidas == 0){
+               holder.numeroCurtidas.text = ""
+           }else{
+               holder.numeroCurtidas.text = contadorCurtidas.toString()
+           }
 
            Glide.with(context).load(publicacoes[position].fotoUsuario).into(holder.imgProfile)
            holder.namePosition1.text = publicacoes[position].nomeUsuario
@@ -69,6 +68,9 @@ class AdapterPublicacaoResponse(
            var dia = publicacoes[position].dataHora.subSequence(8,10)
            var mes = publicacoes[position].dataHora.subSequence(5,7)
            var diaMes = publicacoes[position].dataHora.get(6).toString()
+           var ano = publicacoes[position].dataHora.subSequence(2,4)
+
+           var hora =publicacoes[position].dataHora.subSequence(11,16)
 
            if( diaMes == "0"){
                dia = publicacoes[position].dataHora.subSequence(9,10)
@@ -103,9 +105,10 @@ class AdapterPublicacaoResponse(
            }
 
 
+
            when (publicacoes[position].diasAtras) {
 
-               0 -> holder.horasAtras.setText(R.string.feed_item_simple_item_dias_atras_0)
+               0 -> holder.horasAtras.setText("${R.string.feed_item_simple_item_dias_atras_0} ás ${hora}h")
                1 -> holder.horasAtras.setText(R.string.feed_item_simple_item_dias_atras_1)
                2 -> holder.horasAtras.setText(R.string.feed_item_simple_item_dias_atras_2)
                3 -> holder.horasAtras.setText(R.string.feed_item_simple_item_dias_atras_3)
@@ -120,7 +123,7 @@ class AdapterPublicacaoResponse(
            }else if(semanas <= 4){
                holder.horasAtras.text = " Há ${semanas} semanas"
            }else{
-               holder.horasAtras.text = "${dia} ${mes}"
+               holder.horasAtras.text = "${dia} ${mes} ${ano} ás ${hora}h"
            }
 
 
@@ -138,7 +141,12 @@ class AdapterPublicacaoResponse(
                    holder.tituloBox.text = publicacoes[position].titulo
                    holder.textoBox.text = publicacoes[position].texto
 
-                   holder.numeroComentarios.text = publicacoes[position].respostasByIdPublicacao.size.toString()
+
+                   if(publicacoes[position].respostasByIdPublicacao.size == 0){
+                       holder.numeroComentarios.text = ""
+                   }else{
+                       holder.numeroComentarios.text = publicacoes[position].respostasByIdPublicacao.size.toString()
+                   }
 
                    holder.namePosition2.visibility = View.INVISIBLE
 
@@ -159,9 +167,10 @@ class AdapterPublicacaoResponse(
                    holder.namePosition2.text = publicacoes[position].respostasByIdPublicacao[0].nomeUsuario
                    holder.categoriaPost.text = publicacoes[position].categoria.uppercase()
                    holder.tituloBox.text = publicacoes[position].titulo
-                   holder.textoBox.text = "aqui é a resposta do veterano e não a descricao do calouro"
-                   holder.info.text = "teve sua pergunta"
+                   holder.textoBox.text = publicacoes[position].respostasByIdPublicacao[0].texto
+
                    holder.namePosition2.visibility = View.VISIBLE
+
 
                    holder.numeroComentarios.visibility = View.INVISIBLE
                    holder.imgComentar.visibility = View.INVISIBLE
@@ -192,14 +201,22 @@ class AdapterPublicacaoResponse(
                    foiCurtido = false
                    holder.imgCurtir.setImageResource(R.drawable.feed_item_img_curtir_desmarcado)
                    contadorCurtidas--
-                   holder.numeroCurtidas.text = contadorCurtidas.toString()
+                   if(contadorCurtidas == 0){
+                       holder.numeroCurtidas.text = ""
+                   }else{
+                       holder.numeroCurtidas.text = contadorCurtidas.toString()
+                   }
 
                }else{
 
                    foiCurtido = true
                    holder.imgCurtir.setImageResource(R.drawable.feed_item_img_curtir_marcado)
                    contadorCurtidas++
-                   holder.numeroCurtidas.text = contadorCurtidas.toString()
+                   if(contadorCurtidas == 0){
+                       holder.numeroCurtidas.text = ""
+                   }else{
+                       holder.numeroCurtidas.text = contadorCurtidas.toString()
+                   }
 
                }
            }

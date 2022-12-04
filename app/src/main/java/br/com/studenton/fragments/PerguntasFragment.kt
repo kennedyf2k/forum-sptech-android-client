@@ -175,7 +175,8 @@ class PerguntasFragment : Fragment() {
             R.id.perguntas_menu_respostas -> {
 
                 spinner.setSelection(0)
-
+                binding.gestaoPerguntasSublinhado.visibility = View.VISIBLE
+                binding.gestaoPerguntasPublicacoesSublinhado.visibility = View.INVISIBLE
                 Rest.getInstance<PublicacaoService>().getMinhasColaboracoes(idUsuario)
                     .enqueue(object : Callback<MutableList<Publicacao>> {
 
@@ -209,6 +210,8 @@ class PerguntasFragment : Fragment() {
             R.id.perguntas_menu_informaçoes -> {
 
                 spinner.setSelection(0)
+                binding.gestaoPerguntasSublinhado.visibility = View.INVISIBLE
+                binding.gestaoPerguntasPublicacoesSublinhado.visibility = View.INVISIBLE
 
                 Rest.getInstance<PublicacaoService>().getMinhasColaboracoes(idUsuario)
                     .enqueue(object : Callback<MutableList<Publicacao>> {
