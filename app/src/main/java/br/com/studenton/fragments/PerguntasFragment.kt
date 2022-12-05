@@ -244,7 +244,7 @@ class PerguntasFragment : Fragment() {
 
                        spinner.setSelection(0)
                        binding.gestaoPerguntasSublinhado.visibility = View.INVISIBLE
-                       binding.gestaoPerguntasPublicacoesSublinhado.visibility = View.INVISIBLE
+                       binding.gestaoPerguntasPublicacoesSublinhado.visibility = View.VISIBLE
 
                        Rest.getInstance<PublicacaoService>().getMinhasColaboracoes(idUsuario)
                            .enqueue(object : Callback<MutableList<Publicacao>> {

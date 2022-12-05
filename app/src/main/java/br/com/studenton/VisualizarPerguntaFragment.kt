@@ -290,7 +290,12 @@ class VisualizarPerguntaFragment : Fragment() {
 
                         }
                     }
-                    Glide.with(activity!!.baseContext).load(response.body()!!.respostasByIdPublicacao[0].fotoUsuario).into(binding.ivProfileItemResposta)
+
+                    if(acesso == 2){
+                        //Carolina Costa, validar quando deve aparecer a segunda foto para não encerrar o app quando abrir a publi na apresentação
+                        Glide.with(activity!!.baseContext).load(response.body()!!.respostasByIdPublicacao[0].fotoUsuario).into(binding.ivProfileItemResposta)
+                    }
+
                     Glide.with(activity!!.baseContext).load(response.body()!!.fotoUsuario).into(binding.ivProfileItem)
                     binding.tvHorasAtras.text = "Há ${response.body()!!.diasAtras.toString()} dias"
                     binding.tvCategoriaPost.text = response.body()!!.categoria

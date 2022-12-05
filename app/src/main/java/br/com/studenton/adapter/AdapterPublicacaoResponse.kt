@@ -140,6 +140,7 @@ class AdapterPublicacaoResponse(
                    holder.categoriaPost.text = publicacoes[position].categoria.uppercase()
                    holder.tituloBox.text = publicacoes[position].titulo
                    holder.textoBox.text = publicacoes[position].texto
+                   holder.info.visibility = View.GONE
 
 
                    if(publicacoes[position].respostasByIdPublicacao.size == 0){
@@ -276,7 +277,7 @@ class AdapterPublicacaoResponse(
         val numeroComentarios = itemView.findViewById<TextView>(R.id.tv_numero_comentarios)!!
         val textoFixo = itemView.findViewById<TextView>(R.id.tv_position_fixed)!!
         val imgComentar = itemView.findViewById<ImageView>(R.id.iv_comentar)
-        var info = itemView.findViewById<TextView>(R.id.tv_position_fixed)
+        var info = itemView.findViewById<TextView>(R.id.tv_reposta_box)
 
         val imgCurtir = itemView.findViewById<ImageView>(R.id.iv_curtir)!!
         val imgSalvar = itemView.findViewById<ImageView>(R.id.iv_salvar)!!
