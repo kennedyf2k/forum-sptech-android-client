@@ -1,9 +1,9 @@
 package br.com.studenton.services
 
 import br.com.studenton.domain.Publicacao
+import br.com.studenton.domain.request.EditarPerguntaRequest
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface PublicacaoService {
 
@@ -27,4 +27,10 @@ interface PublicacaoService {
 
     @GET("publicacoes/publicacao")
     fun getPublicacao(@Query("id") idPublicacao: Int): Call<Publicacao>
+
+    @PUT("publiacoes/atualizar-duvida")
+    fun putAtualizarDuvida(@Body body: EditarPerguntaRequest): Call<Publicacao>
+
+    @DELETE("publicacoes/apagar-duvida")
+    fun deletarDuvida(@Query("id") idPublicacao: Int): Call<Boolean>
 }

@@ -157,6 +157,14 @@
     <string name="text_sua_resposta">Sua resposta:</string>
     <string name="feed_duvida_tag">resposta:</string>
 
+    <!-- EDITAR PERUNTA/POSTAGEM -->
+    <string name="editar_pergunta_titulo">Editar</string>
+    <string name="fragment_dialog_excluir_pergunta_title">Tem certeza que dedseja apagar a pergunta?</string>
+    <string name="fragment_dialog_excluir_pergunta">Sua pergunta foi enviada e está aguardando a resposta de um veterano, se você apagar ela não estará mais disponível para revisão</string>
+    <string name="excluir_title">Apagar</string>
+    <string name="alerta_excluir_pergunta_title">Pergunta excluída!</string>
+    <string name="alerta_excluir_pergunta_text">A sua pergunta foi excluída com sucesso.</string>
+
 
 </resources>
 

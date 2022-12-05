@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EditarPerguntaFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:background="@drawable/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/nome_studenton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="8dp"
+                        android:layout_marginEnd="18dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/student_on"
+
+                                />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="end">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/notification"
+                                    android:layout_marginEnd="8dp"
+
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/find"
+
+                                    />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="60dp"
+                            android:layout_marginBottom="5dp">
+
+                            <ImageView
+
+                                android:id="@+id/iv_arrow_back"
+                                android:layout_width="20dp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/arow_voltar"
+
+                                />
+
+                            <TextView
+
+                                android:id="@+id/tv_title_editar_pergunta"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:paddingEnd="12dp"
+                                android:paddingStart="12dp"
+
+                                android:textAlignment="center"
+                                android:text="@string/editar_pergunta_titulo"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+
+                                />
+
+                            <TextView
+
+                                android:id="@+id/tv_nome_usuario_resposta"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:textAlignment="center"
+                                tools:text="Paulo"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:visibility="gone"
+
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+
+                    android:id="@+id/iv_profile_item"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="16dp"
+
+                    android:contentDescription="@string/perfil_description_foto"
+                    android:src="@drawable/profile"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <EditText
+
+                        android:id="@+id/et_editar_titulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:maxHeight="150dp"
+
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+
+                        android:autofillHints="Digite seu comentário"
+                        android:inputType="textMultiLine"
+                        android:gravity="top"
+
+                        android:background="@drawable/borda_arredondada"
+
+                        android:paddingTop="15dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+
+                        android:scrollbars="vertical"
+
+                        tools:text="Titulo"
+
+                        />
+
+                    <EditText
+
+                        android:id="@+id/et_editar_texto"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:maxHeight="150dp"
+
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+
+                        android:autofillHints="Digite seu comentário"
+                        android:inputType="textMultiLine"
+                        android:gravity="top"
+
+                        android:background="@drawable/borda_arredondada"
+
+                        android:paddingTop="15dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+
+                        android:scrollbars="vertical"
+
+                        tools:text="Texto"
+
+                        />
+
+                    <TextView
+
+                        android:id="@+id/tv_msg_erro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_marginTop="6dp"
+
+                        android:textColor="@color/vermelho"
+
+                        android:textStyle="bold"
+                        tools:text="Aconteceu um erro inesperado, tente novamente"
+
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:padding="8dp">
+
+                <Button
+                    android:id="@+id/btn_cancelar"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="18dp"
+                    android:background="@drawable/fragment_dialog_sair_btn_cancelar"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:text="Cancelar"
+                    android:textSize="11dp"
+                    android:textColor="@color/azul_btn" />
+
+                <Button
+                    android:id="@+id/btn_atualizar"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/comentarios_bottomsheet_btn_comentar"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:text="atualizar"
+                    android:textSize="11dp"
+                    android:textColor="@color/white" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

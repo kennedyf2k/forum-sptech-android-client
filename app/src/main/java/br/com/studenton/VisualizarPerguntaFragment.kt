@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.core.view.isInvisible
 import br.com.studenton.R
 import br.com.studenton.databinding.FragmentVisualizarPerguntaBinding
 import br.com.studenton.domain.Publicacao
+import br.com.studenton.fragments.DialogExcluirPostagem
 import br.com.studenton.repository.Rest
 import br.com.studenton.services.PerguntasService
 import br.com.studenton.services.PublicacaoService
@@ -44,6 +46,18 @@ class VisualizarPerguntaFragment : Fragment() {
         val status = arguments?.getInt("status")
         val acesso = arguments?.getInt("acesso")
 
+        binding.btnExcluir.setOnClickListener {
+
+            var fragmentDialog = DialogExcluirPostagem()
+
+            val fragmentManager = activity?.supportFragmentManager
+
+            fragmentDialog.arguments = bundleOf()
+
+            fragmentDialog.show(fragmentManager!!, "")
+
+        }
+
 
         Rest.getInstance<PublicacaoService>().getPublicacao(idPergunta!!)
             .enqueue(object: Callback<Publicacao>{
@@ -73,6 +87,11 @@ class VisualizarPerguntaFragment : Fragment() {
                                     binding.tvStatus.setText(R.string.status_analise_pergunta)
                                     binding.linearConteudoResposta.visibility = View.GONE
                                     binding.tvTituloResposta.visibility = View.GONE
+
+                                    binding.btnEditar.setOnClickListener {
+                                        carregarPublicacaoEditar(response.body()!!.idPublicacao, response.body()!!.titulo,
+                                            response.body()!!.texto, response.body()!!.fkCategoria )
+                                    }
 
                                 }
 
@@ -143,6 +162,11 @@ class VisualizarPerguntaFragment : Fragment() {
                                         binding.tvCategoriaPost.setBackgroundResource(R.drawable.feed_item_shape_categoria_laranja)
                                         binding.tvTituloResposta.visibility = View.GONE
                                         binding.linearConteudoResposta.visibility = View.GONE
+
+                                        binding.btnEditar.setOnClickListener {
+                                            carregarPublicacaoEditar(response.body()!!.idPublicacao, response.body()!!.titulo,
+                                                response.body()!!.texto, response.body()!!.fkCategoria )
+                                        }
                                     }
 
                                     2 -> {
@@ -159,6 +183,11 @@ class VisualizarPerguntaFragment : Fragment() {
                                         binding.linearBotoesEditarExcluir.visibility = View.GONE
                                         binding.linearConteudoResposta.visibility = View.GONE
                                         binding.tvTituloResposta.visibility = View.GONE
+
+                                        binding.btnEditar.setOnClickListener {
+                                            carregarPublicacaoEditar(response.body()!!.idPublicacao, response.body()!!.titulo,
+                                                response.body()!!.texto, response.body()!!.fkCategoria )
+                                        }
                                     }
 
                                     3 ->{
@@ -226,6 +255,11 @@ class VisualizarPerguntaFragment : Fragment() {
                                                 response.body()!!.respostasByIdPublicacao[0].nomeUsuario
                                             binding.tvRespostaPergunta.text =
                                                 response.body()!!.respostasByIdPublicacao[0].texto
+
+                                            binding.btnEditar.setOnClickListener {
+                                                carregarPublicacaoEditar(response.body()!!.idPublicacao, response.body()!!.titulo,
+                                                    response.body()!!.texto, response.body()!!.fkCategoria )
+                                            }
                                         }
 
                                         3 -> {
@@ -309,6 +343,21 @@ class VisualizarPerguntaFragment : Fragment() {
 
 
             })
+    }
+
+    private fun carregarPublicacaoEditar(idPublicacao: Int, titulo: String, texto: String, categoria: Int){
+
+        val fragmentManager = activity?.supportFragmentManager
+
+        val transaction = fragmentManager!!.beginTransaction()
+
+        val editarPergunta = EditarPerguntaFragment()
+
+        editarPergunta.arguments = bundleOf("id" to idPublicacao, "titulo" to titulo, "texto" to texto, "categoria" to categoria)
+
+        transaction.replace(R.id.fragments_container, editarPergunta)
+
+        transaction.commit()
     }
 
 }
