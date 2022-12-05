@@ -170,78 +170,114 @@ class PerguntasFragment : Fragment() {
 
     private fun filtrarPerguntasVet(itemId: Int):Boolean{
 
-        when(itemId){
+       when(acesso){
+           1 -> {
+               Rest.getInstance<PublicacaoService>().getMinhasPublicacoes(idUsuario)
+                   .enqueue(object : Callback<MutableList<Publicacao>> {
 
-            R.id.perguntas_menu_respostas -> {
+                       override fun onResponse(
+                           call: Call<MutableList<Publicacao>>,
+                           response: Response<MutableList<Publicacao>>,
+                       ) {
 
-                spinner.setSelection(0)
-                binding.gestaoPerguntasSublinhado.visibility = View.VISIBLE
-                binding.gestaoPerguntasPublicacoesSublinhado.visibility = View.INVISIBLE
-                Rest.getInstance<PublicacaoService>().getMinhasColaboracoes(idUsuario)
-                    .enqueue(object : Callback<MutableList<Publicacao>> {
+                           val lista = mutableListOf<Publicacao>()
+                           for (perguntaDaVez in response.body()!!){
+                               if (perguntaDaVez.tipoPublicacao == 2){
+                                   lista.add(perguntaDaVez)
+                               }
+                           }
+                            lista.reverse()
+                           filterTodos = lista
 
-                        override fun onResponse(
-                            call: Call<MutableList<Publicacao>>,
-                            response: Response<MutableList<Publicacao>>,
-                        ) {
+                           adpterPerguntasResponse.setarDado(lista)
 
-                            val lista = mutableListOf<Publicacao>()
+                           btnNav = "info"
 
-                            for (perguntaDaVez in response.body()!!){
-                                if (perguntaDaVez.tipoPublicacao == 2){
-                                    lista.add(perguntaDaVez)
-                                }
-                            }
+                       }
 
-                            filterTodos = lista
+                       override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
+                           Log.i("Cannot Get All publicacoes", t.stackTraceToString())
+                       }
+                   })
 
-                            adpterPerguntasResponse.setarDado(lista)
+           }
 
-                            btnNav = "resposta"
-                        }
+           2 -> {
+               when(itemId){
 
-                        override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
-                            Log.i("Cannot Get All publicacoes", t.stackTraceToString())
-                        }
+                   R.id.perguntas_menu_respostas -> {
 
-                    })
-            }
+                       spinner.setSelection(0)
+                       binding.gestaoPerguntasSublinhado.visibility = View.VISIBLE
+                       binding.gestaoPerguntasPublicacoesSublinhado.visibility = View.INVISIBLE
+                       Rest.getInstance<PublicacaoService>().getMinhasColaboracoes(idUsuario)
+                           .enqueue(object : Callback<MutableList<Publicacao>> {
 
-            R.id.perguntas_menu_informaçoes -> {
+                               override fun onResponse(
+                                   call: Call<MutableList<Publicacao>>,
+                                   response: Response<MutableList<Publicacao>>,
+                               ) {
 
-                spinner.setSelection(0)
-                binding.gestaoPerguntasSublinhado.visibility = View.INVISIBLE
-                binding.gestaoPerguntasPublicacoesSublinhado.visibility = View.INVISIBLE
+                                   val lista = mutableListOf<Publicacao>()
 
-                Rest.getInstance<PublicacaoService>().getMinhasColaboracoes(idUsuario)
-                    .enqueue(object : Callback<MutableList<Publicacao>> {
+                                   for (perguntaDaVez in response.body()!!){
+                                       if (perguntaDaVez.tipoPublicacao == 2){
+                                           lista.add(perguntaDaVez)
+                                       }
+                                   }
 
-                        override fun onResponse(
-                            call: Call<MutableList<Publicacao>>,
-                            response: Response<MutableList<Publicacao>>,
-                        ) {
+                                   filterTodos = lista
 
-                            val lista = mutableListOf<Publicacao>()
-                            for (perguntaDaVez in response.body()!!){
-                                if (perguntaDaVez.tipoPublicacao == 1){
-                                    lista.add(perguntaDaVez)
-                                }
-                            }
+                                   adpterPerguntasResponse.setarDado(lista)
 
-                            filterTodos = lista
+                                   btnNav = "resposta"
+                               }
 
-                            adpterPerguntasResponse.setarDado(lista)
+                               override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
+                                   Log.i("Cannot Get All publicacoes", t.stackTraceToString())
+                               }
 
-                            btnNav = "info"
+                           })
+                   }
 
-                        }
+                   R.id.perguntas_menu_informaçoes -> {
 
-                        override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
-                            Log.i("Cannot Get All publicacoes", t.stackTraceToString())
-                        }
-                    })
-            }
-        }
+                       spinner.setSelection(0)
+                       binding.gestaoPerguntasSublinhado.visibility = View.INVISIBLE
+                       binding.gestaoPerguntasPublicacoesSublinhado.visibility = View.INVISIBLE
+
+                       Rest.getInstance<PublicacaoService>().getMinhasColaboracoes(idUsuario)
+                           .enqueue(object : Callback<MutableList<Publicacao>> {
+
+                               override fun onResponse(
+                                   call: Call<MutableList<Publicacao>>,
+                                   response: Response<MutableList<Publicacao>>,
+                               ) {
+
+                                   val lista = mutableListOf<Publicacao>()
+                                   for (perguntaDaVez in response.body()!!){
+                                       if (perguntaDaVez.tipoPublicacao == 1){
+                                           lista.add(perguntaDaVez)
+                                       }
+                                   }
+
+                                   filterTodos = lista
+
+                                   adpterPerguntasResponse.setarDado(lista)
+
+                                   btnNav = "info"
+
+                               }
+
+                               override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
+                                   Log.i("Cannot Get All publicacoes", t.stackTraceToString())
+                               }
+                           })
+                   }
+               }
+
+           }
+       }
         return true
     }
 
