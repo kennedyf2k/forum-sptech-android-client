@@ -42,7 +42,9 @@
 
     <!--FEED-->
     <string name="feed_menu_mais_relevante">Mais Relevante</string>
+    <string name="feed_menu_perguntas">Perguntas</string>
     <string name="feed_menu_minhas_colaboracoes">Minhas colaborações</string>
+    <string name="feed_menu_publicacoes">Publicações</string>
     <string name="feed_item_simple_item_meio_respondeu">recebeu uma resposta de</string>
     <string name="feed_item_simple_item_meio_perguntou">fez uma pergunta</string>
     <string name="feed_item_simple_item_meio_publicou">publicou uma informação</string>

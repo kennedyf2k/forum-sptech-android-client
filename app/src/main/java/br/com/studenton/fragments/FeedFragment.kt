@@ -113,6 +113,14 @@ class FeedFragment : Fragment() {
 
         }
 
+        if(acesso == 1){
+            binding.bottomNav.visibility = View.VISIBLE
+            binding.bottomNavVet.visibility = View.INVISIBLE
+        }else{
+            binding.bottomNav.visibility = View.GONE
+            binding.bottomNavVet.visibility = View.VISIBLE
+        }
+
         binding.bottomNav.setOnItemSelectedListener { setarFeedByBottomNavigation(it.itemId) }
 
         Rest.getInstance<CategoriaService>().categorias()

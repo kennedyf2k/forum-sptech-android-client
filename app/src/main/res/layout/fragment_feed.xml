@@ -99,6 +99,22 @@
 
         app:menu="@menu/menu_feed" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+
+        android:id="@+id/bottom_navVet"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/img_lupa"
+        android:layout_marginTop="-1dp"
+        android:background="@color/dark_blue"
+
+        android:paddingBottom="7dp"
+
+        app:itemTextColor="@drawable/main_item_selected"
+
+        app:menu="@menu/menu_feed_veterano"
+        android:visibility="gone"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
