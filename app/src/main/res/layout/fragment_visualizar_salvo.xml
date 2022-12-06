@@ -87,9 +87,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/cv_box_item_feed"
+        android:id="@+id/cv_box_item_postagem"
         android:layout_marginBottom="5dp"
         android:orientation="vertical"
+        android:visibility="gone"
         >
 
         <LinearLayout
@@ -297,6 +298,27 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+
+        android:id="@+id/shimmerFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_rv_categorias"
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        android:animateLayoutChanges="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_placeholder_postagem"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 
 </LinearLayout>

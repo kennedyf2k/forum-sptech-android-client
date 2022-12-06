@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
-import br.com.studenton.VisualizarPerguntaFragment
 import br.com.studenton.adapter.AdapterPerguntasResponse
 import br.com.studenton.databinding.FragmentPerguntasBinding
 

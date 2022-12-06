@@ -40,6 +40,10 @@ class VisualizarSalvoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.shimmerFrameLayout.startShimmerAnimation()
+        binding.shimmerFrameLayout.visibility = View.VISIBLE
+        binding.cvBoxItemPostagem.visibility = View.GONE
+
         val publicacao = arguments?.getInt("id")
 
         Rest.getInstance<PublicacaoService>().getPublicacao(publicacao!!)
@@ -87,6 +91,10 @@ class VisualizarSalvoFragment : Fragment() {
                         binding.tvCategoriaPost.text = response.body()!!.categoria
                         binding.tvTituloBox.text = response.body()!!.titulo
                         binding.tvTextoBox.text = response.body()!!.texto
+
+                    binding.shimmerFrameLayout.stopShimmerAnimation()
+                    binding.shimmerFrameLayout.visibility = View.GONE
+                    binding.cvBoxItemPostagem.visibility = View.VISIBLE
 
                         binding.btnExcluir.setOnClickListener {
 

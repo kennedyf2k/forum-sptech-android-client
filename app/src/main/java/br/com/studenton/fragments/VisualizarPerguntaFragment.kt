@@ -1,4 +1,4 @@
-package br.com.studenton
+package br.com.studenton.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
-import androidx.core.view.isInvisible
+import br.com.studenton.EditarPerguntaFragment
 import br.com.studenton.R
 import br.com.studenton.databinding.FragmentVisualizarPerguntaBinding
 import br.com.studenton.domain.Publicacao
-import br.com.studenton.fragments.DialogExcluirPostagem
 import br.com.studenton.repository.Rest
-import br.com.studenton.services.PerguntasService
 import br.com.studenton.services.PublicacaoService
 import com.bumptech.glide.Glide
 import retrofit2.Call
@@ -41,6 +39,10 @@ class VisualizarPerguntaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.shimmerFrameLayout.startShimmerAnimation()
+        binding.shimmerFrameLayout.visibility = View.VISIBLE
+        binding.cvBoxItemPergunta.visibility = View.GONE
 
         val idPergunta = arguments?.getInt("id")
         val status = arguments?.getInt("status")
@@ -335,6 +337,10 @@ class VisualizarPerguntaFragment : Fragment() {
                     binding.tvCategoriaPost.text = response.body()!!.categoria
                     binding.tvTituloBox.text = response.body()!!.titulo
                     binding.tvTextoBox.text = response.body()!!.texto
+
+                    binding.shimmerFrameLayout.stopShimmerAnimation()
+                    binding.shimmerFrameLayout.visibility = View.GONE
+                    binding.cvBoxItemPergunta.visibility = View.VISIBLE
                 }
 
                 override fun onFailure(call: Call<Publicacao>, t: Throwable) {
