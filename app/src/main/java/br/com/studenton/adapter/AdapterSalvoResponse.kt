@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import br.com.studenton.R
 import br.com.studenton.domain.Publicacao
@@ -23,16 +24,18 @@ class AdapterSalvoResponse(
         inner class SalvoHolder(
             private val itemView: View) :
             RecyclerView.ViewHolder(itemView) {
-            fun vincular(publicacao: Publicacao) {
 
-                val tvTitulo = itemView.findViewById<TextView>(R.id.txt_titulo_salvo)
-                val tvDescricao = itemView.findViewById<TextView>(R.id.txt_desc_salvo)
-                val tvData = itemView.findViewById<TextView>(R.id.txt_date)
-                val cvSalvo = itemView.findViewById<CardView>(R.id.cvSalvo)
+            val tvStatus = itemView.findViewById<TextView>(R.id.status)
+            val tvTitulo = itemView.findViewById<TextView>(R.id.txt_titulo_salvo)
+            val tvDescricao = itemView.findViewById<TextView>(R.id.txt_desc_salvo)
+            val tvData = itemView.findViewById<TextView>(R.id.txt_date)
+            val cvSalvo = itemView.findViewById<CardView>(R.id.cvSalvo)
+
+            fun vincular(publicacao: Publicacao) {
 
                 var diasAtras: String = "Há ${publicacao.diasAtras.toString()} dias"
 
-                tvTitulo.text = publicacao.titulo.substring(0, 23) + "..."
+                tvTitulo.text = publicacao.titulo
                 tvDescricao.text = publicacao.texto
                 tvData.text = diasAtras
 
@@ -56,6 +59,13 @@ class AdapterSalvoResponse(
 
     override fun onBindViewHolder(holder: AdapterSalvoResponse.SalvoHolder, position: Int) {
         holder.vincular(salvos[position])
+
+        when (salvos[position].tipoPublicacao){
+
+            1 -> { holder.tvStatus.setBackgroundResource(R.color.feed_item_feed_name_categoria_rosa) }
+            else -> { holder.tvStatus.setBackgroundResource(R.color.feed_item_feed_name_categoria_laranja) }
+
+        }
 
     }
 

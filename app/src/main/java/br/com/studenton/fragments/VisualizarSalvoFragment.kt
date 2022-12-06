@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import br.com.studenton.R
 import br.com.studenton.databinding.FragmentSalvosBinding
 import br.com.studenton.databinding.FragmentVisualizarSalvoBinding
@@ -21,6 +22,7 @@ import retrofit2.Response
 class VisualizarSalvoFragment : Fragment() {
 
     private lateinit var binding: FragmentVisualizarSalvoBinding
+    private lateinit var bundle: Bundle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,12 +81,23 @@ class VisualizarSalvoFragment : Fragment() {
 
                         }
                     }
+
                         Glide.with(activity!!.baseContext).load(response.body()!!.fotoUsuario).into(binding.ivProfileItem)
                         binding.tvHorasAtras.text = "Há ${response.body()!!.diasAtras.toString()} dias"
                         binding.tvCategoriaPost.text = response.body()!!.categoria
                         binding.tvTituloBox.text = response.body()!!.titulo
                         binding.tvTextoBox.text = response.body()!!.texto
 
+                        binding.btnExcluir.setOnClickListener {
+
+                            var fragmentDialog = DialogFragmentExcluirSalvo()
+
+                            val fragmentManager = activity?.supportFragmentManager
+
+                            fragmentDialog.arguments = bundleOf()
+
+                            fragmentDialog.show(fragmentManager!!, "")
+                        }
             }
 
                 override fun onFailure(call: Call<Publicacao>, t: Throwable) {

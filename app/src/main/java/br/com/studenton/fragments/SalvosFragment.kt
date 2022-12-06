@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -55,6 +56,7 @@ class SalvosFragment : Fragment() {
                     call: Call<MutableList<Publicacao>>,
                     response: Response<MutableList<Publicacao>>
                 ) {
+
                     Log.i("Publicações salvas", response.toString())
                     listaSalvos = (response.body()!!)
                     recyclerViewSalvos = binding.recyclerViewSalvos
@@ -103,15 +105,12 @@ class SalvosFragment : Fragment() {
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
             val usuario = arguments?.getInt("id")
+            val idPublicacao = arguments?.getInt("idPublicacao")
 
             listaSalvos.removeAt(viewHolder.adapterPosition)
             recyclerViewSalvos.adapter?.notifyItemRemoved(viewHolder.adapterPosition)
 
-            val teste = viewHolder as AdapterSalvoResponse.SalvoHolder
-
-           // Log.i("Teste salvos", listaSalvos[teste.adapterPosition].toString())
-
-            apagarSalvo(usuario!!, viewHolder.adapterPosition)
+            apagarSalvo(usuario!!, idPublicacao!!)
         }
     }
 

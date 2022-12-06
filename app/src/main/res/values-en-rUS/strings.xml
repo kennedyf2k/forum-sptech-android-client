@@ -170,7 +170,9 @@
     <string name="alerta_excluir_pergunta_title">Deleted question!</string>
     <string name="alerta_excluir_pergunta_text">Your question has been successfully deleted.</string>
 
-
+    <!-- EXCLUIR PUBLICAÇÃO SALVA -->
+    <string name="fragment_dialog_excluir_salvo_title">Are you sure you want to delete the saved post?</string>
+    <string name="text_excluir_salvo_info">You can delete a salvo just by swiping it to the side</string>
 
 
 </resources>

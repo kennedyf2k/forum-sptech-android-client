@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="12dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/card_view_bg"
     app:cardCornerRadius="10dp"
     android:id="@+id/cvSalvo">
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:width="10dp"
+        android:background="@color/teal_200"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,17 +25,16 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp">
 
-
         <TextView
             android:id="@+id/txt_titulo_salvo"
             android:ellipsize="marquee"
             android:singleLine="true"
             android:textColor="@color/darkerGray"
             android:textSize="18sp"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="Segunda via do bilhete único"/>
+            tools:text="Segunda via do bilhete único"/>
 
 
         <TextView
@@ -39,7 +47,7 @@
             android:layout_alignStart="@id/txt_titulo_salvo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Perdi meu bilhete único e não estou conseguindo retirar"/>
+            tools:text="Perdi meu bilhete único e não estou conseguindo retirar"/>
 
         <TextView
             android:id="@+id/txt_date"
@@ -50,7 +58,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:textStyle="bold"
-            android:text="8 de nov"/>
+            tools:text="8 de nov"/>
 
     </RelativeLayout>
 

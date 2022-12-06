@@ -165,6 +165,10 @@
     <string name="alerta_excluir_pergunta_title">Pergunta excluída!</string>
     <string name="alerta_excluir_pergunta_text">A sua pergunta foi excluída com sucesso.</string>
 
+    <!-- EXCLUIR PUBLICAÇÃO SALVA -->
+    <string name="fragment_dialog_excluir_salvo_title">Tem certeza que deseja excluir a publicação salva?</string>
+    <string name="text_excluir_salvo_info">Você pode excluir um salvo apenas deslizando-o para o lado</string>
+
 
 </resources>
 

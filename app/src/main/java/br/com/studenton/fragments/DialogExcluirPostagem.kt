@@ -32,13 +32,14 @@ class DialogExcluirPostagem : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val idPublicacao = arguments?.getInt("idPublicacao")
 
         binding.btnCancelar.setOnClickListener {
             dismiss()
         }
 
         binding.btnApagar.setOnClickListener {
-            val idPublicacao = arguments?.getInt("id")
+
             Log.i("Id da publicação", idPublicacao.toString())
             deletarPergunta(idPublicacao!!)
         }
@@ -66,12 +67,12 @@ class DialogExcluirPostagem : DialogFragment() {
                         Log.i("Ocorreu outro erro", response.errorBody().toString())
                     }
 
-                    Log.i("Teste foto perfil", response.toString())
+                    Log.i("Teste excluir publi", response.toString())
                 }
 
                 override fun onFailure(call: Call<Boolean>, t: Throwable) {
                     binding.tvMsgErroTroca.setText("Aconteceu um erro inesperado, tente novamente mais tarde")
-                    Log.i("Erro da troca de imagem: ", t.stackTraceToString())
+                    Log.i("Erro da exclusão da publi: ", t.stackTraceToString())
                 }
             })
 
