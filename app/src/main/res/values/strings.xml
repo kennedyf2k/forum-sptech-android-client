@@ -19,9 +19,9 @@
     <string name="login_esqueceu_senha">Esqueceu sua senha?</string>
     <string name="login_clique_aqui"><u>Clique aqui</u></string>
     <string name="login_erro_login">RA ou senha estão errados</string>
-    <string name="login_erro_server">Acontece um erro inesperado, tente novamente mais tarde</string>
+    <string name="login_erro_server">Aconteceu um erro inesperado, tente novamente mais tarde</string>
     <string name="login_erro_obrigatorio">Esse campo é obrigatório</string>
-    <string name="login_erro_tamanho_caracteres_ra">O Ra tem que ter, no mínimo, 3 caracteres</string>
+    <string name="login_erro_tamanho_caracteres_ra">O "RA" tem que ter, no mínimo, 3 caracteres</string>
     <string name="login_erro_tamanho_caracteres_senha">A Senha tem que ter, no mínimo, 5 caracteres</string>
 
     <!--PERFIL-->
@@ -109,10 +109,10 @@
     <string name="esqueceu_senha_ra">RA</string>
     <string name="esqueceu_senha_email">Email</string>
     <string name="esqueceu_senha_senha_nova">Nova senha</string>
-    <string name="esqueceu_senha_senha_nova_conf">Confirmar nova senh</string>
+    <string name="esqueceu_senha_senha_nova_conf">Confirmar nova senha</string>
     <string name="esqueceu_senha_senha_erro_senhas_nao_batem">Nova senha e confirmar senha não batem</string>
     <string name="esqueceu_senha_senha_erro_senha_menor_7">A senha deve conter, no mínimo, 7 caracteres</string>
-    <string name="esqueceu_senha_erro_servidor">Acontece um erro inesperado, tente novamente mais tarde</string>
+    <string name="esqueceu_senha_erro_servidor">Aconteceu um erro inesperado, tente novamente mais tarde</string>
     <string name="esqueceu_senha_nao_encontrado">Ra e/ou Email não encontrado</string>
     <string name="esqueceu_senmha_alterada_com_sucesso">Senha alterada com sucesso!</string>
 
@@ -135,11 +135,11 @@
     <string name="comentarios_bottomsheet_title_resposta">Resposta do</string>
 
     <!--    CRIAR PUBLICACAO-->
-    <string name="fragment_criar_publicacao_erro">Acontece um erro inesperado, tente novamente mais tarde</string>
+    <string name="fragment_criar_publicacao_erro">Aconteceu um erro inesperado, tente novamente mais tarde</string>
     <string name="fragment_criar_publicacao_categoria">Selecione uma categoria</string>
     <string name="fragment_criar_publicacao_sucesso">Pergunta realizada com sucesso!</string>
-    <string name="fragment_criar_publicacao_length_titulo">Insira pelo menso 5 caracteres</string>
-    <string name="fragment_criar_publicacao_length_texto">Insira pelo menso 10 caracteres</string>
+    <string name="fragment_criar_publicacao_length_titulo">Insira pelo menos 5 caracteres</string>
+    <string name="fragment_criar_publicacao_length_texto">Insira pelo menos 10 caracteres</string>
 
     <!-- Status Salvo -->
     <string name="deletar_salvo_title">Publicação salva apagada</string>
@@ -159,7 +159,7 @@
 
     <!-- EDITAR PERUNTA/POSTAGEM -->
     <string name="editar_pergunta_titulo">Editar</string>
-    <string name="fragment_dialog_excluir_pergunta_title">Tem certeza que dedseja apagar a pergunta?</string>
+    <string name="fragment_dialog_excluir_pergunta_title">Tem certeza que deseja apagar a pergunta?</string>
     <string name="fragment_dialog_excluir_pergunta">Sua pergunta foi enviada e está aguardando a resposta de um veterano, se você apagar ela não estará mais disponível para revisão</string>
     <string name="excluir_title">Apagar</string>
     <string name="alerta_excluir_pergunta_title">Pergunta excluída!</string>

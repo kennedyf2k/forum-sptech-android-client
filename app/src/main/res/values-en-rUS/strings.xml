@@ -21,6 +21,10 @@
     <string name="login_esqueceu_senha">Forgot password?</string>
     <string name="login_clique_aqui">Click here</string>
     <string name="login_erro_login">Wrong RA or password</string>
+    <string name="login_erro_server">An unexpected error occurred, please try again later.</string>
+    <string name="login_erro_obrigatorio">This field is mandatory</string>
+    <string name="login_erro_tamanho_caracteres_ra">"RA" must be at least 3 characters long</string>
+    <string name="login_erro_tamanho_caracteres_senha">Password must be at least 5 characters long</string>
 
 
     <!--PERFIL-->
@@ -41,7 +45,30 @@
 
     <!--FEED-->
     <string name="feed_menu_mais_relevante">Most Relevant</string>
+    <string name="feed_menu_perguntas">Questions</string>
     <string name="feed_menu_minhas_colaboracoes">My collaborations</string>
+    <string name="feed_menu_publicacoes">Posts</string>
+    <string name="feed_item_simple_item_meio_respondeu">received a reply from</string>
+    <string name="feed_item_simple_item_meio_perguntou">asked a question</string>
+    <string name="feed_item_simple_item_meio_publicou">published an information</string>
+    <string name="feed_item_simple_item_dias_atras_0">Today</string>
+    <string name="feed_item_simple_item_dias_atras_1">Yesterday</string>
+    <string name="feed_item_simple_item_dias_atras_2">2 days ago</string>
+    <string name="feed_item_simple_item_dias_atras_3">3 days ago</string>
+    <string name="feed_item_simple_item_dias_atras_4">4 days ago</string>
+    <string name="feed_item_simple_item_dias_atras_5">5 days ago</string>
+    <string name="feed_item_simple_item_dias_atras_6">6 days ago</string>
+    <string name="feed_item_simple_item_dias_atras_7">7 days ago</string>
+    <string name="feed_item_simple_item_dias_atras_else">a while ago</string>
+    <string name="feed_item_simple_item_tipo_publicacao_1">INFORMATION</string>
+    <string name="feed_item_simple_item_tipo_publicacao_2">DOUBT</string>
+    <string name="feed_content_description_img_sem_publicacao">No posts in this category</string>
+    <string name="feed_content_description_img_backgroud">Wallpapper</string>
+    <string name="feed_content_description_img_sino">Notification</string>
+    <string name="feed_content_description_img_lupa">Search Magnifier</string>
+    <string name="feed_content_description_img_perguntar">Ask Icon</string>
+    <string name="feed_float_button_perguntar">To ask</string>
+
 
     <!--TELA TERMOS-->
     <string name="titulo_termos">Terms and \nconditions</string>
@@ -52,6 +79,98 @@
     <string name="texto4_termos">I authorize the Student On to use my data \npersonal (except publication data) \nto send notices via email or in the app.*</string>
     <string name="texto5_termos">*You can revoke consent \nwhen you want. Just send an email to support@studenton.com</string>
     <string name="aceitar_termos">Accepted</string>
+
+    <!--CONFIGURAR PERFIL-->
+    <string name="configurar_perfil_header">Configure Profile</string>
+    <string name="configurar_perfil_label_notificacoes">Notifications</string>
+    <string name="configurar_perfil_atualizacoes">Send updates to my email</string>
+    <string name="configurar_perfil_btn_voltar">Back</string>
+    <string name="configurar_perfil_hide_senha">••••••••••••••</string>
+    <string name="configurar_perfil_label_nome">Name</string>
+    <string name="configurar_perfil_label_senha">Password</string>
+    <string name="configurar_perfil_label_alterar">Change</string>
+
+    <!--PERFIL - ALTERAR SENHA-->
+    <string name="alterar_senha_header">Create new password</string>
+    <string name="alterar_senha_btn_alterar">Change</string>
+    <string name="alterar_senha_atual">Current Password</string>
+    <string name="alterar_senha_nova">New Password</string>
+    <string name="alterar_senha_confirmar_nova">Confirm new password</string>
+    <string name="alterar_senha_erro_senhas_nao_batem">New password and confirm password do not match</string>
+    <string name="alterar_senha_erro_senha_menor_9">The password must contain at least 9 characters</string>
+    <string name="alterar_senha_erro_usuario_nao_encontrado">Your current password is incorrect</string>
+    <string name="alterar_senha_alerta_title">Password changed</string>
+    <string name="alterar_senha_alerta_text">Your password has been successfully changed.</string>
+
+
+    <!--BEM VINDO - ALTERAR SENHA-->
+    <string name="texto1_bemvindo">Welcome to the SPTECH Forum by StudentOn!</string>
+    <string name="texto2_bemvindo">Questions asked are submitted to be answered by a veteran and only then are they posted to the feed</string>
+    <string name="texto3_bemvindo">The entire community has access to the publication and knowledge is multiplied</string>
+    <string name="texto4_titulo_bemvindo">Be responsible!</string>
+    <string name="texto4_bemvindo">No incomplete answers that could be invasive huh?!</string>
+
+    <!-- ESQUECEU A SENHA-->
+    <string name="esqueceu_senha_ra">RA</string>
+    <string name="esqueceu_senha_email">Email</string>
+    <string name="esqueceu_senha_senha_nova">New password</string>
+    <string name="esqueceu_senha_senha_nova_conf">confirm new password</string>
+    <string name="esqueceu_senha_senha_erro_senhas_nao_batem">New password and confirm password do not match</string>
+    <string name="esqueceu_senha_senha_erro_senha_menor_7">The password must contain at least 7 characters</string>
+    <string name="esqueceu_senha_erro_servidor">An unexpected error occurred, please try again later.</string>
+    <string name="esqueceu_senha_nao_encontrado">RA and/or Email not found</string>
+    <string name="esqueceu_senmha_alterada_com_sucesso">Password changed successfully!</string>
+
+    <!--  FRAGMENT DIALOG SAIR  -->
+        <string name="fragment_dialog_sair_btn_sair">LOGOUT</string>
+    <string name="fragment_dialog_sair_btn_cancelar">CANCEL</string>
+    <string name="fragment_dialog_sair_title">Are you sure you want to quit?</string>
+
+    <!-- FRAGMENT DIALOG ALTERAR FOTO DE PERFIL -->
+    <string name="fragment_dialog_alterar_foto_title">Put an image link to change your profile picture</string>
+    <string name="fragment_dialog_btn_alterar_foto">CHANGE</string>
+    <string name="fragment_dialog_btn_cancelar_alterar_foto">CANCEL</string>
+    <string name="alterar_foto_alerta_title">Changed profile picture!</string>
+    <string name="alterar_foto_alerta_text">Your profile picture has been successfully changed.</string>
+    <string name="fragment_dialog_alterar_hint">image url</string>
+
+    <!--  Comentario BottomSheet  -->
+    <string name="comentarios_bottomsheet_btn_comentar">Comments</string>
+    <string name="comentarios_bottomsheet_title_comentarios">Comments</string>
+    <string name="comentarios_bottomsheet_title_resposta">Answer from</string>
+
+    <!--    CRIAR PUBLICACAO-->
+    <string name="fragment_criar_publicacao_erro">An unexpected error occurred, please try again later.</string>
+    <string name="fragment_criar_publicacao_categoria">select a category</string>
+    <string name="fragment_criar_publicacao_sucesso">Question asked successfully!</string>
+    <string name="fragment_criar_publicacao_length_titulo">Enter at least 5 characters</string>
+    <string name="fragment_criar_publicacao_length_texto">Enter at least 10 characters</string>
+
+    <!-- Status Salvo -->
+    <string name="deletar_salvo_title">post saved deleted</string>
+    <string name="deletar_salvo_text">Saved post was successfully deleted from your list!</string>
+
+    <!-- PERGUNTAS -->
+    <string name="perguntas_menu_respostas">My answers</string>
+    <string name="perguntas_menu_informacoes">My Publications</string>
+    <string name="perguntas_nav_titulo_minhas_perguntas">My questions</string>
+    <string name="perguntas_nav_titulo_minhas_colaboracoes">My Collaborations</string>
+    <string name="feed_item_simple_item_publicou_duvida">posted a doubt</string>
+    <string name="status_analise_pergunta">The answer will be visible after approval</string>
+    <string name="status_pergunta_recusado">REFUSED: Question violates Community Guidelines.</string>
+    <string name="text_resposta">answer</string>
+    <string name="text_sua_resposta">Your answer:</string>
+    <string name="feed_duvida_tag">answer:</string>
+
+    <!-- EDITAR PERUNTA/POSTAGEM -->
+    <string name="editar_pergunta_titulo">Edit</string>
+    <string name="fragment_dialog_excluir_pergunta_title">Are you sure you want to delete the question?</string>
+    <string name="fragment_dialog_excluir_pergunta">Your question has been submitted and is awaiting a response from a veteran, if you delete it it will no longer be available for review</string>
+    <string name="excluir_title">Delete</string>
+    <string name="alerta_excluir_pergunta_title">Deleted question!</string>
+    <string name="alerta_excluir_pergunta_text">Your question has been successfully deleted.</string>
+
+
 
 
 </resources>
