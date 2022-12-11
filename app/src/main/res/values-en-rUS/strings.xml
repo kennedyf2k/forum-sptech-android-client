@@ -45,6 +45,9 @@
 
     <!--FEED-->
     <string name="feed_menu_mais_relevante">Most Relevant</string>
+    <string name="feed_clique_responder">Click here to answer</string>
+    <string name="feed_menu_feed_veterano">Feed</string>
+    <string name="feed_respondido_sucesso">successfully answered</string>
     <string name="feed_menu_perguntas">Questions</string>
     <string name="feed_menu_minhas_colaboracoes">My collaborations</string>
     <string name="feed_menu_publicacoes">Posts</string>
@@ -136,8 +139,9 @@
 
     <!--  Comentario BottomSheet  -->
     <string name="comentarios_bottomsheet_btn_comentar">Comments</string>
+    <string name="comentarios_bottomsheet_btn_responder">Answer</string>
     <string name="comentarios_bottomsheet_title_comentarios">Comments</string>
-    <string name="comentarios_bottomsheet_title_resposta">Answer from</string>
+    <string name="comentarios_bottomsheet_title_resposta">Make your Answer</string>
 
     <!--    CRIAR PUBLICACAO-->
     <string name="fragment_criar_publicacao_erro">An unexpected error occurred, please try again later.</string>
@@ -149,6 +153,8 @@
     <!-- Status Salvo -->
     <string name="deletar_salvo_title">post saved deleted</string>
     <string name="deletar_salvo_text">Saved post was successfully deleted from your list!</string>
+    <string name="dias_atras_position1"> </string>
+    <string name="dias_atras_position2">days ago</string>
 
     <!-- PERGUNTAS -->
     <string name="perguntas_menu_respostas">My answers</string>
@@ -173,6 +179,5 @@
     <!-- EXCLUIR PUBLICAÇÃO SALVA -->
     <string name="fragment_dialog_excluir_salvo_title">Are you sure you want to delete the saved post?</string>
     <string name="text_excluir_salvo_info">You can delete a salvo just by swiping it to the side</string>
-
 
 </resources>

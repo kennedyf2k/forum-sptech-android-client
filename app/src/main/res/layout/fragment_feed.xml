@@ -190,6 +190,24 @@
 
     </LinearLayout>
 
+    <LinearLayout
+
+        android:id="@+id/ll_img_sem_pergunta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@+id/ll_rv_categorias"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/feed_vet_img_sem_perguntas"
+            android:contentDescription="@string/feed_content_description_img_sem_publicacao" />
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
 
         android:id="@+id/rv_feed"
@@ -221,13 +239,7 @@
             <include layout="@layout/shimmer_placeholder_feed"/>
             <include layout="@layout/shimmer_placeholder_feed"/>
             <include layout="@layout/shimmer_placeholder_feed"/>
-            <include layout="@layout/shimmer_placeholder_feed"/>
-            <include layout="@layout/shimmer_placeholder_feed"/>
-            <include layout="@layout/shimmer_placeholder_feed"/>
-            <include layout="@layout/shimmer_placeholder_feed"/>
-            <include layout="@layout/shimmer_placeholder_feed"/>
-            <include layout="@layout/shimmer_placeholder_feed"/>
-            <include layout="@layout/shimmer_placeholder_feed"/>
+
 
         </LinearLayout>
 

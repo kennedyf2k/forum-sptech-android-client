@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -25,7 +26,8 @@ class AdapterPublicacaoResponse(
     private val acesso: Int,
     private val onclickCurtir: (idPublicacao: Int) -> Unit,
     private val onclickFavorito: (idPublicacao: Int) -> Unit,
-    private val onclickComentarios: (comentarios: MutableList<Resposta>, fkPublicacao: Int, idPublicacao: Int) -> Unit
+    private val onclickComentarios: (comentarios: MutableList<Resposta>,
+                                     fkPublicacao: Int, idPublicacao: Int, position: Int) -> Unit
 
     ) : RecyclerView.Adapter<AdapterPublicacaoResponse.PublicacaoViewHolder>() {
 
@@ -140,7 +142,7 @@ class AdapterPublicacaoResponse(
                    holder.categoriaPost.text = publicacoes[position].categoria.uppercase()
                    holder.tituloBox.text = publicacoes[position].titulo
                    holder.textoBox.text = publicacoes[position].texto
-                   holder.info.visibility = View.GONE
+                   holder.tvRespostaBox.visibility = View.GONE
 
 
                    if(publicacoes[position].respostasByIdPublicacao.size == 0){
@@ -158,26 +160,49 @@ class AdapterPublicacaoResponse(
 
                else -> {
 
+                   if(publicacoes[position].status == 1){
 
-                   holder.textoFixo.setText(R.string.feed_item_simple_item_meio_respondeu)
-                   holder.tipoPost.setText(R.string.feed_item_simple_item_tipo_publicacao_2)
-                   holder.tipoPost.setBackgroundResource(R.drawable.feed_item_shape_duvida_laranja)
+                       holder.textoFixo.setText(R.string.feed_item_simple_item_meio_perguntou)
+                       holder.namePosition2.text = ""
+                       holder.tipoPost.visibility = View.GONE
+
+                       holder.tituloBox.text = publicacoes[position].titulo
+                       holder.textoBox.text = publicacoes[position].texto
+                       holder.namePosition2.visibility = View.GONE
+                       holder.numeroComentarios.visibility = View.VISIBLE
+                       holder.numeroComentarios.setText(R.string.feed_clique_responder)
+                       holder.imgComentar.visibility = View.VISIBLE
+                       holder.tvRespostaBox.visibility = View.GONE
+
+                       holder.imgCurtir.visibility = View.GONE
+                       holder.numeroCurtidas.visibility = View.GONE
+                       holder.llBoxCurtir.visibility = View.GONE
+
+                   }else{
+
+                       holder.textoFixo.setText(R.string.feed_item_simple_item_meio_respondeu)
+                       holder.tipoPost.setBackgroundResource(R.drawable.feed_item_shape_duvida_laranja)
+                       holder.namePosition2.text = publicacoes[position].respostasByIdPublicacao[0].nomeUsuario
+                       holder.tipoPost.setText(R.string.feed_item_simple_item_tipo_publicacao_2)
+                       holder.tituloBox.text = publicacoes[position].titulo
+                       holder.textoBox.text = publicacoes[position].respostasByIdPublicacao[0].texto
+                       holder.namePosition2.visibility = View.VISIBLE
+                       holder.numeroComentarios.visibility = View.INVISIBLE
+                       holder.imgComentar.visibility = View.INVISIBLE
+                       holder.tvRespostaBox.visibility = View.VISIBLE
+
+                       holder.imgCurtir.visibility = View.VISIBLE
+                       holder.numeroCurtidas.visibility = View.VISIBLE
+                       holder.llBoxCurtir.visibility = View.VISIBLE
+
+                   }
+
+                   holder.categoriaPost.text = publicacoes[position].categoria.uppercase()
                    holder.categoriaPost.setTextColor(ContextCompat.getColor(context, R.color.feed_item_feed_name_categoria_laranja))
                    holder.categoriaPost.setBackgroundResource(R.drawable.feed_item_shape_categoria_laranja)
                    holder.namePosition1.text = publicacoes[position].nomeUsuario
-                   holder.namePosition2.text = publicacoes[position].respostasByIdPublicacao[0].nomeUsuario
-                   holder.categoriaPost.text = publicacoes[position].categoria.uppercase()
-                   holder.tituloBox.text = publicacoes[position].titulo
-                   holder.textoBox.text = publicacoes[position].respostasByIdPublicacao[0].texto
-
-                   holder.namePosition2.visibility = View.VISIBLE
-
-
-                   holder.numeroComentarios.visibility = View.INVISIBLE
-                   holder.imgComentar.visibility = View.INVISIBLE
 
                }
-
            }
 
            var foiCurtido = publicacoes[position].usuariosCurtidas.contains(idUsuario)
@@ -253,7 +278,7 @@ class AdapterPublicacaoResponse(
            holder.imgComentar.setOnClickListener{
 
                onclickComentarios.invoke(publicacoes[position].respostasByIdPublicacao,
-                   publicacoes[position].tipoPublicacao, publicacoes[position].idPublicacao)
+                   publicacoes[position].tipoPublicacao, publicacoes[position].idPublicacao, position)
 
            }
 
@@ -277,7 +302,8 @@ class AdapterPublicacaoResponse(
         val numeroComentarios = itemView.findViewById<TextView>(R.id.tv_numero_comentarios)!!
         val textoFixo = itemView.findViewById<TextView>(R.id.tv_position_fixed)!!
         val imgComentar = itemView.findViewById<ImageView>(R.id.iv_comentar)
-        var info = itemView.findViewById<TextView>(R.id.tv_reposta_box)
+        val tvRespostaBox = itemView.findViewById<TextView>(R.id.tv_reposta_box)!!
+        val llBoxCurtir = itemView.findViewById<LinearLayout>(R.id.ll_box_curtir)!!
 
         val imgCurtir = itemView.findViewById<ImageView>(R.id.iv_curtir)!!
         val imgSalvar = itemView.findViewById<ImageView>(R.id.iv_salvar)!!

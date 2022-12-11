@@ -1,4 +1,4 @@
-package br.com.studenton
+package br.com.studenton.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -8,12 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
-import br.com.studenton.adapter.AdapterPerguntasResponse
+import br.com.studenton.R
 import br.com.studenton.databinding.FragmentEditarPerguntaBinding
 import br.com.studenton.domain.Publicacao
 import br.com.studenton.domain.request.EditarPerguntaRequest
-import br.com.studenton.fragments.FeedFragment
-import br.com.studenton.fragments.PerguntasFragment
 import br.com.studenton.repository.Rest
 import br.com.studenton.services.PublicacaoService
 import retrofit2.Call
@@ -26,15 +24,10 @@ class EditarPerguntaFragment() : Fragment() {
     private lateinit var binding: FragmentEditarPerguntaBinding
     private lateinit var bundle: Bundle
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentEditarPerguntaBinding.inflate(inflater)
         return binding.root
     }

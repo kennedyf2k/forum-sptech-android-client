@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.os.bundleOf
 import androidx.recyclerview.selection.SelectionTracker
@@ -43,6 +44,7 @@ class FeedFragment : Fragment() {
     private lateinit var binding: FragmentFeedBinding
     private lateinit var selectionTracker: SelectionTracker<Long>
     private lateinit var bottomNav: String
+    private lateinit var bottomNavVet: String
 
     private lateinit var rvFeed: RecyclerView
     private lateinit var rvCategorias: RecyclerView
@@ -85,13 +87,14 @@ class FeedFragment : Fragment() {
         acesso = arguments?.getInt("acesso")!!
 
         bottomNav = "relevante"
+        bottomNavVet = "perguntas"
 
         adapterPublicacoes = AdapterPublicacaoResponse(activity?.baseContext!!, idUsuario, acesso,{
                 id -> curtir(id)
         },{
                 id -> salvar(id)
         },{
-                lista, tipo, id -> showBottomSheet(lista, tipo, id)
+                lista, tipo, id, pos -> showBottomSheet(lista, tipo, id, pos)
         })
 
         rvFeed.adapter = adapterPublicacoes
@@ -115,13 +118,14 @@ class FeedFragment : Fragment() {
 
         if(acesso == 1){
             binding.bottomNav.visibility = View.VISIBLE
-            binding.bottomNavVet.visibility = View.INVISIBLE
+            binding.bottomNavVet.visibility = View.GONE
         }else{
             binding.bottomNav.visibility = View.GONE
             binding.bottomNavVet.visibility = View.VISIBLE
         }
 
-        binding.bottomNav.setOnItemSelectedListener { setarFeedByBottomNavigation(it.itemId) }
+        binding.bottomNavVet.setOnItemSelectedListener { setarFeedVeteranoByBottomNavigation(it.itemId) }
+        binding.bottomNav.setOnItemSelectedListener { setarFeedCalouroByBottomNavigation(it.itemId) }
 
         Rest.getInstance<CategoriaService>().categorias()
             .enqueue(object : Callback<MutableList<Categoria>> {
@@ -202,16 +206,31 @@ class FeedFragment : Fragment() {
 
         if (idCategoria == -1 || idCategoria == null) {
 
-            if(bottomNav == "relevante"){
+            if(acesso == 1) {
 
-                setarFeedByBottomNavigation(R.id.feed_menu_relevante)
+                if (bottomNav == "relevante") {
+
+                    setarFeedCalouroByBottomNavigation(R.id.feed_menu_relevante)
+
+                } else {
+
+                    setarFeedCalouroByBottomNavigation(R.id.feed_menu_colaboracoes)
+
+                }
 
             }else{
 
-                setarFeedByBottomNavigation(R.id.feed_menu_colaboracoes)
+                if(bottomNavVet == "perguntas"){
+
+                    setarFeedVeteranoByBottomNavigation(R.id.feed_menu_perguntas)
+
+                }else{
+
+                    setarFeedVeteranoByBottomNavigation(R.id.feed_veterano_feed)
+
+                }
 
             }
-
 
         } else {
 
@@ -231,6 +250,7 @@ class FeedFragment : Fragment() {
                 binding.shimmerFrameLayout.visibility = View.GONE
 
                 rvFeed.visibility = View.GONE
+                binding.llImgSemPergunta.visibility = View.GONE
                 binding.llImgSemPublicacao.visibility = View.VISIBLE
 
             }else {
@@ -240,6 +260,7 @@ class FeedFragment : Fragment() {
                 binding.shimmerFrameLayout.stopShimmerAnimation()
                 binding.shimmerFrameLayout.visibility = View.GONE
                 binding.llImgSemPublicacao.visibility = View.GONE
+                binding.llImgSemPergunta.visibility = View.GONE
 
                 if(bottomNav == "relevante"){
 
@@ -254,16 +275,124 @@ class FeedFragment : Fragment() {
                 }
 
                 rvFeed.visibility = View.VISIBLE
+                rvCategorias.visibility = View.VISIBLE
 
             }
         }
     }
 
-    private fun setarFeedByBottomNavigation(itemId: Int): Boolean{
+    private fun setarFeedVeteranoByBottomNavigation(itemId: Int): Boolean{
 
         binding.shimmerFrameLayout.startShimmerAnimation()
         binding.shimmerFrameLayout.visibility = View.VISIBLE
         binding.llImgSemPublicacao.visibility = View.GONE
+        binding.llImgSemPergunta.visibility = View.GONE
+        binding.rvFeed.visibility = View.GONE
+
+        when(itemId){
+
+            R.id.feed_menu_perguntas -> {
+
+                bottomNavVet = "perguntas"
+
+                binding.feedSelectedRigth.visibility = View.VISIBLE
+                binding.feedSelectedLeft.visibility = View.INVISIBLE
+                adapterFiltros.setCategoriaTodas()
+
+                Rest.getInstance<PublicacaoService>().getPerguntas()
+                    .enqueue(object : Callback<MutableList<Publicacao>> {
+
+                        override fun onResponse(
+                            call: Call<MutableList<Publicacao>>,
+                            response: Response<MutableList<Publicacao>>,
+                        ) {
+
+                            if(response.body().isNullOrEmpty()){
+
+                                binding.shimmerFrameLayout.stopShimmerAnimation()
+                                binding.shimmerFrameLayout.visibility = View.GONE
+                                rvFeed.visibility = View.GONE
+                                rvCategorias.visibility = View.GONE
+                                binding.llImgSemPublicacao.visibility = View.GONE
+
+                                binding.llImgSemPergunta.visibility = View.VISIBLE
+
+                            }else {
+
+                                publicacoes = response.body()!!
+
+                                adapterPublicacoes.setData(publicacoes)
+
+                                binding.shimmerFrameLayout.stopShimmerAnimation()
+                                binding.shimmerFrameLayout.visibility = View.GONE
+                                binding.llImgSemPublicacao.visibility = View.GONE
+                                binding.llImgSemPergunta.visibility = View.GONE
+
+                                rvFeed.visibility = View.VISIBLE
+                                rvCategorias.visibility = View.VISIBLE
+
+                            }
+                        }
+
+                        override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
+                            Log.i("Cannot Get All publicacoes", t.stackTraceToString())
+                        }
+
+                    })
+            }
+
+            R.id.feed_veterano_feed -> {
+
+                bottomNavVet = "relevante"
+
+                binding.feedSelectedRigth.visibility = View.INVISIBLE
+                binding.feedSelectedLeft.visibility = View.VISIBLE
+                adapterFiltros.setCategoriaTodas()
+
+                Rest.getInstance<PublicacaoService>().getAllpublicacoes()
+                    .enqueue(object : Callback<MutableList<Publicacao>> {
+
+                        override fun onResponse(
+                            call: Call<MutableList<Publicacao>>,
+                            response: Response<MutableList<Publicacao>>,
+                        ) {
+                            val lista = mutableListOf<Publicacao>()
+
+                            for (perguntaDaVez in  response.body()!!){
+                                if (perguntaDaVez.status == 3){
+                                    lista.add(perguntaDaVez)
+                                }
+                            }
+
+                            publicacoes = lista
+
+                            adapterPublicacoes.setData(publicacoes)
+
+                            binding.shimmerFrameLayout.stopShimmerAnimation()
+                            binding.shimmerFrameLayout.visibility = View.GONE
+                            binding.llImgSemPublicacao.visibility = View.GONE
+                            binding.llImgSemPergunta.visibility = View.GONE
+
+                            rvFeed.visibility = View.VISIBLE
+                            rvCategorias.visibility = View.VISIBLE
+
+                        }
+
+                        override fun onFailure(call: Call<MutableList<Publicacao>>, t: Throwable) {
+                            Log.i("Cannot Get All publicacoes", t.stackTraceToString())
+                        }
+                    })
+            }
+        }
+        return true
+    }
+
+    private fun setarFeedCalouroByBottomNavigation(itemId: Int): Boolean{
+
+        binding.shimmerFrameLayout.startShimmerAnimation()
+        binding.shimmerFrameLayout.visibility = View.VISIBLE
+        binding.llImgSemPublicacao.visibility = View.GONE
+        binding.llImgSemPergunta.visibility = View.GONE
         binding.rvFeed.visibility = View.GONE
 
         when(itemId){
@@ -291,7 +420,10 @@ class FeedFragment : Fragment() {
                             binding.shimmerFrameLayout.stopShimmerAnimation()
                             binding.shimmerFrameLayout.visibility = View.GONE
                             binding.llImgSemPublicacao.visibility = View.GONE
+                            binding.llImgSemPergunta.visibility = View.GONE
+
                             rvFeed.visibility = View.VISIBLE
+                            rvCategorias.visibility = View.VISIBLE
 
                         }
 
@@ -332,8 +464,10 @@ class FeedFragment : Fragment() {
                             binding.shimmerFrameLayout.stopShimmerAnimation()
                             binding.shimmerFrameLayout.visibility = View.GONE
                             binding.llImgSemPublicacao.visibility = View.GONE
+                            binding.llImgSemPergunta.visibility = View.GONE
 
                             rvFeed.visibility = View.VISIBLE
+                            rvCategorias.visibility = View.VISIBLE
 
                         }
 
@@ -395,7 +529,8 @@ class FeedFragment : Fragment() {
     }
 
     @SuppressLint("InflateParams")
-    private fun showBottomSheet(comentarios: MutableList<Resposta>?, tipoPublicacao: Int, idPublicacao: Int){
+    private fun showBottomSheet(comentarios: MutableList<Resposta>?,
+                                tipoPublicacao: Int, idPublicacao: Int, position: Int){
 
 
         val bottomSheet = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme).apply {
@@ -409,10 +544,12 @@ class FeedFragment : Fragment() {
 
         }
 
-        val nomeUsuarioResposta = bottomSheetView.findViewById<TextView>(R.id.tv_nome_usuario_resposta)
         val etTextoComentario = bottomSheetView.findViewById<TextView>(R.id.et_texto_comentario)
+        val rvComentarios = bottomSheetView.findViewById<RecyclerView>(R.id.rv_comentarios)
+        val btnComentar = bottomSheetView.findViewById<TextView>(R.id.btn_comentar)
+        val btnResponder = bottomSheetView.findViewById<TextView>(R.id.btn_responder)
 
-        bottomSheetView.findViewById<TextView>(R.id.btn_comentar).setOnClickListener {
+        btnComentar.setOnClickListener {
 
             val body = RespostaRequest( etTextoComentario.text.toString(), idUsuario)
 
@@ -439,33 +576,71 @@ class FeedFragment : Fragment() {
 
         }
 
+        btnResponder.setOnClickListener {
 
+            val body = RespostaRequest( etTextoComentario.text.toString(), idUsuario)
+
+            Rest.getInstance<PublicacaoService>().atualizarStatus(idPublicacao, 2)
+                .enqueue(object : Callback<Unit>{
+                    override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+
+                    }
+
+                    override fun onFailure(call: Call<Unit>, t: Throwable) {
+                        Log.i("Erro ao mudar os status: ", t.stackTraceToString())
+                    }
+                })
+
+
+            Rest.getInstanceByAws<RespostaService>().postarResposta(idPublicacao, body)
+                .enqueue(object : Callback<Resposta> {
+
+                    @SuppressLint("NotifyDataSetChanged")
+                    override fun onResponse(call: Call<Resposta>, response: Response<Resposta>) {
+
+                        Toast.makeText(context, R.string.feed_respondido_sucesso,
+                            Toast.LENGTH_SHORT).show()
+
+                        adapterPublicacoes.notifyItemRemoved(position)
+
+                        bottomSheet.dismiss()
+
+                    }
+
+                    override fun onFailure(call: Call<Resposta>, t: Throwable) {
+                        Log.i("ErroRespostaService: ", t.stackTraceToString())
+                    }
+
+                })
+        }
 
         when(tipoPublicacao){
 
             1 -> {
 
                 bottomSheetView.findViewById<TextView>(R.id.tv_title_comentarios).text = getString(R.string.comentarios_bottomsheet_title_comentarios)
-                etTextoComentario.visibility = View.VISIBLE
-                bottomSheetView.findViewById<TextView>(R.id.btn_comentar).visibility = View.VISIBLE
-                nomeUsuarioResposta.visibility = View.GONE
+
+                rvComentarios.visibility = View.VISIBLE
+
+                btnComentar.visibility = View.VISIBLE
+                btnResponder.visibility = View.GONE
 
             }
             else -> {
 
                 bottomSheetView.findViewById<TextView>(R.id.tv_title_comentarios).text = getString(R.string.comentarios_bottomsheet_title_resposta)
-                etTextoComentario.visibility = View.GONE
-                bottomSheetView.findViewById<TextView>(R.id.btn_comentar).visibility = View.GONE
 
-
-                nomeUsuarioResposta.visibility = View.VISIBLE
-                nomeUsuarioResposta.text = comentarios!![0].nomeUsuario
+                rvComentarios.visibility = View.GONE
+                btnResponder.visibility = View.VISIBLE
+                btnComentar.visibility = View.GONE
 
             }
 
         }
 
-        rvRespostas = bottomSheetView.findViewById(R.id.rv_comentarios)
+        etTextoComentario.visibility = View.VISIBLE
+
+        rvRespostas = rvComentarios
         rvRespostas.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         rvRespostas.setHasFixedSize(true)
 

@@ -8,28 +8,30 @@
     android:background="@color/cinzaback">
 
     <com.google.android.material.appbar.AppBarLayout
+
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        >
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
         <androidx.appcompat.widget.Toolbar
+
             android:id="@+id/toolbar"
             android:background="@drawable/header"
             app:popupTheme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:titleTextColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="0dp"
-            >
+            android:layout_marginHorizontal="0dp">
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <LinearLayout
+
                     android:id="@+id/nome_studenton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -38,75 +40,76 @@
                     android:layout_marginEnd="18dp">
 
                     <LinearLayout
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginRight="16dp">
+                        android:layout_marginEnd="16dp">
 
                         <TextView
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/student_on"/>
 
                         <LinearLayout
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:gravity="end">
 
                             <TextView
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/notification"
-                                android:layout_marginRight="8dp"/>
+                                android:layout_marginEnd="8dp"/>
 
                             <TextView
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/find"/>
 
                         </LinearLayout>
+
                     </LinearLayout>
 
-
                     <LinearLayout
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_marginTop="60dp">
 
                         <TextView
+
                             android:id="@+id/nav_titulo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Minhas Colaborações"
+                            android:text="@string/perguntas_nav_titulo_minhas_colaboracoes"
                             android:textColor="@color/white"
-                            android:textSize="24dp"/>
+                            android:textSize="24sp"/>
 
                     </LinearLayout>
 
-
-
                 </LinearLayout>
 
-
-
-
                 <LinearLayout
+
                     android:id="@+id/nav_colaboracoes"
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
                     android:layout_height="wrap_content"
 
-                    android:layout_marginVertical="10dp"
-                    >
+                    android:layout_marginVertical="10dp">
 
                     <com.google.android.material.bottomnavigation.BottomNavigationView
 
                         android:id="@+id/bottom_nav2"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:layout_below="@+id/img_lupa"
                         android:background="@color/full_tranparent"
                         android:paddingBottom="7dp"
 
@@ -115,9 +118,10 @@
 
                         />
 
-
                 </LinearLayout>
+
                 <LinearLayout
+
                     android:id="@+id/sublinhado_veterano"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -125,6 +129,7 @@
                     android:layout_marginEnd="18dp">
 
                     <TextView
+
                         android:id="@+id/gestao_perguntas_sublinhado"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
@@ -134,6 +139,7 @@
                         />
 
                     <TextView
+
                         android:id="@+id/gestao_perguntas_publicacoes_sublinhado"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
@@ -143,7 +149,9 @@
                         />
 
                 </LinearLayout>
+
                 <LinearLayout
+
                     android:id="@+id/sublinhado_calouro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -170,44 +178,33 @@
 
                 </LinearLayout>
 
-
-
-
             </LinearLayout>
-
-
 
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
+
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="14dp"
+        android:paddingEnd="14dp"
         android:paddingVertical="12dp"
-        android:orientation="horizontal"
-
-        >
-
-        <LinearLayout
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:gravity="center">
-
+        android:orientation="horizontal">
 
             <LinearLayout
+
                 android:id="@+id/enviado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:visibility="gone">
+
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="12dp"
@@ -217,19 +214,21 @@
                     android:background="@drawable/circlestyle"/>
 
                 <TextView
+
                     android:layout_marginEnd="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Enviado"
+                    android:text="@string/perguntas_text_enviado"
                     android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
                     android:textColor="@color/dark_blue"
 
                     />
 
             </LinearLayout>
 
-
             <LinearLayout
+
                 android:id="@+id/analise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -237,6 +236,7 @@
                 android:gravity="center">
 
                 <TextView
+
                     android:layout_marginEnd="2dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -246,11 +246,13 @@
                     android:background="@drawable/circlestyle"/>
 
                 <TextView
+
                     android:layout_marginEnd="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Análise"
+                    android:text="@string/perguntas_status_analise"
                     android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
                     android:textColor="@color/dark_blue"
 
                     />
@@ -258,40 +260,49 @@
             </LinearLayout>
 
             <LinearLayout
+
                 android:id="@+id/aprovado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center">
+
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="12dp"
                     android:height="12dp"
                     android:layout_marginEnd="2dp"
                     android:backgroundTint="@color/teal_200"
-                    android:background="@drawable/circlestyle"/>
+                    android:background="@drawable/circlestyle"
+
+                    />
 
                 <TextView
+
                     android:layout_marginEnd="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Aprovado"
+                    android:text="@string/perguntas_status_aprovado"
                     android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
                     android:textColor="@color/dark_blue"
 
                     />
 
             </LinearLayout>
+
             <LinearLayout
+
                 android:id="@+id/recusado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center">
 
-
                 <TextView
+
                     android:layout_marginEnd="2dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -304,16 +315,13 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Recusado"
+                    android:text="@string/perguntas_status_recusado"
                     android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
                     android:textColor="@color/dark_blue"
                     />
 
             </LinearLayout>
-
-        </LinearLayout>
-
-
 
     </LinearLayout>
 
@@ -324,10 +332,7 @@
         android:orientation="horizontal"
         android:layout_marginBottom="10dp"
 
-        android:background="@drawable/borda_arredondada_filter"
-        >
-
-
+        android:background="@drawable/borda_arredondada_filter">
 
         <Spinner
             android:id="@+id/id_spinner_perguntas"
@@ -349,18 +354,45 @@
 
             />
 
-
     </LinearLayout>
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+
+        android:id="@+id/shimmerFrameLayout_perguntas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        android:animateLayoutChanges="true">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_placeholder_salvos_perguntas"/>
+            <include layout="@layout/shimmer_placeholder_salvos_perguntas"/>
+            <include layout="@layout/shimmer_placeholder_salvos_perguntas"/>
+            <include layout="@layout/shimmer_placeholder_salvos_perguntas"/>
+            <include layout="@layout/shimmer_placeholder_salvos_perguntas"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:backgroundTint="@color/cinzaback"
+
         android:id="@+id/recycler_view_perguntas"
+
+        android:backgroundTint="@color/cinzaback"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="5"
-        tools:listitem="@layout/fragment_pergunta_simple_item" />
+        tools:listitem="@layout/fragment_pergunta_simple_item"
+        android:visibility="gone"/>
 
 </LinearLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="24dp">
 
         <TextView
@@ -47,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/notification"
-                android:layout_marginRight="8dp"/>
+                android:layout_marginEnd="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,9 +56,8 @@
                 android:background="@drawable/find"/>
 
         </LinearLayout>
+
     </LinearLayout>
-
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -68,9 +68,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Salvos"
+                        android:text="@string/title_salvo"
                         android:textColor="@color/white"
-                        android:textSize="24dp"
+                        android:textSize="24sp"
                         android:layout_marginBottom="24dp"/>
 
                 </LinearLayout>
@@ -93,19 +93,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="14dp"
+            android:paddingEnd="14dp"
             android:paddingVertical="12dp"
-            android:orientation="horizontal"
-
-            >
-
-            <LinearLayout
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:gravity="center">
-
+            android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/enviado"
@@ -114,27 +104,32 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:visibility="gone">
+
                     <TextView
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:width="12dp"
                         android:height="12dp"
                         android:layout_marginEnd="2dp"
                         android:backgroundTint="@color/login_esqueceu_senha"
-                        android:background="@drawable/circlestyle"/>
+                        android:background="@drawable/circlestyle"
+
+                        />
 
                     <TextView
+
                         android:layout_marginEnd="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Enviado"
+                        android:text="@string/salvo_texto_status_enviado"
                         android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
                         android:textColor="@color/dark_blue"
 
                         />
 
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:id="@+id/duvida"
@@ -144,20 +139,25 @@
                     android:gravity="center">
 
                     <TextView
+
                         android:layout_marginEnd="2dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:width="12dp"
                         android:height="12dp"
                         android:backgroundTint="@color/feed_item_feed_name_categoria_laranja"
-                        android:background="@drawable/circlestyle"/>
+                        android:background="@drawable/circlestyle"
+
+                        />
 
                     <TextView
+
                         android:layout_marginEnd="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dúvida"
+                        android:text="@string/salvo_texto_status_duvida"
                         android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
                         android:textColor="@color/dark_blue"
 
                         />
@@ -170,7 +170,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center">
+
                     <TextView
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:width="12dp"
@@ -183,15 +185,14 @@
                         android:layout_marginEnd="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Informação"
+                        android:text="@string/salvo_texto_status_informacao"
                         android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
                         android:textColor="@color/dark_blue"
 
                         />
 
                 </LinearLayout>
-
-            </LinearLayout>
 
         </LinearLayout>
 
@@ -205,6 +206,33 @@
 
     </LinearLayout>
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+
+        android:id="@+id/shimmerFrameLayout_salvos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        android:animateLayoutChanges="true"
+        android:layout_below="@id/status_salvos">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_placeholder_salvos_perguntas"/>
+            <include layout="@layout/shimmer_placeholder_salvos_perguntas"/>
+            <include layout="@layout/shimmer_placeholder_salvos_perguntas"/>
+            <include layout="@layout/shimmer_placeholder_salvos_perguntas"/>
+            <include layout="@layout/shimmer_placeholder_salvos_perguntas"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_salvos"
         android:layout_width="match_parent"
@@ -213,6 +241,7 @@
         android:background="@color/white"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="5"
-        tools:listitem="@layout/fragment_salvo_simple_item" />
+        tools:listitem="@layout/fragment_salvo_simple_item"
+        android:visibility="gone"/>
 
 </RelativeLayout>

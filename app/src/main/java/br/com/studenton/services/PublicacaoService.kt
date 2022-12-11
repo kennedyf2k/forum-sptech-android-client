@@ -33,4 +33,7 @@ interface PublicacaoService {
 
     @DELETE("publicacoes/apagar-duvida")
     fun deletarDuvida(@Query("id") idPublicacao: Int): Call<Boolean>
+
+    @PATCH("publicacoes/update-status")
+    fun atualizarStatus(@Query("idPublicacao") idPublicacao: Int, @Query("status") status: Int): Call<Unit>
 }

@@ -32,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginTop="24dp">
 
                     <TextView
@@ -50,7 +50,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/notification"
-                            android:layout_marginRight="8dp"/>
+                            android:layout_marginEnd="8dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -71,9 +71,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Salvos"
+                        android:text="@string/title_salvo"
                         android:textColor="@color/white"
-                        android:textSize="24dp"
+                        android:textSize="24sp"
                         android:layout_marginBottom="24dp"/>
 
                 </LinearLayout>
@@ -241,13 +241,10 @@
 
                 android:layout_marginTop="16dp"
 
-
                 android:textColor="@color/feed_item_feed_name_titulo"
                 android:textStyle="bold"
 
                 />
-
-
 
             <TextView
 
@@ -265,8 +262,6 @@
 
                 />
 
-
-
             <TextView
                 android:layout_marginVertical="16dp"
                 android:layout_width="match_parent"
@@ -279,8 +274,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="8dp"
-                android:gravity="end"
-                android:outlineSpotShadowColor="@color/teal_200">
+                android:gravity="end">
 
                 <Button
                     android:id="@+id/btn_excluir"
@@ -290,7 +284,7 @@
                     android:background="@drawable/borda_vermelha_btn"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:text="excluir"
+                    android:text="@string/btn_excluir"
                     android:textColor="@color/vermelho" />
 
             </LinearLayout>
@@ -304,7 +298,6 @@
         android:id="@+id/shimmerFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/ll_rv_categorias"
         android:layout_margin="0dp"
         android:padding="0dp"
         android:animateLayoutChanges="true">

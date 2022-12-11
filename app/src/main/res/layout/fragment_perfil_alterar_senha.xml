@@ -6,6 +6,7 @@
     tools:context=".fragments.ConfigurarPerfilFragment">
 
     <TextView
+
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="@drawable/header"
@@ -14,9 +15,12 @@
         android:textAlignment="center"
         android:paddingTop="24dp"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+
+        />
 
     <LinearLayout
+
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,6 +28,7 @@
         android:layout_marginTop="48dp">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -31,13 +36,14 @@
             android:background="@drawable/borda">
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="8dp">
 
-
                 <EditText
+
                     android:layout_marginTop="10dp"
                     android:id="@+id/et_senha_atual"
                     android:layout_width="match_parent"
@@ -49,28 +55,28 @@
                     android:layout_marginBottom="4dp"
                     android:inputType="textPassword"
                     android:background="@android:color/transparent"
-                    />
-
-
+                    android:autofillHints="" />
 
             </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@drawable/borda">
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="8dp">
 
-
                 <EditText
+
                     android:layout_marginTop="10dp"
                     android:id="@+id/et_nova_senha"
                     android:layout_width="match_parent"
@@ -82,14 +88,16 @@
                     android:layout_marginBottom="4dp"
                     android:inputType="textPassword"
                     android:background="@android:color/transparent"
+                    android:autofillHints="password"
 
                     />
+
             </LinearLayout>
 
         </LinearLayout>
 
-
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/borda"
@@ -102,9 +110,8 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-
-
                 <EditText
+
                     android:layout_marginTop="5dp"
                     android:id="@+id/et_confirmar_nova_senha"
                     android:layout_width="match_parent"
@@ -116,24 +123,25 @@
                     android:layout_marginBottom="4dp"
                     android:inputType="textPassword"
                     android:background="@android:color/transparent"
+                    android:autofillHints="password"
 
                     />
 
             </LinearLayout>
 
-
         </LinearLayout>
 
         <TextView
+
             android:gravity="center_horizontal"
             android:id="@+id/tv_msg_erro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Erroooo"
             android:padding="16dp"
-            android:textColor="@color/login_erro"/>
+            android:textColor="@color/login_erro"
 
-
+            />
 
         <LinearLayout
 

@@ -29,19 +29,13 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/nome_studenton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp"
-                    android:layout_marginEnd="18dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginRight="16dp"
+                        android:layout_marginEnd="16dp"
                         android:layout_marginTop="24dp">
 
                         <TextView
@@ -59,7 +53,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/notification"
-                                android:layout_marginRight="8dp"/>
+                                android:layout_marginEnd="8dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -81,19 +75,13 @@
                             android:id="@+id/nav_titulo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Minhas Colaborações"
+                            android:text="@string/feed_menu_minhas_colaboracoes"
                             android:textColor="@color/white"
-                            android:textSize="24dp"/>
+                            android:textSize="24sp"/>
 
                     </LinearLayout>
 
-
-
                 </LinearLayout>
-
-
-            </LinearLayout>
-
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -105,7 +93,7 @@
         android:id="@+id/cv_box_item_pergunta"
         android:layout_marginBottom="5dp"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         >
 
         <LinearLayout
@@ -305,8 +293,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="8dp"
-                android:gravity="end"
-                android:outlineSpotShadowColor="@color/teal_200">
+                android:gravity="end">
 
                 <Button
                     android:id="@+id/btn_editar"
@@ -317,8 +304,9 @@
                     android:background="@drawable/fragment_dialog_sair_btn_cancelar"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:text="Editar"
-                    android:textColor="@color/azul_btn" />
+                    android:text="@string/visu_pergunta_btn_editar"
+                    android:textColor="@color/azul_btn"
+                    style="@style/Widget.AppCompat.Button" />
 
                 <Button
                     android:id="@+id/btn_excluir"
@@ -328,8 +316,9 @@
                     android:background="@drawable/borda_vermelha_btn"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:text="excluir"
-                    android:textColor="@color/vermelho" />
+                    android:text="@string/visu_pergunta_btn_excluir"
+                    android:textColor="@color/vermelho"
+                    style="@style/Widget.AppCompat.Button" />
 
             </LinearLayout>
 
@@ -338,11 +327,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
                     <TextView
 
@@ -405,13 +389,9 @@
 
                     </LinearLayout>
 
-                </LinearLayout>
-
-
             </LinearLayout>
 
         </LinearLayout>
-
 
     </androidx.cardview.widget.CardView>
 
@@ -420,10 +400,11 @@
         android:id="@+id/shimmerFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/ll_rv_categorias"
+
         android:layout_margin="0dp"
         android:padding="0dp"
-        android:animateLayoutChanges="true">
+        android:animateLayoutChanges="true"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"

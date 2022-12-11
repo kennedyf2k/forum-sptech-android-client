@@ -24,7 +24,7 @@ class DialogExcluirPostagem : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDialogExcluirPostagemBinding.inflate(inflater)
         return binding.root
     }
@@ -71,7 +71,7 @@ class DialogExcluirPostagem : DialogFragment() {
                 }
 
                 override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                    binding.tvMsgErroTroca.setText("Aconteceu um erro inesperado, tente novamente mais tarde")
+                    binding.tvMsgErroTroca.setText(R.string.alerta_excluir_pergunta_erro)
                     Log.i("Erro da exclusão da publi: ", t.stackTraceToString())
                 }
             })

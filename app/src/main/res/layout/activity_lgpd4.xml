@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
-android:background="@drawable/fundo_white"
->
+android:background="@drawable/fundo_white">
 
     <ImageView
         android:layout_marginTop="80dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/bullet100"
-        />
+        android:contentDescription="@string/lgpd_content_desc_img_bullet" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
         android:layout_gravity="center"
@@ -57,8 +54,6 @@ android:background="@drawable/fundo_white"
             />
     </LinearLayout>
 
-
-
 <Button
 
     android:id="@+id/btn_avancar"
@@ -72,5 +67,6 @@ android:background="@drawable/fundo_white"
     android:textColor="@color/white"
     android:textStyle="bold"
     android:background="@drawable/borda_arredondada"
-    android:text="Avançar"/>
+    android:text="@string/lgpd_btn_avancar"/>
+
 </LinearLayout>

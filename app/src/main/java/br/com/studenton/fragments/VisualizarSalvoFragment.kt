@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import br.com.studenton.R
-import br.com.studenton.databinding.FragmentSalvosBinding
 import br.com.studenton.databinding.FragmentVisualizarSalvoBinding
 import br.com.studenton.domain.Publicacao
 import br.com.studenton.repository.Rest
@@ -22,17 +21,11 @@ import retrofit2.Response
 class VisualizarSalvoFragment : Fragment() {
 
     private lateinit var binding: FragmentVisualizarSalvoBinding
-    private lateinit var bundle: Bundle
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentVisualizarSalvoBinding.inflate(inflater)
         return binding.root
     }
@@ -51,6 +44,8 @@ class VisualizarSalvoFragment : Fragment() {
 
                 override fun onResponse(call: Call<Publicacao>, response: Response<Publicacao>) {
                     Log.i("Publicacao salva", response.toString())
+
+                    val user = response.body()!!.fkUsuario
 
                     when (response.body()!!.tipoPublicacao) {
 
@@ -87,22 +82,34 @@ class VisualizarSalvoFragment : Fragment() {
                     }
 
                         Glide.with(activity!!.baseContext).load(response.body()!!.fotoUsuario).into(binding.ivProfileItem)
-                        binding.tvHorasAtras.text = "Há ${response.body()!!.diasAtras.toString()} dias"
+
+
+                        val textoDiasAtras = getString(R.string.dias_atras_position1) + " " +
+                                response.body()!!.diasAtras.toString() + " " +
+                                getString(R.string.dias_atras_position2)
+
+                        binding.tvHorasAtras.text = textoDiasAtras
+
                         binding.tvCategoriaPost.text = response.body()!!.categoria
                         binding.tvTituloBox.text = response.body()!!.titulo
                         binding.tvTextoBox.text = response.body()!!.texto
 
-                    binding.shimmerFrameLayout.stopShimmerAnimation()
-                    binding.shimmerFrameLayout.visibility = View.GONE
-                    binding.cvBoxItemPostagem.visibility = View.VISIBLE
+                        binding.shimmerFrameLayout.stopShimmerAnimation()
+                        binding.shimmerFrameLayout.visibility = View.GONE
+                        binding.cvBoxItemPostagem.visibility = View.VISIBLE
 
                         binding.btnExcluir.setOnClickListener {
 
-                            var fragmentDialog = DialogFragmentExcluirSalvo()
+                            val fragmentDialog = DialogFragmentExcluirSalvo()
 
                             val fragmentManager = activity?.supportFragmentManager
 
-                            fragmentDialog.arguments = bundleOf()
+                            fragmentDialog.arguments = bundleOf(
+
+                                "id" to publicacao,
+                                "usuario" to user
+
+                            )
 
                             fragmentDialog.show(fragmentManager!!, "")
                         }
@@ -113,6 +120,5 @@ class VisualizarSalvoFragment : Fragment() {
                 }
 
             })
-
-}
+    }
 }

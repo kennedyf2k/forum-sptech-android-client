@@ -39,7 +39,7 @@ class SalvosFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSalvosBinding.inflate(inflater)
         return binding.root
     }
@@ -49,6 +49,16 @@ class SalvosFragment : Fragment() {
 
         val usuario = arguments?.getInt("id")
 
+        recyclerViewSalvos = binding.recyclerViewSalvos
+
+        recyclerViewSalvos.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
+        recyclerViewSalvos.setHasFixedSize(true)
+
+        binding.shimmerFrameLayoutSalvos.startShimmerAnimation()
+        binding.shimmerFrameLayoutSalvos.visibility = View.VISIBLE
+        binding.recyclerViewSalvos.visibility = View.GONE
+
         Rest.getInstance<SalvarService>().getFavoritosByUsuario(usuario!!)
             .enqueue(object : Callback<MutableList<Publicacao>>{
 
@@ -57,15 +67,15 @@ class SalvosFragment : Fragment() {
                     response: Response<MutableList<Publicacao>>
                 ) {
 
-                    Log.i("Publicações salvas", response.toString())
                     listaSalvos = (response.body()!!)
-                    recyclerViewSalvos = binding.recyclerViewSalvos
-                    recyclerViewSalvos.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-                    recyclerViewSalvos.setHasFixedSize(true)
 
                     recyclerViewSalvos.adapter = AdapterSalvoResponse(listaSalvos) {id ->
                         carregarPublicacao(id)
                     }
+
+                    binding.shimmerFrameLayoutSalvos.stopShimmerAnimation()
+                    binding.shimmerFrameLayoutSalvos.visibility = View.GONE
+                    binding.recyclerViewSalvos.visibility = View.VISIBLE
 
                     val helper = androidx.recyclerview.widget.ItemTouchHelper(
                         ItemTouchHelper(0, androidx.recyclerview.widget.ItemTouchHelper.LEFT))

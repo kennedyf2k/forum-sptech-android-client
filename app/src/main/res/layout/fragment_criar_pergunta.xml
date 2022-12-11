@@ -16,21 +16,13 @@
             android:background="@drawable/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="0dp"
-            >
+            android:layout_marginHorizontal="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/nome_studenton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp"
-                    android:layout_marginEnd="18dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -53,7 +45,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/notification"
-                                android:layout_marginRight="8dp"/>
+                                android:layout_marginEnd="8dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -61,6 +53,7 @@
                                 android:background="@drawable/find"/>
 
                         </LinearLayout>
+
                     </LinearLayout>
 
 
@@ -77,22 +70,21 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/arow_voltar"/>
+                            android:src="@drawable/arow_voltar"
+                            android:contentDescription="@string/seta_voltar" />
 
                         <TextView
                             android:paddingEnd="12dp"
+                            android:paddingStart="12dp"
                             android:layout_weight="10"
                             android:layout_width="0dp"
                             android:textAlignment="center"
                             android:layout_height="wrap_content"
-                            android:text="Nova pergunta"
+                            android:text="@string/fragment_criar_pergunta_title"
                             android:textColor="@color/white"
-                            android:textSize="20dp"/>
+                            android:textSize="20sp"/>
 
                     </LinearLayout>
-
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -100,13 +92,14 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <EditText
+
             android:id="@+id/et_titulo_pergunta"
             android:layout_weight="1"
             android:paddingHorizontal="10dp"
@@ -115,8 +108,11 @@
             android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:hint="Título da pergunta"
+            android:hint="@string/fragment_criar_pergunta_hint_title_pergunta"
             android:textSize="16sp"
+            android:importantForAutofill="no"
+            android:inputType="text"
+
             />
 
         <!--
@@ -130,8 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/borda_arredondada"
-            >
+            android:background="@drawable/borda_arredondada">
 
             <Spinner
                 android:id="@+id/id_spinner"
@@ -140,29 +135,32 @@
                 android:entries="@array/categorias"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="15dp"
+
                 />
 
         </LinearLayout>
-
-
         
     </LinearLayout>
 
     <EditText
         android:id="@+id/et_conteudo_pergunta"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:paddingHorizontal="10dp"
         android:paddingVertical="15dp"
         android:background="@drawable/borda_arredondada"
         android:layout_margin="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Conteúdo da pergunta"
+        android:hint="@string/fragment_criar_pergunta_hint_conteudo"
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:gravity="start"
         android:textSize="16sp"
+        android:importantForAutofill="no"
+
         />
+
     <TextView
 
         android:id="@+id/tv_msg_erro"
@@ -186,11 +184,10 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="20dp"
             android:layout_height="wrap_content"
-            android:text="Perguntar"
+            android:text="@string/fragment_criar_pergunta_btn_perguntar"
             android:background="@drawable/borda_arredondada"
             android:backgroundTint="@color/teal_200"/>
 
     </LinearLayout>
-
 
 </LinearLayout>

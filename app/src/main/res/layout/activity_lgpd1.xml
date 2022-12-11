@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
-    tools:context=".Lgpd1Activity"
-android:background="@drawable/fundo"
->
+tools:context=".Lgpd1Activity"
+android:background="@drawable/fundo">
 
     <ImageView
+
         android:layout_marginTop="80dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/bullet_25"
+        android:contentDescription="@string/lgpd_content_desc_img_bullet"
+
         />
 
     <TextView
@@ -21,7 +22,7 @@ android:background="@drawable/fundo"
         android:layout_margin="30dp"
         android:layout_width="match_parent"
         android:paddingHorizontal="40dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:gravity="center"
         android:layout_weight="1"
         android:textAlignment="center"
@@ -33,20 +34,20 @@ android:background="@drawable/fundo"
 
         />
 
+    <Button
 
+        android:id="@+id/btn_avancar"
+        android:layout_width="match_parent"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_height="wrap_content"
+       android:paddingVertical="10dp"
+        android:textAllCaps="true"
+        android:backgroundTint="@color/azul_btn"
+        android:background="@drawable/borda_arredondada"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="@string/lgpd_btn_avancar"
 
-<Button
-
-    android:id="@+id/btn_avancar"
-    android:layout_width="match_parent"
-    android:layout_marginVertical="20dp"
-    android:layout_marginHorizontal="20dp"
-    android:layout_height="wrap_content"
-   android:paddingVertical="10dp"
-    android:textAllCaps="true"
-    android:backgroundTint="@color/azul_btn"
-    android:background="@drawable/borda_arredondada"
-    android:textColor="@color/white"
-    android:textStyle="bold"
-    android:text="Avançar"/>
+        />
 </LinearLayout>

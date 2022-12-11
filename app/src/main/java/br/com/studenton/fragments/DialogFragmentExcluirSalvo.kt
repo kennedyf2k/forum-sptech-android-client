@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import br.com.studenton.R
 import br.com.studenton.databinding.FragmentDialogExcluirPostagemBinding
@@ -25,7 +26,7 @@ class DialogFragmentExcluirSalvo : DialogFragment(){
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDialogExcluirSalvoBinding.inflate(inflater)
         return binding.root
     }
@@ -33,8 +34,8 @@ class DialogFragmentExcluirSalvo : DialogFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val idPublicacao = arguments?.getInt("idPublicacao")
-        val usuario = arguments?.getInt("id")
+        val idPublicacao = arguments?.getInt("id")
+        val usuario = arguments?.getInt("usuario")
 
         binding.btnCancelar.setOnClickListener {
             dismiss()
@@ -42,8 +43,8 @@ class DialogFragmentExcluirSalvo : DialogFragment(){
 
         binding.btnApagar.setOnClickListener {
 
-            Log.i("Id da publicação", idPublicacao.toString())
             apagarSalvo(usuario!!, idPublicacao!!)
+
         }
 
     }
@@ -61,15 +62,33 @@ class DialogFragmentExcluirSalvo : DialogFragment(){
 
                     alerta.create().show()
 
-                    Log.i("Resposta:", response.toString())
+                    dismiss()
+
+                    carregarSalvosFragment(idUsuario)
+
+
                 }
 
                 override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Log.i("Erro ao excluir", t.stackTraceToString())
                 }
             }
         )
+    }
 
+    private fun carregarSalvosFragment(idUsuario: Int){
+
+        val fragmentManager = activity?.supportFragmentManager
+
+        val transaction = fragmentManager!!.beginTransaction()
+
+        val salvoFragment = SalvosFragment()
+
+        salvoFragment.arguments = bundleOf("id" to idUsuario)
+
+        transaction.replace(R.id.fragments_container, salvoFragment)
+
+        transaction.commit()
     }
 
 }

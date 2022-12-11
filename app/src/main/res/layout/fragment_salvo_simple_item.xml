@@ -10,11 +10,13 @@
     android:id="@+id/cvSalvo">
 
     <TextView
+
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:width="10dp"
         android:background="@color/teal_200"
+
         />
 
     <RelativeLayout
@@ -35,7 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             tools:text="Segunda via do bilhete único"/>
-
 
         <TextView
             android:id="@+id/txt_desc_salvo"
@@ -58,7 +59,8 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:textStyle="bold"
-            tools:text="8 de nov"/>
+            tools:text="8 de nov"
+            tools:ignore="RelativeOverlap" />
 
     </RelativeLayout>
 

@@ -22,23 +22,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/nome_studenton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp"
-                    android:layout_marginEnd="18dp">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="60dp"
-                        android:layout_marginBottom="5dp">
+                android:orientation="horizontal"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="5dp">
 
                         <ImageView
 
@@ -46,9 +32,13 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/arow_voltar"/>
+                            android:src="@drawable/arow_voltar"
+
+                            android:contentDescription="@string/seta_voltar" />
 
                         <TextView
+
+                            android:paddingStart="12dp"
                             android:paddingEnd="12dp"
                             android:layout_weight="10"
                             android:layout_width="0dp"
@@ -56,12 +46,9 @@
                             android:layout_height="wrap_content"
                             android:text="@string/alterar_senha_header"
                             android:textColor="@color/white"
-                            android:textSize="20dp"/>
+                            android:textSize="20sp"
 
-                    </LinearLayout>
-
-
-                </LinearLayout>
+                            />
 
             </LinearLayout>
 
@@ -69,13 +56,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        >
+        android:layout_marginTop="20dp">
 
         <EditText
             android:id="@+id/et_esqueceu_senha_ra"
@@ -88,9 +73,13 @@
             android:layout_height="wrap_content"
             android:hint="@string/esqueceu_senha_ra"
             android:textSize="16sp"
+            android:importantForAutofill="no"
+            android:inputType="text"
+
             />
 
         <EditText
+
             android:id="@+id/et_esqueceu_senha_email"
             android:paddingVertical="15dp"
             android:paddingHorizontal="10dp"
@@ -101,7 +90,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/esqueceu_senha_email"
             android:textSize="16sp"
-            />
+            android:importantForAutofill="no"
+
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/et_esqueceu_senha_nova_senha"
@@ -115,7 +106,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/alterar_senha_nova"
             android:textSize="16sp"
-            />
+            android:importantForAutofill="no"
+            android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/et_esqueceu_senha_confirmar_nova_senha"
@@ -128,15 +120,15 @@
             android:hint="@string/alterar_senha_confirmar_nova"
             android:textSize="16sp"
             android:paddingVertical="15dp"
-            />
+            android:importantForAutofill="no"
+            android:inputType="textPassword" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:orientation="vertical"
             android:layout_weight="1"
-            android:gravity="bottom"
-            >
+            android:gravity="bottom">
 
             <TextView
 
@@ -145,24 +137,23 @@
                 android:layout_height="wrap_content"
                 tools:text="Erroooo"
                 android:textColor="@color/login_erro"
-                android:gravity="center"/>
+                android:gravity="center"
+
+                />
+
             <Button
                 android:id="@+id/btn_esqueceu_senha_alterar"
                 android:layout_width="match_parent"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="20dp"
                 android:layout_height="wrap_content"
-                android:text="Alterar"
+                android:text="@string/esqueci_senha_btn_alterar"
                 android:background="@drawable/borda_arredondada"
                 android:backgroundTint="@color/teal_200"
                 />
 
         </LinearLayout>
 
-
-
-
     </LinearLayout>
-
 
 </LinearLayout>

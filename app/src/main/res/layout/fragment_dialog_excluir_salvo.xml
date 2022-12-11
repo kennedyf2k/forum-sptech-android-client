@@ -8,12 +8,15 @@
     android:background="@drawable/card_view_bg">
 
     <ImageView
+
         android:layout_width="51dp"
         android:layout_height="42dp"
         android:layout_margin="20dp"
-        android:src="@drawable/excluir" />
+        android:src="@drawable/excluir"
+        android:contentDescription="@string/fragment_excluir_salvo_img_lixeira" />
 
     <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/fragment_dialog_excluir_salvo_title"
@@ -21,18 +24,22 @@
         android:textStyle="bold"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="18dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+
+        />
 
 
     <TextView
+
         android:id="@+id/tv_msg_erro_troca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text = "Ocorreu um erro!"
         android:textSize="18sp"
         android:textColor="@color/vermelho"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
 
+        />
 
     <TextView
         android:layout_width="match_parent"
@@ -45,6 +52,7 @@
         />
 
     <LinearLayout
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -74,6 +82,7 @@
             />
 
         <TextView
+
             android:id="@+id/btn_apagar"
             android:layout_width="100dp"
             android:layout_height="40dp"
@@ -87,6 +96,7 @@
             android:paddingTop="10dp"
             android:textAlignment="center"
             android:textStyle="bold"
+
             />
 
     </LinearLayout>

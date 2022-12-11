@@ -10,7 +10,8 @@
         android:layout_width="51dp"
         android:layout_height="42dp"
         android:layout_margin="20dp"
-        android:src="@drawable/perfil" />
+        android:src="@drawable/perfil"
+        android:contentDescription="@string/fragment_dialog_alterar_foto_img_perfil" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,7 +40,9 @@
         android:background="@drawable/borda_arredondada"
         android:layout_margin="20dp"
         android:hint="@string/fragment_dialog_alterar_hint"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:inputType="text"
+        android:importantForAutofill="no" />
 
     <TextView
         android:layout_width="match_parent"

@@ -3,6 +3,13 @@
     <string name="student">Student</string>
     <string name="on">ON</string>
 
+    <!--  SPLASH  -->
+    <string name="splash_content_desc_img_logo">Imagem logo principal</string>
+
+    <!--  LGPD  -->
+    <string name="lgpd_content_desc_img_bullet">imagem bullet</string>
+    <string name="lgpd_btn_avancar">Avançar</string>
+
     <!--MENU MAIN-->
     <string name="menu_feed">Feed</string>
     <string name="menu_perguntas">Perguntas</string>
@@ -42,6 +49,9 @@
 
     <!--FEED-->
     <string name="feed_menu_mais_relevante">Mais Relevante</string>
+    <string name="feed_clique_responder">Clique aqui para responder</string>
+    <string name="feed_respondido_sucesso">Respondido com sucesso!</string>
+    <string name="feed_menu_feed_veterano">Feed</string>
     <string name="feed_menu_perguntas">Perguntas</string>
     <string name="feed_menu_minhas_colaboracoes">Minhas colaborações</string>
     <string name="feed_menu_publicacoes">Publicações</string>
@@ -65,6 +75,9 @@
     <string name="feed_content_description_img_lupa">Lupa de pesquisa</string>
     <string name="feed_content_description_img_perguntar">icone de perguntar</string>
     <string name="feed_float_button_perguntar">perguntar</string>
+    <string name="feed_simple_item_imagem_comentarios">Imagem de comentários</string>
+    <string name="feed_simple_item_imagem_salvar">Imagem de Salvar</string>
+    <string name="feed_simple_item_imagem_curtir">Imagem de Curtir</string>
 
     <!--TELA TERMOS-->
     <string name="titulo_termos">Termos e \ncondições</string>
@@ -104,6 +117,7 @@
     <string name="texto3_bemvindo">A comunidade inteira tem acesso a publicação e o conhecimento é multiplicado</string>
     <string name="texto4_titulo_bemvindo">Seja responsável!</string>
     <string name="texto4_bemvindo">Nada de respostas incompletas e que possam ser invasivas hein?!</string>
+    <string name="esqueci_senha_btn_alterar">Alterar</string>
 
     <!-- ESQUECEU A SENHA-->
     <string name="esqueceu_senha_ra">RA</string>
@@ -120,6 +134,7 @@
     <string name="fragment_dialog_sair_btn_sair">SAIR</string>
     <string name="fragment_dialog_sair_btn_cancelar">CANCELAR</string>
     <string name="fragment_dialog_sair_title">Tem certeza que deseja Sair?</string>
+    <string name="fragment_dialog_sair_img_ligar">Imagem de ligar/desligar</string>
 
     <!-- FRAGMENT DIALOG ALTERAR FOTO DE PERFIL -->
     <string name="fragment_dialog_alterar_foto_title">Coloque um link de imagem para alterar sua foto de perfil</string>
@@ -128,11 +143,13 @@
     <string name="alterar_foto_alerta_title">Foto de perfil alterada!</string>
     <string name="alterar_foto_alerta_text">A sua foto de perfil foi alterada com sucesso.</string>
     <string name="fragment_dialog_alterar_hint">URL da imagem</string>
+    <string name="fragment_dialog_alterar_foto_img_perfil">Imagem de perfil</string>
 
     <!--  Comentario BottomSheet  -->
     <string name="comentarios_bottomsheet_btn_comentar">Comentar</string>
+    <string name="comentarios_bottomsheet_btn_responder">Responder</string>
     <string name="comentarios_bottomsheet_title_comentarios">Comentarios</string>
-    <string name="comentarios_bottomsheet_title_resposta">Resposta do</string>
+    <string name="comentarios_bottomsheet_title_resposta">Faça sua resposta</string>
 
     <!--    CRIAR PUBLICACAO-->
     <string name="fragment_criar_publicacao_erro">Aconteceu um erro inesperado, tente novamente mais tarde</string>
@@ -140,10 +157,22 @@
     <string name="fragment_criar_publicacao_sucesso">Pergunta realizada com sucesso!</string>
     <string name="fragment_criar_publicacao_length_titulo">Insira pelo menos 5 caracteres</string>
     <string name="fragment_criar_publicacao_length_texto">Insira pelo menos 10 caracteres</string>
+    <string name="fragment_criar_pergunta_title">Nova pergunta</string>
+    <string name="fragment_criar_pergunta_hint_title_pergunta">Título da pergunta</string>
+    <string name="fragment_criar_pergunta_hint_conteudo">Conteúdo da pergunta</string>
+    <string name="fragment_criar_pergunta_btn_perguntar">Perguntar</string>
 
-    <!-- Status Salvo -->
+    <!-- SALVOS -->
     <string name="deletar_salvo_title">Publicação salva apagada</string>
+    <string name="title_salvo">Salvos</string>
+    <string name="btn_excluir">excluir</string>
     <string name="deletar_salvo_text">Publicação salva foi apagada com sucesso da sua lista!</string>
+    <string name="dias_atras_position1">Há</string>
+    <string name="dias_atras_position2">dias</string>
+    <string name="salvo_texto_status_enviado">Enviado</string>
+    <string name="salvo_texto_status_duvida">Dúvida</string>
+    <string name="salvo_texto_status_informacao">Informação</string>
+    <string name="fragment_excluir_salvo_img_lixeira">Imagem de lixeira</string>
 
     <!-- PERGUNTAS -->
     <string name="perguntas_menu_respostas">Minhas Respostas</string>
@@ -153,9 +182,17 @@
     <string name="feed_item_simple_item_publicou_duvida">publicou uma dúvida</string>
     <string name="status_analise_pergunta">A resposta ficará visível após aprovação</string>
     <string name="status_pergunta_recusado">RECUSADO: Pergunta infringe as diretrizes da comunidade.</string>
-    <string name="text_resposta">Resposta</string>
+    <string name="perguntas_text_resposta">Resposta</string>
+    <string name="perguntas_text_enviado">Enviado</string>
+    <string name="perguntas_status_analise">Análise</string>
+    <string name="perguntas_status_aprovado">Aprovado</string>
+    <string name="perguntas_status_recusado">Recusado</string>
     <string name="text_sua_resposta">Sua resposta:</string>
+    <string name="editar_pergunta_btn_atualizar">atualizar</string>
     <string name="feed_duvida_tag">resposta:</string>
+    <string name="visu_pergunta_btn_editar">Editar</string>
+    <string name="visu_pergunta_btn_excluir">Excluir</string>
+    <string name="text_resposta">Resposta</string>
 
     <!-- EDITAR PERUNTA/POSTAGEM -->
     <string name="editar_pergunta_titulo">Editar</string>
@@ -164,11 +201,14 @@
     <string name="excluir_title">Apagar</string>
     <string name="alerta_excluir_pergunta_title">Pergunta excluída!</string>
     <string name="alerta_excluir_pergunta_text">A sua pergunta foi excluída com sucesso.</string>
+    <string name="alerta_excluir_pergunta_erro">Aconteceu um erro inesperado, tente novamente mais tarde</string>
 
     <!-- EXCLUIR PUBLICAÇÃO SALVA -->
     <string name="fragment_dialog_excluir_salvo_title">Tem certeza que deseja excluir a publicação salva?</string>
     <string name="text_excluir_salvo_info">Você pode excluir um salvo apenas deslizando-o para o lado</string>
 
+    <string name="tela_shimmer">Tela de carregamento</string>
+    <string name="seta_voltar">Seta de voltar</string>
 
 </resources>
 

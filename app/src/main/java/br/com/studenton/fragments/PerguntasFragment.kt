@@ -126,6 +126,7 @@ class PerguntasFragment : Fragment() {
                             }
                         }
                         adpterPerguntasResponse.setarDado(lista)
+
                     }
 
                     "Em análises" -> {
@@ -169,7 +170,12 @@ class PerguntasFragment : Fragment() {
 
     private fun filtrarPerguntasVet(itemId: Int):Boolean{
 
+        binding.shimmerFrameLayoutPerguntas.startShimmerAnimation()
+        binding.shimmerFrameLayoutPerguntas.visibility = View.VISIBLE
+        binding.recyclerViewPerguntas.visibility = View.GONE
+
        when(acesso){
+
            1 -> {
                Rest.getInstance<PublicacaoService>().getMinhasPublicacoes(idUsuario)
                    .enqueue(object : Callback<MutableList<Publicacao>> {
@@ -189,6 +195,10 @@ class PerguntasFragment : Fragment() {
                            filterTodos = lista
 
                            adpterPerguntasResponse.setarDado(lista)
+
+                           binding.shimmerFrameLayoutPerguntas.stopShimmerAnimation()
+                           binding.shimmerFrameLayoutPerguntas.visibility = View.GONE
+                           binding.recyclerViewPerguntas.visibility = View.VISIBLE
 
                            btnNav = "info"
 
@@ -228,6 +238,9 @@ class PerguntasFragment : Fragment() {
                                    filterTodos = lista
 
                                    adpterPerguntasResponse.setarDado(lista)
+                                   binding.shimmerFrameLayoutPerguntas.stopShimmerAnimation()
+                                   binding.shimmerFrameLayoutPerguntas.visibility = View.GONE
+                                   binding.recyclerViewPerguntas.visibility = View.VISIBLE
 
                                    btnNav = "resposta"
                                }
@@ -263,6 +276,9 @@ class PerguntasFragment : Fragment() {
                                    filterTodos = lista
 
                                    adpterPerguntasResponse.setarDado(lista)
+                                   binding.shimmerFrameLayoutPerguntas.stopShimmerAnimation()
+                                   binding.shimmerFrameLayoutPerguntas.visibility = View.GONE
+                                   binding.recyclerViewPerguntas.visibility = View.VISIBLE
 
                                    btnNav = "info"
 
@@ -288,10 +304,22 @@ class PerguntasFragment : Fragment() {
 
         val visualizarPergunta = VisualizarPerguntaFragment()
 
-        visualizarPergunta.arguments = bundleOf("id" to idPublicacao, "status" to status, "acesso" to acesso)
+        visualizarPergunta.arguments = bundleOf(
+
+            "id" to idPublicacao,
+            "status" to status,
+            "acesso" to acesso
+
+        )
 
         transaction.replace(R.id.fragments_container, visualizarPergunta)
 
         transaction.commit()
     }
+
+    override fun onResume() {
+        super.onResume()
+        spinner.setSelection(0)
+    }
+
 }

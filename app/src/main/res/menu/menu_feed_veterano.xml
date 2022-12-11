@@ -3,17 +3,17 @@
 
     <item
 
-        android:id="@+id/feed_menu_relevante"
-        android:title="@string/feed_menu_mais_relevante"
+        android:id="@+id/feed_menu_perguntas"
+        android:title="@string/feed_menu_perguntas"
 
-    />
+        />
 
     <item
 
-        android:id="@+id/feed_menu_colaboracoes"
-        android:title="@string/feed_menu_minhas_colaboracoes"
+        android:id="@+id/feed_veterano_feed"
+        android:title="@string/feed_menu_feed_veterano"
 
-    />
+        />
 
 
 </menu>

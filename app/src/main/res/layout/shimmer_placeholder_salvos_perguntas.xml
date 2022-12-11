@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/postagem_mockup"
+            android:src="@drawable/salvo_pergunta_mockup"
             android:contentDescription="@string/tela_shimmer" />
 
     </LinearLayout>

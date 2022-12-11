@@ -16,6 +16,7 @@ class AdapterPerguntasResponse(
     private val acesso: Int,
     private val idUsuario: Int,
     var onclick: (idPublicacao: Int, status: Int, acesso: Int) -> Unit
+
 ) : RecyclerView.Adapter<AdapterPerguntasResponse.PerguntaHolder>(){
 
     private var perguntas : MutableList<Publicacao> = mutableListOf()

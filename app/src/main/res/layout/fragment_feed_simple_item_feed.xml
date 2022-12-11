@@ -5,10 +5,10 @@
     android:layout_height="wrap_content"
     android:id="@+id/cv_box_item_feed"
     android:layout_marginBottom="5dp"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingVertical="14dp"
@@ -17,6 +17,7 @@
         android:layout_gravity="center">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -35,11 +36,13 @@
                 />
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -100,10 +103,10 @@
 
             </LinearLayout>
 
-
         </LinearLayout>
 
         <LinearLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp">
@@ -178,7 +181,6 @@
 
             />
 
-
         <TextView
 
             android:id="@+id/tv_texto_box"
@@ -195,8 +197,6 @@
 
             />
 
-
-
         <TextView
             android:layout_marginVertical="16dp"
             android:layout_width="match_parent"
@@ -204,13 +204,13 @@
             android:background="#6FAEAEB2"/>
 
         <LinearLayout
-            android:outlineSpotShadowColor="@color/teal_200"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            >
+            android:layout_marginBottom="10dp">
 
             <LinearLayout
+
+                android:id="@+id/ll_box_curtir"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:paddingHorizontal="10dp"
@@ -221,8 +221,6 @@
                 android:background="@drawable/borda_arredondada"
                 android:orientation="horizontal">
 
-
-
                 <ImageView
 
                     android:id="@+id/iv_curtir"
@@ -230,8 +228,7 @@
                     android:layout_height="24dp"
                     android:layout_gravity="center"
 
-
-                    />
+                    android:contentDescription="@string/feed_simple_item_imagem_curtir" />
 
                 <TextView
 
@@ -245,6 +242,7 @@
                     android:textColor="#F05161"
 
                     />
+
             </LinearLayout>
 
             <ImageView
@@ -255,6 +253,7 @@
                 android:background="@drawable/feed_item_img_comentario"
                 android:layout_marginStart="16dp"
                 android:layout_gravity="center"
+                android:contentDescription="@string/feed_simple_item_imagem_comentarios"
 
                 />
 
@@ -282,6 +281,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/feed_simple_item_imagem_salvar"
 
                     />
 
