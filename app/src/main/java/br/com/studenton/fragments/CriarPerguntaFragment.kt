@@ -1,6 +1,7 @@
 package br.com.studenton.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -73,7 +74,7 @@ class CriarPerguntaFragment : Fragment() {
                 "SPTrans" -> idCategoria = 1
                 "MeuID" -> idCategoria = 2
                 "Secretaria" -> idCategoria = 3
-                "Aula</item>" -> idCategoria = 4
+                "Aula" -> idCategoria = 4
                 "Estagio" -> idCategoria = 5
                 "Empresas" -> idCategoria = 6
                 "Relatos" -> idCategoria = 7
@@ -123,7 +124,7 @@ class CriarPerguntaFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<Unit>, t: Throwable) {
-                TODO("Not yet implemented")
+                Log.i("Erro ao publicar", t.stackTraceToString())
             }
 
         })

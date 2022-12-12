@@ -119,9 +119,11 @@ class FeedFragment : Fragment() {
         if(acesso == 1){
             binding.bottomNav.visibility = View.VISIBLE
             binding.bottomNavVet.visibility = View.GONE
+            binding.fbPerguntar.visibility = View.VISIBLE
         }else{
             binding.bottomNav.visibility = View.GONE
             binding.bottomNavVet.visibility = View.VISIBLE
+            binding.fbPerguntar.visibility = View.GONE
         }
 
         binding.bottomNavVet.setOnItemSelectedListener { setarFeedVeteranoByBottomNavigation(it.itemId) }
@@ -604,6 +606,8 @@ class FeedFragment : Fragment() {
                         adapterPublicacoes.notifyItemRemoved(position)
 
                         bottomSheet.dismiss()
+
+                        setarFeedVeteranoByBottomNavigation(R.id.feed_menu_perguntas)
 
                     }
 
